@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    maxlength 限制输入的最大字符数
+name 为当前的表单控件命名
+value 初始默认值
+readonly 只读的
+disabled 禁用
+checked 单选框和多选框的默认值
+type
+text 文本输入框
+password 密码输入框
+redio 单选框
+checked 多选框file 上传文件submit 提交按钮reset 重置
+image 图片
+button 按钮
+     -->
+  <form action="" method="get">
+    <!-- 
+    method提交方式
+    get 显示
+    post 隐藏
+     -->
+   
+     <!-- 分组fieldset
+      分组信息legend
+       -->
+      <fieldset>
+        <legend>信息填写</legend>
+         用户名: <input type="text" maxlength="8" name="666" value="">  <br>
+    密码 <input type="password" name="555" >  <button>确认</button><br>
+    性别：男<input type="radio" name="sex" checked value="1">
+    女<input type="radio"  name="sex" value="0"> <br>
+    爱好 吃<input type="checkbox" name="aihao" value="chi">
+     喝<input type="checkbox" name="aihao" value="he">
+     玩<input type="checkbox" name="aihao" value="wan">
+     乐<input type="checkbox" name="aihao" value="le"> <br>
+     <input type="file"> <br>
+     <input type="submit"> <br>
+     <input type="reset"> <br>
+     <input type="image" src="../240922/img/微信图片_20240922194410.png">
+    </fieldset>
+    <fieldset>
+        <!--
+        select是下拉菜单>opgrout>option 
+         -->
+        <select name="" id="">
+            <optgroup label="第一"><option value="">1</option>
+            <option value="">1</option>
+            <option value="">1</option>
+            <option value="">1</option>
+        </optgroup>
+        <optgroup label="第二"><option value="">1</option>
+            <option value="">1</option>
+            <option value="">1</option>
+            <option value="">1</option>
+        </optgroup>
+        <!-- 
+        textarae是多行文本输入框
+        cols一行多少字符
+        row多少行
+         -->
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+            
+        </select>
+    </fieldset>
+    
+  </form>
+</body>
+</html>
