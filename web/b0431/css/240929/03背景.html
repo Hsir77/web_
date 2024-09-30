@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		div {
+			width: 900px;
+			height: 800px;
+			background-color: brown;
+			background-image: url(./格温.jpg);
+			background-repeat: no-repeat;
+			/* 平铺 */
+			background-position: 50px 100px;
+			/* 设置位置 1左2上距离谁多少1像素*/
+			/* background-size: 900px 800px; */
+			/* 
+      背景定位  1.方向词 left right top bottom center通过两个方位词决定图片的位置 
+                  如果只设置一个 那么第二个是center
+                  2.具体的像素值 
+                  根据设置值向相反的方向移动 (距离谁 xxx像素)第一个值代表水平方白第二个值代表垂直方向 */
+
+			/* background-size: 90% 80%; */
+			background-size: contain;
+			/* 
+      1.用具体像素
+      2.百分比
+      3.cover 铺满盒子
+      4.contain 保证图片完整铺满盒子
+       */
+			background-attachment: scroll;
+			/*背景的附着
+      1.fixed 将背景固定在屏幕中 当元素动时他不动!
+      2.scro11 默认值 将背景固定在元素中 随着元素的滚动而滚动
+       */
+		}
+		li {
+			width: 1600px;
+			height: 1000px;
+			background: url(./格温.jpg) no-repeat center center/200px 200px scroll,
+				url(./格温.jpg) no-repeat center top/200px 200px scroll green;
+			/* 连写 background-position/background-size */
+			/* 两个一起连写需要用，隔开 */
+		}
+	</style>
+	<body>
+		<div></div>
+		<li></li>
+	</body>
+</html>

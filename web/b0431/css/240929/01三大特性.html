@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				color: blue;
+			}
+			.po {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 第一、层叠性 同一个选择器选择同一个标签时，css总是生效后一个选择器
+		     第二、优先级 多个选择器在同一个标签时谁生效
+				      继承的<通配符< 标签<class<id   <行内   <!important
+							  0     1      10   100  1000   10000    1000000
+				 第三、继承性	为父级元素设置css样式时 会有一部分属性继承到子代上
+				      a标签无法继承颜色
+		 -->
+		<div>
+			5
+			<span>
+				4
+				<ul>
+					3
+					<li>
+						2
+						<a href="" class="po">1</a>
+					</li>
+				</ul>
+			</span>
+		</div>
+	</body>
+</html>
