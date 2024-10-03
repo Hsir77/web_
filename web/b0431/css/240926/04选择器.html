@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* *{
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			/* *{
             color: rgb(33, 133, 220);
         } */
-        /* 
+			/* 
         *通配符 所有的都选
          */
 
-         /* 
+			/* 
          交集选择器是标签与类相交的部分
           */
 
-          /* 
+			/* 
          1.交集选择器 标签与类名相交的部分 标签名.类名 div.class
          2.并集选择器 没有限制条件 找到多个元素 并为他们设置共同的样式 选择器1，选择器2，选择器3.。。。
          3.后代选择器 在嵌套关系下找到某个元素 父级元素 空格 后代元素 (无论几层都可以)
@@ -32,51 +32,54 @@
          6.4 鼠标移入时 ：hover
          7.获取焦点时：focus
            */
-            p.a{
-            color: rgb(4, 2, 0);
-          }  
-          div,p,li{
-            color: brown;
-          }
-          ul a{
-            color: aqua;
-          }
-          /* ul>li>a{
+			p.a {
+				color: rgb(4, 2, 0);
+			}
+			div,
+			p,
+			li {
+				color: brown;
+			}
+			ul a {
+				color: aqua;
+			}
+			/* ul>li>a{
             color: blueviolet;
           } */
-          [class]{
-            color: green;
-          }
-          #u963:visited{
-            color: gold;
-          }
-          #u963:link{
-            color: rgb(11, 10, 4);
-          }
-          input:focus{
-            color: blue;
-          }
+			[class] {
+				color: green;
+			}
+			#u963:visited {
+				color: gold;
+			}
+			#u963:link {
+				color: rgb(11, 10, 4);
+			}
+			#u963:active {
+				color: rgb(255, 0, 0);
+			}
+			input:focus {
+				color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="a">111</div>
+		<div id="a">111</div>
 
+		<div id="a">111</div>
+		<p class="a">111</p>
+		<p class="a">111</p>
+		<p class="a">111</p>
 
+		<li>111</li>
+		<ul>
+			<li>
+				<a href="">789456</a>
+			</li>
+		</ul>
+		<a href="" id="u963">点我</a>
 
-    </style>
-</head>
-<body>
-   <div id="a">111</div>
-   <div id="a">111</div>
-   
-   <div id="a">111</div>
-   <p class="a">111</p>
-   <p class="a">111</p>
-   <p class="a">111</p>
-  
-   <li>111</li>
-   <ul>
-    <li>
-        <a href="">789456</a>
-    </li>
-   </ul>
-   <a href="" id="u963">点我</a>
-   <input type="text">
-</body>
+		<input type="text" />
+	</body>
 </html>

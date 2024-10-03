@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		div {
+			width: 200px;
+			height: 200px;
+			border: 1px solid;
+			float: left;
+			/* 浮动的方向只有两个，左右 */
+			/* 先设置的在前面 */
+			/* 设置浮动后会产生脱标现象 */
+			/* 标准流：从上至下从左至右的标准排列 */
+		}
+		p {
+			margin: 0;
+			border: 1px solid;
+			background-color: blue;
+			height: 34px;
+			display: inline-block;
+		}
+		ul {
+			color: brown;
+			/* 第二种清除浮动的方法 */
+			/* overflow: hidden; */
+		}
+		.clear::after {
+			clear: both;
+			content: '';
+			height: 0;
+			display: block;
+		}
+	</style>
+	<body>
+		<!-- 布局方式 -->
+		<p>999</p>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<p>999</p>
+		<br />
+		<ul class="clear">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</ul>
+
+		<!-- 兄弟 -->
+		<!-- 浮动后会自动转为行内快模式 -->
+		<!-- 对前面的块级元素无影响 -->
+		<!-- 对后面的块级元素会盖住 -->
+		<!-- 对前面的行内块级元素会排列在浮动后面 -->
+		<!-- 对后面的行内块级元素会排列在浮动后面 -->
+		<!-- 对前面的行内级元素会排列在浮动后面 -->
+		<!-- 对后面的行内级元素会排列在浮动后面 -->
+		<!-- 父子 -->
+		<!-- 会导致父级元素检测不到子元素从而不能设置宽高 -->
+	</body>
+</html>

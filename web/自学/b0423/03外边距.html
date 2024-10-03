@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.a {
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+				margin-bottom: 50px;
+			}
+			.b {
+				width: 200px;
+				height: 200px;
+				background-color: rgb(255, 0, 0);
+				margin-top: 30px;
+			}
+			/* 
+      1.外边距合并，垂直方向上的两个兄弟元素设置相邻的外边距，取最大
+       */
+			.c {
+				width: 200px;
+				height: 200px;
+				background-color: rgb(0, 255, 30);
+				border: 1px solid;
+			}
+			.d {
+				width: 50px;
+				height: 50px;
+				background-color: rgb(255, 0, 170);
+				margin-top: 30px;
+			}
+			/* 2.父盒子塌陷问题 
+           解决思路 1父盒子输入内容
+                   2overf
+                   3加边框border
+      */
+		</style>
+	</head>
+
+	<body>
+		<div class="a"></div>
+		<div class="b"></div>
+		<div class="c">
+			<div class="d"></div>
+		</div>
+	</body>
+</html>

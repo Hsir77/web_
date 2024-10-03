@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 200px;
+				height: 200px;
+				background-color: rgb(255, 17, 0);
+				border: 5px solid rgb(253, 0, 245);
+				border-top: dotted green;
+				border-left-color: rgb(119, 0, 255);
+				/* 四个方向 三个属性：线的宽度，颜色，风格 */
+				/* padding: 10px; */
+				/* 内边距 */
+				padding: 30px 60px 90px 120px;
+				/* 上右下左  同border*/
+				margin: 10px;
+				/* 同border */
+			}
+			a {
+				padding: 10px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 盒子模型构成
+     1.w3c =宽高+边框+内边距+外边距
+     2.ie =外边距+宽高（边框+内边距）
+    -->
+		<div class="box"></div>
+		<a href="">11</a>
+		<!-- 行内元素只能设置水平的外边距，垂直的不能 -->
+	</body>
+</html>
