@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		.box {
+			width: 200px;
+			height: 200px;
+			background-color: blue;
+			position: relative;
+			left: 10px;
+			top: 10px;
+		}
+		p {
+			background-color: brown;
+			height: 30px;
+			margin: 0px;
+			border: 1px solid;
+		}
+		.s {
+			height: 50px;
+			width: 50px;
+			background-color: chartreuse;
+			position: absolute;
+			left: 20px;
+			top: 20px;
+		}
+	</style>
+	<body>
+		<!-- 定位模式 potision -->
+		<!-- 绝对定位 -->
+		<!-- 1.设置以后会脱标 -->
+		<!-- 2.参照物是浏览器窗口 -->
+		<!-- 3.参照物是带有定位的父级元素如果没有向上寻找直至body -->
+		<!-- 相对定位 relative -->
+		<!-- 1.参照物是自己 -->
+		<!-- 2.设置后不会脱标 -->
+		<!--固定定位  -->
+		<!-- 1.脱标 -->
+		<!--2.参照物是浏览器 -->
+		<!-- 3.将元素固定在某个位置不随着滚动而变化 -->
+		<!-- *子绝父相* -->
+		<p></p>
+		<div class="box">
+			<div class="s"></div>
+		</div>
+		<p></p>
+	</body>
+</html>
