@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+</head>
+<body>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <script>
+    $("div").css("color","red")
+    var arr=["red","green","blue"]
+
+    //针对同一元素做不同操作时，需要遍历
+    $("div").each(function(index,dom){
+      //第一个值是索引，第二个是代表的元素
+      console.log(index,dom);
+      $(dom).css("color",arr[index])
+
+    })
+    //只能遍历元素
+    $.each({
+      name:"10",
+      age:"18"
+    },function(i,e){
+      //第一个是索引/key，第二个是值
+      console.log(i,e);
+    })
+    //可以遍历元素数组和对象
+  </script>
+</body>
+</html>

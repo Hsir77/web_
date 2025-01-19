@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: chartreuse;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script>
+			document.querySelector('div').addEventListener('touchmove', function (e) {
+				document.querySelector('div').style.left = e.targetTouches[0].clientX + 'PX';
+				document.querySelector('div').style.top = e.targetTouches[0].clientY + 'PX';
+			});
+		</script>
+	</body>
+</html>

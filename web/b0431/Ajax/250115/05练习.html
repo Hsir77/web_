@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./ajax.js"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script src="./template-web.js"></script>
+		<script id="temp" type="text/html">
+			{{each res1}}
+			<p>id:{{$value.id}}</p>
+			<p>name:{{$value.name}}</p>
+			<p>username:{{$value.username}}</p>
+			<p>email:{{$value.email}}</p>
+			<p>phone:{{$value.phone}}</p>
+			<p>website:{{$value.website}}</p>
+			<p>albumId:{{$value.photo.albumId}}</p>
+			<p>title:{{$value.photo.title}}</p>
+
+			<img src="{{$value.photo.url}}" alt="" />
+
+			{{/each}}
+		</script>
+
+		<script>
+			var all = {};
+			var res210 = [];
+
+			var res1;
+			var res2;
+			var res1key1 = [];
+			ajax('https://jsonplaceholder.typicode.com/users', 'get', {}, function (res) {
+				res1 = res;
+
+				ajax('https://jsonplaceholder.typicode.com/photos', 'get', {}, function (res) {
+					res2 = res;
+					for (var i = 0; i < 10; i++) {
+						res210[i] = res2[i];
+					}
+					res1.forEach(function (item, index, arr) {
+						item.photo = res210[index];
+					});
+
+					var html = template('temp', { res1 });
+					document.getElementById('app').innerHTML = html;
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+// 变量
+// 创建变量
+@w: 100px;
+@h: 100px;
+@col: red;
+
+.box1 {
+	width: @w;
+	height: @h;
+	background-color: @col;
+}
+
+// 混入 定义一组css 放到其他的选择器中
+.box2 {
+	font-size: 20px;
+	margin-top: 10px;
+	.box1();
+}
+
+// 嵌套 类似于css的后代选择器
+.box3 {
+	color: red;
+	ul {
+		color: green;
+		li {
+			color: blue;
+		}
+	}
+}
+
+// 算数运算
+.box4 {
+	.box1();
+	background-color: rgb(100+30, 20 * 9, 666-555);
+}
+
+// @media 媒体查询
+.box5 {
+	.box1();
+	@media (min-width: 500px) {
+		background-color: rgb(82, 29, 156);
+	}
+	@media (min-width: 800px) {
+		background-color: orange;
+	}
+	@media (min-width: 1000px) {
+		background-color: rgb(15, 122, 19);
+	}
+}
+
+// 转义 利用~对字符串进行转义 当成变量
+@min123:~ "(min-width:800px)";
+.box6 {
+	font-size: 60px;
+	@media @min123 {
+		font-size: 12px;
+	}
+}
+
+// 使用函数
+.box7 {
+	width: percentage(0.5);
+	height: 500px;
+	background-color: @col;
+}

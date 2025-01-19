@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+</head>
+<body>
+  <a href="https://baidu.com" title="baidu" qwer="1234">百度</a>
+
+  <script>
+    console.log($("a").prop("href"));//固有属性
+    //固有属性和非固有属性都可修改
+    //修改attr("xx","xx")
+    $("a").attr("title","1234")
+    $("a").attr("qwer","9876")
+  </script>
+</body>
+</html>

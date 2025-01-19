@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		div
+		<div>
+			<h1>h1</h1>
+		</div>
+		<button>按钮</button>
+		<script>
+			var div = document.querySelector('div');
+			console.log(div);
+			console.log(div.innerText);
+
+			console.log(div.innerHTML);
+			div.innerHTML = '<p>pbiaoqian</p>';
+
+			var btn = document.querySelector('button');
+			btn.onclick = function () {
+				alert('点我了');
+				//绑定事件以后 this代表被触发的元素
+				console.log(this);
+			};
+		</script>
+	</body>
+</html>

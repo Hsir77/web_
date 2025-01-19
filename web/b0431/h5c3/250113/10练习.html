@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			#all {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			a {
+				text-decoration: none;
+				text-align: center;
+				color: aliceblue;
+			}
+			.item {
+				width: 100%;
+				height: 200px;
+
+				background-color: red;
+				border-radius: 20px;
+				display: flex;
+				margin-bottom: 10px;
+			}
+			.fleft {
+				flex: 1;
+			}
+			.fright {
+				flex: 2;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.item a {
+				text-align: center;
+				width: 50%;
+				height: 100px;
+				line-height: 100px;
+				border: 1px solid;
+				box-sizing: border-box;
+			}
+			.item2 {
+				width: 100%;
+				height: 200px;
+
+				background-color: rgb(42, 125, 214);
+				border-radius: 20px;
+				display: flex;
+				margin-bottom: 10px;
+			}
+			.fleft2 {
+				flex: 1;
+			}
+			.fright2 {
+				flex: 2;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.item2 a {
+				text-align: center;
+				width: 50%;
+				height: 100px;
+				line-height: 100px;
+				border: 1px solid;
+				box-sizing: border-box;
+			}
+			.item3 {
+				width: 100%;
+				height: 200px;
+
+				background-color: rgb(67, 211, 23);
+				border-radius: 20px;
+				display: flex;
+				margin-bottom: 10px;
+			}
+			.fleft3 {
+				flex: 1;
+			}
+			.fright3 {
+				flex: 2;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.item3 a {
+				text-align: center;
+				width: 50%;
+				height: 100px;
+				line-height: 100px;
+				border: 1px solid;
+				box-sizing: border-box;
+			}
+			.item4 {
+				width: 100%;
+				height: 200px;
+
+				background-color: rgb(235, 255, 53);
+				border-radius: 20px;
+				display: flex;
+				margin-bottom: 10px;
+			}
+
+			.fright4 {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.item4 a {
+				text-align: center;
+				width: 33%;
+				height: 100px;
+				line-height: 100px;
+				border: 1px solid;
+				box-sizing: border-box;
+			}
+			.item5 {
+				width: 100%;
+
+				display: flex;
+				flex-direction: row;
+				border-bottom: 1px solid #666;
+			}
+			.left5 {
+				flex: 1;
+			}
+			.right5 {
+				flex: 1;
+			}
+			.item6 {
+				width: 100%;
+				height: 100px;
+				display: flex;
+				border-bottom: 1px solid #666;
+			}
+			.item6 div {
+				flex: 1;
+				font-size: 20px;
+				text-align: center;
+				line-height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="all">
+			<img src="./images/banner.jpg" alt="" />
+		</div>
+		<nav>
+			<div class="item">
+				<div class="fleft"></div>
+				<div class="fright">
+					<a href="">1</a>
+					<a href="">2</a>
+					<a href="">3</a>
+					<a href="">4</a>
+				</div>
+			</div>
+			<div class="item2">
+				<div class="fleft2"></div>
+				<div class="fright2">
+					<a href="">1</a>
+					<a href="">2</a>
+					<a href="">3</a>
+					<a href="">4</a>
+				</div>
+			</div>
+			<div class="item3">
+				<div class="fleft3"></div>
+				<div class="fright3">
+					<a href="">1</a>
+					<a href="">2</a>
+					<a href="">3</a>
+					<a href="">4</a>
+				</div>
+			</div>
+			<div class="item4">
+				<div class="fright4">
+					<a href="">1</a>
+					<a href="">2</a>
+					<a href="">3</a>
+					<a href="">4</a>
+					<a href="">5</a>
+					<a href="">6</a>
+				</div>
+			</div>
+			<div class="item5">
+				<div class="left5">
+					<img src="./images/extra_1.png" alt="" />
+				</div>
+				<div class="right5">
+					<img src="./images/extra_2.png" alt="" />
+				</div>
+			</div>
+			<div class="item6">
+				<div class="in1">电话预定</div>
+				<div class="in2">客户端瞎子</div>
+				<div class="in3">我的</div>
+			</div>
+		</nav>
+	</body>
+</html>

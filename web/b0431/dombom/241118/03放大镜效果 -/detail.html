@@ -1,0 +1,70 @@
+<DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8" />
+			<title>手机详情页！</title>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+			<link rel="stylesheet" href="css/base.css" />
+			<link rel="stylesheet" href="css/detail.css" />
+			<script src="./js/detail1.js"></script>
+		</head>
+
+		<body>
+			<!-- 预览区域 -->
+			<div class="preview_wrap fl">
+				<div class="preview_img">
+					<!-- 缩略图区域 -->
+					<img src="upload/s3.png" alt="" />
+
+					<!-- 黄色遮罩 -->
+					<div class="mask"></div>
+				</div>
+			</div>
+
+			<!-- 大图区域 -->
+			<div class="big">
+				<img src="upload/big.jpg" alt="" class="bigImg" />
+			</div>
+			<script>
+				var preview_img = document.querySelector('.preview_img');
+				var mask = document.querySelector('.mask');
+
+				var bigImg = document.querySelector('.big img');
+				var big = document.querySelector('.big');
+
+				function show() {
+					mask.style.display = 'block';
+					big.style.display = 'block';
+				}
+
+				preview_img.onmousemove = function (e) {
+					show();
+					var relativeX = e.clientX - preview_img.offsetLeft - 150;
+					if (relativeX < 0) {
+						relativeX = '0px';
+					} else if (relativeX > 100) {
+						relativeX = '100px';
+					}
+					mask.style.left = relativeX;
+
+					var relativeY = e.clientY - preview_img.offsetTop - 150;
+					if (relativeY < 0) {
+						relativeY = '0px';
+					} else if (relativeY > 100) {
+						relativeY = '100px';
+					}
+					mask.style.top = relativeY;
+
+					bigImg.style.left = -((relativeX * bigImg.offsetWidth) / mask.offsetWidth) + 'px';
+					bigImg.style.top = -((relativeY * bigImg.offsetHeight) / mask.offsetHeight) + 'px';
+				};
+				preview_img.onmouseleave = function () {
+					mask.style.display = 'none';
+					big.style.display = 'none';
+				};
+			</script>
+		</body>
+	</html>
+</DOCTYPE>

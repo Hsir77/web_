@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//instanceof 校验数据类型 是由哪一个构造函数创建的
+			var a = 10;
+			var b = 'abc';
+			var c = true;
+			var d = undefined;
+			var e = null;
+			var f = [1, 2, 3];
+			var g = { name: 'david' };
+			console.log(typeof a);
+			console.log(typeof b);
+			console.log(typeof c);
+			console.log(typeof d);
+			console.log(typeof e);
+			console.log(typeof f);
+			console.log(typeof g);
+
+			console.log(f instanceof Array);
+			console.log(g instanceof Array);
+
+			// 将数组类型转换成字符串
+			console.log(f.toString());
+			// 校验是否为数组类型
+
+			console.log(Array.isArray(f));
+			console.log(Array.isArray(g));
+			// 返回数组/对象本身
+			var list = f.valueOf();
+			console.log(list === f); // list[0]= 3
+			console.log(list, f);
+			// 将数组转换成字符串 中间用xx拼接
+			var list = f.join('|');
+
+			console.log(list, f);
+		</script>
+	</body>
+</html>

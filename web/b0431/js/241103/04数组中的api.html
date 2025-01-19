@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // instanceof 校验数据类型 是由哪一个构造函数所创建的 布尔值=A instanceof B ；判断a是否是b类型
+        var a = 10
+        var b = "abc"
+        var c = true
+        var d = undefined
+        var e = null
+        var f = [1, 2, 3]
+        var g = { name: "小明" }
+        var h = function () { }
+
+        console.log(typeof a);
+        console.log(typeof b);
+        console.log(typeof c);
+        console.log(typeof d);
+        console.log(typeof e);
+        console.log(typeof f);
+        console.log(typeof g);
+        console.log(typeof h);
+        // // 校验是否为数组类型
+        console.log(f instanceof Array);
+        console.log(g instanceof Array);
+
+
+        // 将数组类型转换成字符串
+        console.log(f.toString());
+
+        // 校验是否为数组类型
+        console.log(Array.isArray(f));
+        console.log(Array.isArray(g));
+
+        // 返回数组/对象本身
+        var list = f.valueOf()
+        console.log(list === f);
+        list[0] = 3
+        console.log(list, f);
+
+
+        // 将数组转换成字符串 中间用xx拼接
+        var list = f.join(" ")
+        console.log(list, f);
+
+        // push 在数组的末尾新增 
+        // 该方法返回数组更新后的长度
+        var arr = [77, 56, 41, 6, 9, 81, 22, 15]
+        var res = arr.push("d")
+        console.log(arr, res);
+
+        // unshift() 在数组的开头新增
+        // 该方法返回数组更新后的长度
+        var res = arr.unshift(7, 8, 9)
+        console.log(arr, res);
+
+        // pop() 在数组的末尾取出元素 对原数组产生更新效果
+        // 该方法返回被取出的元素
+        var res = arr.pop()
+        console.log(arr, res);
+
+        // shift() 在数组的开头取出元素  对原数组产生更新效果
+        // 该方法返回被取出的元素
+        var res = arr.shift()
+        console.log(arr, res);
+
+        // reverse 翻转数组 对原数组产生更新效果
+        // 返回值是翻转后的数组
+        var res = arr.reverse()
+        console.log(res, arr);
+
+
+        // sort() 对数组进行排序 类似于冒泡排序
+        // 传递参数时一个回调 回调有参数 a，b 如果a在前则为正序 否则倒序
+        var res = arr.sort(function (a, b) {
+            return b - a
+        })
+        console.log(res, arr);
+
+        var arrTemp = [1, 2, 3];
+        arrTemp.shift();
+        arrTemp.push(1);
+        arrTemp.unshift(2);
+        console.log(arrTemp);
+
+        // concat() 数组的拼接方法 对原数组没影响
+        // 只能展开一层
+        // 也可以对字符串进行拼接 --多层
+        var res = arr.concat([1, ["a"]])
+        console.log(arr, res);
+
+        // splice() 从数组中删除元素，并在必要的时候在其位置插入新元素 返回已删除的元素
+        // 如果添加一个参数 从添加索引的位置开始删除 直至结尾
+        // 如果添加两个参数 从添加索引的位置开始删除 删除几个
+        // 如果添加三个参数 从添加索引的位置开始删除 删除几个，在被删除的地方添加替换元素
+        var res = arr.splice(3, 4, "*", "-", "/")
+        console.log(res, arr);
+
+        // indexOf() 查询数组中是否有某个元素 如果有则返回他的索引值
+        // 如果没有此元素则返回-1 第二个参数代表从哪个索引开始查找
+        lastIndexOf
+        var res = arr.indexOf(22, 6)
+        var res = arr.lastIndexOf(15, 6)
+        console.log(res, arr);
+
+
+        // 作业！！！！！！！！！！！！！！！
+        // 作业！！！！！！！！！！！！！！！
+        // 作业！！！！！！！！！！！！！！！
+        // 给定一个数组 nums 和 一个目标值 target
+        // nums = [2, 5, 7, 11, 15, 4, 20]   target=9
+        // 请你在数组中找出“和”为target的那两个数,并返回其索引值
+        // 你可以按照任意顺序返回  
+    </script>
+</body>
+
+</html>

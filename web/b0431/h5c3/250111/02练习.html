@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box1,
+			.box2 {
+				width: 350px;
+				height: 350px;
+				border: 1px solid black;
+			}
+			.q1 {
+				width: 80px;
+				height: 80px;
+				border: 1px solid black;
+				background-color: red;
+				border-radius: 50px;
+				display: inline-block;
+				text-align: center;
+				line-height: 80px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<div class="q1" draggable="true">1</div>
+			<div class="q1" draggable="true">2</div>
+			<div class="q1" draggable="true">3</div>
+			<div class="q1" draggable="true">4</div>
+			<div class="q1" draggable="true">5</div>
+			<div class="q1" draggable="true">6</div>
+			<div class="q1" draggable="true">7</div>
+			<div class="q1" draggable="true">8</div>
+		</div>
+		<div class="box2"></div>
+		<script>
+			var b1 = document.querySelector('.box1');
+			var b2 = document.querySelector('.box2');
+			var q = document.querySelectorAll('.q1');
+			var a;
+
+			for (var i = 0; i < q.length; i++) {
+				q[i].ondragstart = function () {
+					a = this;
+				};
+			}
+			b2.ondragover = function (e) {
+				e.preventDefault();
+			};
+			b2.ondrop = function () {
+				b2.appendChild(a);
+			};
+		</script>
+	</body>
+</html>

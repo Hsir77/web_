@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var arr = [5, 8, -9, 16, -12, -14, 68];
+			arr.every(function (item, index, arr) {
+				console.log(item, index, arr);
+				if (index == 4) {
+					return false;
+				} else {
+					return ture;
+				}
+			});
+			var res = arr.filter(function (item, index, arr) {
+				//过滤 返回值为true的值形成一个新数组
+				console.log(item, index, arr);
+				return item < 0;
+			});
+			console.log(res);
+			/********************/
+			var res = arr.map(function (item, index, arr) {
+				//形成一个新的映射
+				console.log(item, index, arr);
+				return 111;
+			});
+			console.log(res);
+			var res = arr.some(function (item, index, arr) {
+				//对数组中的每一项运行函数如果碰到true停止并返回true
+				console.log(item, index, arr);
+			});
+			console.log(res);
+			//如何清空数组
+		</script>
+	</body>
+</html>

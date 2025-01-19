@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var month = prompt('输入');
+			function tuzi(month) {
+				if (month <= 1) {
+					return month;
+				} else {
+					return tuzi(month - 1) + tuzi(month - 2);
+				}
+			}
+			document.write(tuzi(month));
+		</script>
+	</body>
+</html>

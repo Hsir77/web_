@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				font-size: 35px;
+			}
+
+			div {
+				width: 1000px;
+				margin: 40px auto;
+			}
+			ul {
+				border: 1px solid;
+			}
+
+			li {
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				margin: 10px;
+			}
+			div:nth-child(1) li {
+				float: left;
+			}
+			div:nth-child(1) ul {
+				overflow: hidden;
+			}
+			div:nth-child(2) ul {
+				display: flex;
+				flex-direction: row;
+			}
+			div:nth-child(3) ul {
+				display: flex;
+				flex-direction: row-reverse;
+			}
+			div:nth-child(4) ul {
+				display: flex;
+				flex-direction: column;
+			}
+			div:nth-child(5) ul {
+				display: flex;
+				flex-direction: column-reverse;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h3>传统布局</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>传统布局</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>传统布局</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>传统布局</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>传统布局</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+	</body>
+</html>

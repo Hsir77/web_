@@ -1,0 +1,44 @@
+/*详情页的样式文件*/
+
+.preview_wrap {
+	width: 400px;
+	height: 590px;
+}
+
+.preview_img {
+	position: relative;
+	height: 398px;
+	border: 1px solid #ccc;
+}
+
+.mask {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 300px;
+	background: #fede4f;
+	opacity: 0.5;
+	border: 1px solid #ccc;
+	cursor: move;
+}
+
+.big {
+	display: none;
+	position: absolute;
+	left: 410px;
+	top: 0;
+	width: 500px;
+	height: 500px;
+	background-color: pink;
+	z-index: 999;
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+
+.big img {
+	position: absolute;
+	top: 0;
+	left: 0;
+}

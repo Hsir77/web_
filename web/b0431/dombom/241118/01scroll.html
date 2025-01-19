@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				background-color: aqua;
+				border: 5px solid pink;
+				margin: 20px;
+				padding: 50px;
+			}
+			body {
+				height: 2000px;
+			}
+			button {
+				position: fixed;
+				bottom: 10%;
+				right: 10%;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<button></button>
+		<script>
+			var div = document.querySelector('div');
+			console.log(div.scrollWidth); //区别于offset获取元素大小没border
+			console.log(div.scrollHeight);
+
+			console.log(div.scrollTop);
+			//检测滚轮的滚动事件
+			document.body.onscroll = function () {
+				//获取被卷走的高度
+				console.log(document.documentElement.scrollTop);
+			};
+			document.querySelector('button').onclick = function () {
+				window.scrollTo(0, 0);
+			};
+		</script>
+	</body>
+</html>

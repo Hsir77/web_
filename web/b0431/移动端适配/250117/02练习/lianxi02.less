@@ -1,0 +1,90 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.all {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+header {
+	width: 100%;
+	height: 65px;
+	background-color: rgba(240, 248, 255, 0);
+	display: flex;
+	flex-direction: row;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+.picture {
+	position: absolute;
+	top: 0%;
+	left: 2%;
+}
+.text1,
+.text2 {
+	color: aliceblue;
+	font-size: 14px;
+	font-weight: 500;
+	font-family: MiSans, serif;
+}
+.text1 {
+	margin: 0 10px;
+}
+.left {
+	height: 65px;
+	width: 90%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.right {
+	width: 10%;
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	top: 36%;
+	left: 0%;
+}
+nav {
+	width: 100%;
+}
+nav img {
+	width: 100%;
+}
+section {
+	width: 100%;
+	display: none;
+	position: relative; /* 设置父元素的位置属性 */
+}
+section img {
+	width: 100%;
+}
+// aside {
+// 	display: none;
+// 	background-color: bisque;
+// 	width: 3%;
+// 	position: relative;
+// 	top: 10%;
+// 	left: 10%;
+// 	height: 100px; /* 设置 aside 的高度 */
+// }
+
+@media screen and (max-width: 800px) {
+	//当作用于屏幕并且最大宽度达到900，两个条件都满足会生效
+	nav img {
+		display: none;
+	}
+	section {
+		display: flex;
+	}
+	aside {
+		display: block;
+	}
+	.left,
+	.right {
+		display: none;
+	}
+}

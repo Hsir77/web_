@@ -1,0 +1,60 @@
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.box2 {
+  font-size: 20px;
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.box3 {
+  color: red;
+}
+.box3 ul {
+  color: green;
+}
+.box3 ul li {
+  color: blue;
+}
+.box4 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  background-color: #82b46f;
+}
+.box5 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+@media (min-width: 500px) {
+  .box5 {
+    background-color: #521d9c;
+  }
+}
+@media (min-width: 800px) {
+  .box5 {
+    background-color: orange;
+  }
+}
+@media (min-width: 1000px) {
+  .box5 {
+    background-color: #0f7a13;
+  }
+}
+.box6 {
+  font-size: 60px;
+}
+@media (min-width:800px) {
+  .box6 {
+    font-size: 12px;
+  }
+}
+.box7 {
+  width: 50%;
+  height: 500px;
+  background-color: red;
+}

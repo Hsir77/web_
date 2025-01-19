@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		div {
+			width: 200px;
+			height: 200px;
+			border: 5px solid;
+			padding: 10px;
+			margin: 10px;
+			background-color: rgb(255, 158, 39);
+		}
+	</style>
+	<body>
+		<li>
+			<div></div>
+		</li>
+		<script>
+			var div = document.querySelector('div');
+			console.log(div.offsetHeight); //padding+height+border
+			console.log(div.offsetLeft); //元素距离左侧的距离
+			console.log(div.offsetTop);
+
+			console.log(div.offsetParent); //获取上一个带有定位的父级元素
+		</script>
+	</body>
+</html>

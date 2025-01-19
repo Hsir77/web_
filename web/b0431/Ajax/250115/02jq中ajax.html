@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./jq.min.js"></script>
+	</head>
+	<body>
+		<button></button>
+		<script>
+			var btn = document.querySelector('button');
+			btn.onclick = function () {
+				// var xhr = new XMLHttpRequest();
+				// xhr.open('get', 'https://jsonplaceholder.typicode.com/posts');
+				// xhr.send();
+				// xhr.onload = function () {
+				// 	console.log(xhr.readyState);
+				//   //0 xhr刚开始创建
+				//   //1open开始调用
+				//   //2send开始获取到状态码和响应头
+				//   //3响应头开始下载
+				//   //4响应体下载完成
+				// };
+			};
+			// $.ajax({
+			// 	//请求类型
+			// 	type: 'GET',
+			// 	//目标地址
+			// 	url: 'https://jsonplaceholder.typicode.com/posts',
+			// 	//请求参数
+			// 	data: 'id=1',
+			// 	//期望服务器返回的信息是什么
+			// 	dataType: 'json',
+			// 	//请求成功
+			// 	success: function (response) {
+			// 		console.log('请求成功', response);
+			// 	},
+			// 	error: function (err) {
+			// 		if (err.status == 400) {
+			// 			alert('1');
+			// 		}
+			// 		console.log(err);
+			// 	},
+			// });
+			$.ajax({
+				//请求类型
+				type: 'POST',
+				//目标地址
+				url: 'https://jsonplaceholder.typicode.com/posts',
+				//请求参数
+				data: 'id=1',
+				//期望服务器返回的信息是什么
+				dataType: 'json',
+				//请求成功
+				success: function (response) {
+					console.log('请求成功', response);
+				},
+				error: function (err) {
+					if (err.status == 400) {
+						alert('1');
+					}
+					console.log(err);
+				},
+			});
+			$.get('https://jsonplaceholder.typicode.com/posts', { id: 2 }, function (res) {
+				console.log(res);
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 300px;
+				height: 300px;
+				margin: 30ox auto;
+				border: 1px solid;
+			}
+			div:nth-child(1) {
+				background: radial-gradient(#02fed0, red);
+			}
+			div:nth-child(2) {
+				background: radial-gradient(at left, #02fed0, red);
+			}
+			div:nth-child(3) {
+				background: radial-gradient(100px at center, #02fed0, red);
+				/* }控制辐射半径 */
+			}
+			div:nth-child(4) {
+				background: radial-gradient(100px 200px, #02fed0, red);
+				/* }控制辐射半径 */
+			}
+			div:nth-child(5) {
+				background: radial-gradient(at center, #fff 0%, orange 30%, red 60%, brown 100%);
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>

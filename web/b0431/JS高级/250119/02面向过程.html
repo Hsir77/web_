@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+				margin: 5px;
+			}
+			span {
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<span>1111</span>
+		<span>2222</span>
+		<span>3333</span>
+		<script>
+			var divs = document.querySelectorAll('div');
+			var spans = document.querySelectorAll('span');
+			for (var i = 0; i < divs.length; i++) {
+				divs[i].style.border = '3px solid skyblue';
+			}
+			for (var i = 0; i < spans.length; i++) {
+				spans[i].style.border = '3px solid skyblue';
+			}
+		</script>
+	</body>
+</html>

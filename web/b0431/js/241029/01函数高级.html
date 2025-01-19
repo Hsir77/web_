@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//匿名函数的自调用
+			(function (num) {
+				console.log(num);
+			})(111);
+			//回调函数
+			function fn(callback) {
+				callback();
+			}
+			function fn2() {
+				console.log(2);
+			}
+			fn(fn2);
+			//递归 在函数的内部继续执行本函数
+			//自己调用自己
+			function getnum(num) {
+				if (num == 1) {
+					return 1;
+				}
+				return num + getnum(num - 1);
+			}
+			getnum(3);
+		</script>
+	</body>
+</html>

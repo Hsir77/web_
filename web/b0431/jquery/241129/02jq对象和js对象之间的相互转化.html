@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./jq.js"></script>
+	</head>
+	<body>
+		<div class="mydiv"></div>
+		<script>
+			/*
+      jq的本质是一个数组
+      jq不能使用js中的属性和方法
+      js也不能使用jq
+      二者可以互相转换
+      */
+			var mydiv = document.querySelector('.mydiv');
+			mydiv.innerHTML = '111';
+
+			var $mydiv = $('mydiv');
+			$mydiv.text('222');
+
+			//dom转jq
+			var $a = $(mydiv);
+			$a.text('333');
+			//jq转dom
+			var a = $mydiv[0];
+			a.innerText = '444';
+		</script>
+	</body>
+</html>

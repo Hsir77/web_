@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			li::first-letter {
+				color: red;
+				font-size: 30px;
+			}
+			/* E::first-letter文本的第一个字母或字（如中文、日文、韩文等）；
+ */
+			p::first-line {
+				color: red;
+			}
+			/* 文本第一行；  文本第一行高亮 */
+			p::selection {
+				color: chartreuse;
+				background-color: chocolate;
+			}
+			/* 可改变选中文本的样式 */
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>As long as the effort of deep strokes fell great oaks</li>
+			<li>只要功夫深，铁杵磨成针</li>
+			<li>深いストロークの努力が大きな樫の落ちた限り</li>
+		</ul>
+		<p>
+			如果你要在HTML元素中设置CSS样式，你需要在元素中设置"id" 和 "class"选择器。[1] d 选择器可以为标有特定 id 的
+			HTML 元素指定特定的样式。HTML元素以id属性来设置id选择器,CSS 中 id 选择器以 "#"
+			来定义。以下的样式规则应用于元素属性 id="para1":
+		</p>
+	</body>
+</html>

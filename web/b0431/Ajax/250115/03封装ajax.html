@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 功能：发送请求
+			//1.请求地址
+			//2.请求方式
+			//3.请求参数
+			//4.回调函数
+			function ajax(url, method, params, callback) {
+				method = method.toUpperCase();
+				var str = [];
+				for (const key in params) {
+					//遍历对象在属性和值之间加+
+					if (params[key]) {
+						str.push(key + '=' + params[key]);
+					}
+				}
+				var paramStr = str.join('&'); //拼接数组
+				var qwer = new XMLHttpRequest();
+
+				if (method == 'GET') {
+					//如果是get方法在地址后加查找
+					url += '?' + paramStr;
+				}
+				qwer.open(method, url);
+				if (method == 'POST') {
+					//如果是post加请求头
+					qwer.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+					qwer.send(paramStr);
+				}
+				qwer.send();
+				qwer.onload = function () {
+					callback(qwer.responseText);
+				};
+			}
+			ajax('https://jsonplaceholder.typicode.com/posts', 'get', { id: 1, name: '张三' }, function (res) {
+				console.log(res);
+			});
+		</script>
+	</body>
+</html>

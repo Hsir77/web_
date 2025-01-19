@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="./JD.css" />
+		<!-- <script src="./06.js"></script> -->
+		<style>
+			body {
+				background-color: #ddd;
+			}
+			.all {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				position: relative;
+			}
+			.header {
+				display: flex;
+				justify-content: flex-start;
+				position: fixed;
+				height: 45px;
+				width: 100%;
+				background-color: rgba(255, 255, 255, 0.297);
+
+				z-index: 2;
+			}
+			.header > div:nth-child(1) {
+				margin: 5px auto;
+			}
+			.header > div:nth-child(1) > div {
+				width: 60px;
+				height: 20px;
+				background-image: url(./images/sprites.png);
+				background-position: 0 -110px;
+				background-size: 200px 200px;
+				margin: 5px auto;
+			}
+			.middle {
+				height: 30px;
+				width: 89%;
+				background-color: rgb(255, 255, 255);
+				border-radius: 15px;
+				text-align: center;
+				line-height: 30px;
+				position: relative;
+				margin: 5px auto;
+			}
+			.span {
+				width: 11%;
+				text-align: center;
+				line-height: 40px;
+				color: aliceblue;
+				float: right;
+			}
+			.search {
+				width: 25px;
+				height: 25px;
+				background-image: url(./images/sprites.png);
+				background-position: 233px -1px;
+				position: absolute;
+				top: 3px;
+				left: 5px;
+			}
+			.nav {
+				width: 100%;
+				overflow: hidden;
+				position: relative; /* 为.buttom 元素提供定位参考 */
+			}
+			.nav > ul {
+				display: flex;
+				flex-direction: row;
+				width: 1000%;
+				transition: all 1s;
+			}
+			.nav > ul > li {
+				width: 10%;
+			}
+			.nav img {
+				width: 100%;
+			}
+			.section {
+				width: 100%;
+				height: 400px;
+				margin-bottom: 10px;
+				background-color: #fff;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			}
+			.section ul {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.section li {
+				width: 25%;
+				margin-bottom: 10px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding-top: 10px;
+			}
+			.section img {
+				width: 50%;
+				display: flex;
+				margin: 0 auto;
+				background-size: 100%;
+			}
+			.section div {
+				text-align: center;
+			}
+			.aside {
+				flex: 1;
+				width: 100%;
+				height: 400px;
+			}
+			.time {
+				width: 100%;
+				height: 100px;
+			}
+			.pictrue {
+				width: 100%;
+				height: 250px;
+				display: flex;
+				flex-direction: row;
+			}
+			.pictrue > div {
+				width: 100%;
+			}
+			.pictrue img {
+				width: 60%;
+				display: flex;
+				margin: 0 auto;
+			}
+			.pictrue div {
+				font-size: 28px;
+				font-weight: 800;
+				color: red;
+				text-align: center;
+			}
+			.pictrue del {
+				font-size: 20px;
+				color: rgb(121, 120, 120);
+				text-align: center;
+				width: 100%;
+				display: flex;
+				justify-content: space-around;
+			}
+			.zhang {
+				color: red;
+				font-size: 24px;
+				display: inline-block;
+			}
+			.time1 {
+				display: inline-block;
+				background-color: black;
+				color: #fff;
+				font-size: 22px;
+			}
+			.time2 {
+				display: inline-block;
+				font-size: 22px;
+				color: #000000;
+			}
+			.time9 {
+				float: right;
+				font-size: 25px;
+				line-height: 100px;
+			}
+			.article {
+				flex: 1;
+			}
+			.footer {
+				flex: 1;
+			}
+			.buttom ul {
+				overflow: hidden;
+				display: flex;
+				flex-direction: row;
+			}
+			.buttom ul li {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background-color: white;
+				margin: 5px;
+			}
+			.buttom ul .red {
+				background-color: rgb(6, 3, 78);
+			}
+			.buttom {
+				position: absolute;
+				bottom: 0; /* 定位在 nav 元素的底部 */
+				left: 50%; /* 水平居中 */
+				transform: translateX(-50%); /* 水平居中 */
+			}
+			article {
+				box-sizing: border-box;
+				width: 100%;
+				background-color: #fff;
+
+				border-radius: 5px;
+				box-shadow: 0 0 2px #444;
+				display: flex;
+				justify-content: flex-end;
+				flex-direction: column;
+			}
+			.shop-top {
+				border-bottom: 1px solid #ccc;
+				padding: 10px;
+				display: flex;
+			}
+			.shopimg {
+				background-color: red;
+				width: 3px;
+				height: 16px;
+				line-height: 34px;
+				display: flex;
+				margin-right: 10px;
+			}
+			.shoptext {
+				color: red;
+				font-size: 20px;
+			}
+			.shoplist ul {
+				display: flex;
+			}
+			.shoplist ul li {
+				width: 50%;
+				border-right: 1px solid #ccc;
+				box-sizing: border-box;
+			}
+			.shoplist ul li img {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<header class="header">
+				<div><div></div></div>
+				<div class="middle">
+					<div class="search"></div>
+					<div>请输入搜索内容</div>
+				</div>
+				<span>登录</span>
+			</header>
+			<nav class="nav">
+				<ul>
+					<li><img src="./images/l1.jpg" alt="" /></li>
+					<li><img src="./images/l2.jpg" alt="" /></li>
+					<li><img src="./images/l3.jpg" alt="" /></li>
+					<li><img src="./images/l4.jpg" alt="" /></li>
+					<li><img src="./images/l5.jpg" alt="" /></li>
+					<li><img src="./images/l6.jpg" alt="" /></li>
+					<li><img src="./images/l7.jpg" alt="" /></li>
+					<li><img src="./images/l8.jpg" alt="" /></li>
+				</ul>
+				<div class="buttom">
+					<ul>
+						<li class="red"></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</nav>
+			<section class="section">
+				<ul>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+					<li>
+						<img src="./images/nav0.png" alt="" />
+						<div>分类查询</div>
+					</li>
+				</ul>
+			</section>
+			<aside>
+				<div class="time">
+					<img src="./images/seckill-icon.png" alt="" />
+					<div class="zhang">掌上秒杀</div>
+					<div class="time1">0</div>
+					<div class="time1">1</div>
+					<div class="time2">:</div>
+					<div class="time1">1</div>
+					<div class="time1">0</div>
+					<div class="time2">:</div>
+					<div class="time1">4</div>
+					<div class="time1">9</div>
+					<div class="time9">更多>></div>
+				</div>
+				<div class="pictrue">
+					<div class="picture1">
+						<img src="./images/detail01.jpg" alt="" />
+						<div>￥10.10</div>
+						<del>￥100.00</del>
+					</div>
+					<div class="picture2">
+						<img src="./images/detail01.jpg" alt="" />
+						<div>￥10.10</div>
+						<del>￥100.00</del>
+					</div>
+					<div class="picture3">
+						<img src="./images/detail01.jpg" alt="" />
+						<div>￥10.10</div>
+						<del>￥100.00</del>
+					</div>
+				</div>
+			</aside>
+			<article>
+				<div class="shop-top"><span class="shopimg"></span> <span class="shoptext">京东超市</span></div>
+				<div class="shoplist">
+					<ul>
+						<li>
+							<a href="">
+								<img src="./images/cp1.jpg" alt="" />
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="shoplist">
+					<ul>
+						<li>
+							<a href="">
+								<img src="./images/cp1.jpg" alt="" />
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="shoplist">
+					<ul>
+						<li>
+							<a href="">
+								<img src="./images/cp1.jpg" alt="" />
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="shoplist">
+					<ul>
+						<li>
+							<a href="">
+								<img src="./images/cp1.jpg" alt="" />
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+							<a href="">
+								<img src="./images/cp2.jpg" alt="" />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</article>
+			<footer></footer>
+		</div>
+		<script>
+			var startx;
+			auto();
+			ms();
+			var index = 0;
+			var screenwidth;
+			var arr = document.querySelectorAll('.buttom li');
+			var arr2 = arr[index].parentNode.children;
+			var parentChildren = arr[index].parentNode.children;
+
+			document.querySelector('.nav').addEventListener('touchstart', function (e) {
+				startx = e.targetTouches[0].clientX;
+				screenwidth = document.querySelector('.nav').clientWidth;
+				clearInterval(time);
+			});
+			document.querySelector('.nav').addEventListener('touchend', function (e) {
+				var x = e.changedTouches[0].clientX;
+				if (Math.abs(e.changedTouches[0].clientX - startx) > screenwidth / 3) {
+					index++;
+					if (index >= arr.length) {
+						index = 0;
+					}
+
+					for (var i = 0; i < parentChildren.length; i++) {
+						parentChildren[i].classList.remove('red');
+					}
+					arr[index].classList.add('red');
+
+					if (index > 7) {
+						index = 0;
+					}
+					document.querySelector('.nav > ul').style.transform = 'translateX(' + -screenwidth * index + 'px)';
+					console.log(index);
+				}
+				auto();
+			});
+			function auto() {
+				time = setInterval(function () {
+					document.querySelector('.nav > ul').style.transform = 'translateX(' + -screenwidth * index + 'px)';
+					if (index >= arr.length) {
+						index = 0;
+					}
+
+					for (var i = 0; i < parentChildren.length; i++) {
+						parentChildren[i].classList.remove('red');
+					}
+					arr[index].classList.add('red');
+					index++;
+					if (index > 7) {
+						index = 0;
+					}
+				}, 1500);
+			}
+			window.addEventListener('scroll', function () {
+				if (window.scrollY > 300) {
+					document.querySelector('.header').style.backgroundColor = ' rgba(253, 139, 139, 0.771)';
+				} else {
+					document.querySelector('.header').style.backgroundColor = '  rgba(255, 255, 255, 0.297)';
+				}
+			});
+
+			// 124578;
+
+			function ms() {
+				ms = setInterval(function () {
+					var timing = document.querySelectorAll('.time div');
+					var now = new Date();
+					var nowdate = now.getTime();
+					var target = new Date(2025, 0, 18);
+					var targetdate = target.getTime();
+					timing[1].innerHTML = parseInt((targetdate - nowdate) / 36000000);
+					timing[2].innerHTML = parseInt(((targetdate - nowdate) / 3600000) % 10);
+					timing[4].innerHTML = parseInt((((targetdate - nowdate) / 1000 / 60) % 60) / 10);
+					timing[5].innerHTML = parseInt((((targetdate - nowdate) / 1000 / 60) % 60) % 10);
+					timing[7].innerHTML = parseInt((((targetdate - nowdate) / 1000) % 60) / 10);
+					timing[8].innerHTML = parseInt((((targetdate - nowdate) / 1000) % 60) % 10);
+				}, 1000);
+			}
+		</script>
+	</body>
+</html>

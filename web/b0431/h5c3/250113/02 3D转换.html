@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 300px;
+				height: 250px;
+				margin: 200px auto;
+				perspective: 400px;
+				/* 透视 */
+				/* 加在元素的父盒子 */
+			}
+			div:hover img {
+				transform: rotateZ(360deg);
+				transition: all 2s;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="../250112/images/x.jpg" alt="" />
+			<img src="../250112/images/y.jpg" alt="" />
+			<img src="../250112/images/z.jpg" alt="" />
+		</div>
+	</body>
+</html>

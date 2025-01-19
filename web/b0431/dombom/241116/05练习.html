@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				height: 200px;
+				width: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<button>点我</button>
+		<script>
+			var div = document.querySelector('div');
+			var btn = document.querySelector('button');
+
+			btn.onclick = function () {
+				var r = Math.floor(Math.random() * (255 + 1));
+				var g = Math.floor(Math.random() * (255 - +1));
+				var b = Math.floor(Math.random() * (255 + 1));
+
+				div.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+			};
+		</script>
+	</body>
+</html>

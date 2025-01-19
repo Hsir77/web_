@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var argu1 = [];
+			var argu2 = [];
+			function fn3() {
+				for (var i = 0; i < arguments.length; i++) {
+					argu1[i] = arguments[i];
+				}
+				var res = argu1.sort(function (a, b) {
+					return b - a;
+				});
+
+				console.log(res[0]);
+			}
+			function fn4() {
+				for (var i = 0; i < arguments.length; i++) {
+					argu2[i] = arguments[i];
+				}
+				var res2 = [];
+				for (let j = 0; j < argu2.length; j++) {
+					if (argu2.indexOf(argu2[j]) === j) {
+						res2.push(argu2[j]);
+					}
+				}
+
+				console.log(res2);
+			}
+			console.log(fn3(3, 8, 77, 54, 69, 55, 10));
+			console.log(fn4(1, 1, 1, 2, 3, 3, 2, 2, 5, 9, 8, 7, 9, 8, 3, 6));
+		</script>
+	</body>
+</html>

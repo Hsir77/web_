@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//函数定义；重复执行一段代码段
+			function threemax(a, b, c) {
+				var max;
+				if (a > b) {
+					max = a;
+				} else {
+					max = b;
+				}
+				if (max < c) {
+					max = c;
+				}
+				return max;
+			}
+			document.write(threemax(5, 12, 13));
+			function maxmin(a) {
+				var max = 0,
+					min = 1;
+				for (var i = 0; i < a.length - 1; i++) {
+					if (a[i] > max) {
+						max = a[i];
+					}
+					if (a[i] < min) {
+						min = a[i];
+					}
+				}
+				return [max, min];
+			}
+			console.log(maxmin([1, 5, 6, 9, 12, 23, 10]));
+			document.write('<br>');
+			function sushu(a) {
+				for (var i = 2; i < a; i++) {
+					if (a % i == 0) {
+						return false;
+					} else {
+						return true;
+					}
+				}
+			}
+			document.write(sushu(6));
+
+			//关键字
+		</script>
+	</body>
+</html>

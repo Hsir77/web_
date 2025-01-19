@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			li {
+				width: 200px;
+				height: 30px;
+				background-color: yellowgreen;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<button>点我追加</button>
+		<script>
+			var li = document.querySelectorAll('li');
+			var ul = document.querySelector('ul');
+			var button = document.querySelector('button');
+
+			// for (var i = 0; i <script li.length; i++) {
+			// 	li[i].index = i;
+			// 	li[i].onclick = function () {
+			// 		console.log(this.index);
+			// 	};
+			// }
+			button.onclick = function () {
+				var li = document.createElement('li');
+				ul.append(li);
+			};
+			ul.onclick = function (e) {
+				if (e.target.nodeName == 'LI') {
+					console.log(1);
+				}
+			};
+		</script>
+	</body>
+</html>

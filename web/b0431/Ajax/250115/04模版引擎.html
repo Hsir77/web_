@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app"></div>
+		<script src="./template-web.js"></script>
+		<script id="temp" type="text/html">
+			{{each ert.user}}
+			<!-- <h4>id:{{$value.id}}</h4>
+			<p>name:{{$value.name}}</p>
+			<p>age:{{$value.age}}</p> -->
+			{{if $value.age>=22&&$value.age< 24 }}
+			<p>年龄超过了22</p>
+			{{else if $value.age<=20}}
+			<p>年龄不超过20</p>
+			{{/if}}
+			<p>age:{{$value.age}}</p>
+			{{/each}}
+		</script>
+		<script>
+			var data = {
+				msg: '数据',
+				user: [
+					{ id: 1, name: 'adrt', age: 20 },
+					{ id: 2, name: 'bert', age: 21 },
+					{ id: 3, name: 'cart', age: 22 },
+					{ id: 4, name: 'dirt', age: 23 },
+					{ id: 5, name: 'kort', age: 24 },
+				],
+			};
+			var html = template('temp', { ert: data });
+			document.getElementById('app').innerHTML = html;
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+  <style>
+    body{
+      height: 2000px;
+    }
+    div{
+      width: 500px;
+      height: 500px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+<script>
+  //scrollTop被卷走的上面
+  $(window).scroll(function(){
+    console.log($(document).scrollTop());
+  })
+</script>
+</body>
+</html>
