@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// ES6 解构赋值相关内容
+
+			// 数组的解构赋值
+			// 1. 按照位置进行解构
+			// 2. 定义变量如果某个不想取，可以跳过，用,
+			// 3. 定义变量可以使用默认值，...拓展运算符必须放在最后一位
+			// 4. 可以使用剩余值
+			// 5. 可以嵌套
+			// let arr = [1, 2, 3, undefined, [5, 6, 7]];
+			// // let [a, b, , c = 10, [...d]] = arr;
+			// console.log(a, b, c, d);
+
+			// 对象的解构赋值
+			// 1. 按照属性名解构
+			// 2. 可以取别名
+			// 3. 定义变量可以使用默认值
+			// 4. 可以使用拓展运算符，必须放在最后一位
+			// 5. 可以嵌套
+			// let obj = {
+			// 	a: 1,
+			// 	b: 2,
+			// 	c: 3,
+			// 	d: {
+			// 		dd: 123,
+			// 	},
+			// 	e: ['a', 'b'],
+			// 	f: 9,
+			// };
+			// let {
+			// 	a: newA,
+			// 	f = 8,
+			// 	e: [...m],
+			// 	d: { dd },
+			// } = obj;
+			// console.log(newA, f, m, dd);
+
+			// let p = {
+			// 	age: 20,
+			// 	arr: [
+			// 		1,
+			// 		2,
+			// 		3,
+			// 		4,
+			// 		{
+			// 			a: 10,
+			// 			b: 20,
+			// 		},
+			// 	],
+			// };
+			// let {
+			// 	arr: [, , , { b }],
+			// } = p;
+			// console.log(b);
+			const [a,b,c]=[10,20,30]
+			console.log(a);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function mergeSort(arr) {
+				// 递归终止条件：如果数组长度小于等于 1，直接返回该数组
+				if (arr.length <= 1) {
+					return arr;
+				}
+				// 找到数组的中间位置
+				const mid = Math.floor(arr.length / 2);
+				// 分割数组为左右两部分
+				const left = arr.slice(0, mid);
+				const right = arr.slice(mid);
+
+				// 递归地对左右两部分进行排序
+				// 这里会先不断递归调用 mergeSort 分解数组，直到子数组长度为 1
+				// 然后开始回溯合并
+
+				return merge(mergeSort(left), mergeSort(right));
+			}
+
+			function merge(left, right) {
+				let result = [];
+				let leftIndex = 0;
+				let rightIndex = 0;
+
+				// 比较左右两部分的元素，将较小的元素依次放入结果数组
+				while (leftIndex < left.length && rightIndex < right.length) {
+					if (left[leftIndex] < right[rightIndex]) {
+						result.push(left[leftIndex]);
+						leftIndex++;
+					} else {
+						result.push(right[rightIndex]);
+						rightIndex++;
+					}
+				}
+
+				// 将左部分剩余的元素添加到结果数组
+				while (leftIndex < left.length) {
+					result.push(left[leftIndex]);
+					leftIndex++;
+				}
+
+				// 将右部分剩余的元素添加到结果数组
+				while (rightIndex < right.length) {
+					result.push(right[rightIndex]);
+					rightIndex++;
+				}
+
+				return result;
+			}
+
+			// 测试示例
+			const arr = [3, 5, 4, 2, 7, 1, 8];
+			console.log(mergeSort(arr));
+
+			// function mergeSort(arr) {
+			// 	if (arr.length <= 1) {
+			// 		return arr;
+			// 	}
+			// 	const mid = Math.floor(arr.length / 2);
+			// 	const left = arr.slice(0, mid);
+			// 	const right = arr.slice(mid);
+			// 	return merge(mergeSort(left), mergeSort(right));
+			// }
+
+			// function merge(left, right) {
+			// 	console.log(`开始合并，left: [${left}]，right: [${right}]`);
+			// 	let result = [];
+			// 	let leftIndex = 0;
+			// 	let rightIndex = 0;
+
+			// 	while (leftIndex < left.length && rightIndex < right.length) {
+			// 		if (left[leftIndex] < right[rightIndex]) {
+			// 			result.push(left[leftIndex]);
+			// 			leftIndex++;
+			// 		} else {
+			// 			result.push(right[rightIndex]);
+			// 			rightIndex++;
+			// 		}
+			// 		console.log(`当前比较后 result: [${result}]`);
+			// 	}
+
+			// 	while (leftIndex < left.length) {
+			// 		result.push(left[leftIndex]);
+			// 		leftIndex++;
+			// 		console.log(`添加 left 剩余元素后 result: [${result}]`);
+			// 	}
+
+			// 	while (rightIndex < right.length) {
+			// 		result.push(right[rightIndex]);
+			// 		rightIndex++;
+			// 		console.log(`添加 right 剩余元素后 result: [${result}]`);
+			// 	}
+
+			// 	console.log(`合并完成，最终 result: [${result}]`);
+			// 	return result;
+			// }
+
+			// // 测试示例
+			// const arr = [3, 5, 4, 2, 1, 9, 8];
+			// console.log('原始数组: [' + arr + ']');
+			// const sortedArr = mergeSort(arr);
+			// console.log('排序后的数组: [' + sortedArr + ']');
+		</script>
+	</body>
+</html>

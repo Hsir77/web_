@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+	</head>
+
+	<body>
+		<div id="root">
+			数学：<input type="text" v-model="mathScore" /> 语文：<input type="text" v-model="englishScore" />
+			<br />
+			<!-- v-model 调用函数 不要少了括号 -->
+			总得分（函数）：<input type="text" name="" id="" v-model="sumScore()" />
+			<br />
+			总得分（计算属性-单向绑定）：<input type="text" name="" id="" v-model="sumScore1" />
+			<br />
+			总得分（计算属性-双向绑定）：<input type="text" name="" id="" v-model="sumScore2" />
+			<br />
+			总得分（侦听器）：<input type="text" name="" id="" v-model="sumScore3" />
+		</div>
+		<script>
+			const vm = new Vue({
+				el: '#root',
+				data: {
+					mathScore: 80,
+					englishScore: 90,
+					sumScore3: 0, //侦听器计算出总得分
+				},
+				methods: {
+					sumScore: function () {
+						// console.log(this.mathScore + this.englishScore);
+						return this.mathScore - 0 + (this.englishScore - 0);
+					},
+				},
+				computed: {
+					// 直接当做普通属性调用不加括号
+					// 任何data中数据变化立即重新计算
+					// 计算属性会缓存
+					sumScore1: function () {
+						return this.mathScore - 0 + (this.englishScore - 0);
+					},
+					sumScore2: {
+						get() {
+							return this.mathScore - 0 + (this.englishScore - 0);
+						},
+						set(newValue) {
+							console.log(newValue);
+							let avgScore = newValue / 2;
+							this.mathScore = avgScore;
+							this.englishScore = avgScore;
+						},
+					},
+				},
+				watch: {
+					mathScore: function (newVal, oldVal) {
+						// newVal是更新后的值 oldVal是更新前的值
+						this.sumScore3 = newVal - 0 + (this.englishScore - 0);
+					},
+				},
+			});
+			vm.$watch('englishScore', function (newVal) {
+				this.sumScore3 = newVal - 0 + (this.mathScore - 0);
+			});
+		</script>
+	</body>
+</html>

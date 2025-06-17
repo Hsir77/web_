@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			/*
+      给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+      示例 1：
+      输入：head = [1,2,3,4,5]
+      输出：[5,4,3,2,1]
+     */
+			/**
+			 * @param {ListNode} head
+			 * @return {ListNode}
+			 */
+			var reverseList = function (head) {
+				let cur = head;
+				let pre = null;
+				while (cur) {
+					let next = cur.next;
+					cur.next = pre; //将当前的指针翻转过来指向pre
+					pre = cur; //将pre进一位
+					cur = next; //将cur进一位
+				}
+				return pre;
+			};
+		</script>
+	</body>
+</html>

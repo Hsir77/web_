@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+		<style>
+			.shang {
+				width: 100%;
+				height: 100px;
+				border-top: 1px solid skyblue;
+				display: flex;
+				align-items: center;
+			}
+			img {
+				margin-left: 20px;
+				height: 100px;
+			}
+			.top {
+				height: 120px;
+				width: 100%;
+			}
+			.ziti {
+				font-size: 20px;
+				text-align: center;
+				line-height: 100px;
+				width: 300px;
+				height: 100px;
+				background-color: aqua;
+				margin: 0 auto;
+			}
+			.x {
+				color: red;
+				font-size: 100px;
+			}
+			.down {
+				margin-left: 1100px;
+			}
+			.botton {
+				background-color: rgb(255, 183, 132);
+				height: 120px;
+				width: 100%;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+			}
+			.jiesuan {
+				width: 100px;
+				height: 60px;
+			}
+			.val {
+				margin-right: 20px;
+				font-size: 30px;
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root">
+			<div class="top"><div class="ziti">我的商品</div></div>
+
+			<div v-for="(item,index) in product" :key="index">
+				<div v-if="item.num>0&&item.visible">
+					<div class="shang">
+						<img :src="item.url" alt="" />
+						<!-- 传递 $event 作为参数 -->
+						<button class="down" @click="downdown(item)">-</button>
+						<input type="text" v-model="item.num" />
+						<button class="up" @click="upup(item)">+</button>
+						<div class="x" @click="xiaoshi(item)">x</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="botton">
+				<input type="text" v-model="val" />
+
+				<button class="jiesuan">结算</button>
+			</div>
+		</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					product: [
+						{
+							url: './img/a.jpg',
+							num: 1,
+							visible: true,
+						},
+						{
+							url: './img/b.jpg',
+							num: 1,
+							visible: true,
+						},
+						{
+							url: './img/c.jpg',
+							num: 1,
+							visible: true,
+						},
+						{
+							url: './img/d.jpg',
+							num: 1,
+							visible: true,
+						},
+						{
+							url: './img/e.jpg',
+							num: 1,
+							visible: true,
+						},
+					],
+				},
+				methods: {
+					xiaoshi(a) {
+						a.visible = false;
+					},
+					downdown(row) {
+						row.num--;
+					},
+					upup(row) {
+						row.num++;
+					},
+				},
+				computed: {
+					val: {
+						get() {
+							let valsum = 0;
+							this.product.forEach((element) => {
+								if (element.visible) {
+									valsum += element.num;
+								}
+							});
+							return valsum * 1000;
+						},
+					},
+				},
+			});
+		</script>
+	</body>
+</html>
+<!-- 注意vfor -->

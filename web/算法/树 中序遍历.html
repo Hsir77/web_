@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const obj = {
+				val: 'a',
+				left: { val: 'b', left: { val: 'd' }, right: { val: 'e' } },
+
+				right: { val: 'c', left: { val: 'f' }, right: { val: 'g' } },
+			};
+			//递归实现
+			function inorder1(obj) {
+				if (!obj) {
+					return;
+				}
+				inorder1(obj.left);
+				console.log(obj.val);
+				inorder1(obj.right);
+			}
+			// inorder1(obj);
+
+			function inorder2(obj) {
+				let arr = [];
+				let stack = [];
+				let o = obj;
+				while (stack.length || o) {
+					while (o) {
+						//左面优先入栈
+						stack.push(o);
+						o = o.left;
+					}
+					const n = stack.pop();
+					arr.push(n.val);
+					o = n.right;
+				}
+				return arr;
+			}
+			console.log(inorder2(obj));
+		</script>
+	</body>
+</html>

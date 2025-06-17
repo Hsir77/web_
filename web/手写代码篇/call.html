@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			Function.prototype.mycall = function (pointing, ...arg) {
+				//第一步，判断调用者是不是函数
+
+				if (typeof this != 'function') {
+					console.log('调用者不是函数');
+					return;
+				}
+				//第二步
+				pointing = pointing || window;
+				//this不可被直接调用，所以要声明变量接受它，然后调用
+
+				/*为什么不能直接调用this（）此时this为test（）*/
+				//因为如果直接调用this（）其中的this指向会变为windows
+				//而如果把它写在this想绑定的属性中，则this会指向调用者（方法调用模式）
+
+				//symbol的目的是方式声明的变量命名冲突
+				const key = Symbol('temp');
+				pointing[key] = this;
+				//将剩余参数传递进执行函数（test）中获得结果
+				const result = pointing[key](...arg);
+				//删除声明的函数
+				delete pointing[key];
+				return result;
+			};
+			function test(a) {
+				console.log(`${a},${this.name}`);
+			}
+			let obj = {
+				name: 'dongming',
+			};
+			test.mycall(obj, 'hello');
+		</script>
+	</body>
+</html>

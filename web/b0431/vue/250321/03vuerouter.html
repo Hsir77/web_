@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			ul {
+				list-style: none;
+			}
+			.header {
+				width: 100%;
+				line-height: 50px;
+				background-color: #242424;
+				color: #fff;
+				text-align: center;
+				font-size: 24px;
+			}
+			.nav {
+				background-color: red;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.nav li {
+				line-height: 35px;
+				margin: 0 20px;
+			}
+			.nav li a {
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="header">头部</div>
+			<ul class="nav">
+				<li v-for="item in arr" :key="item.id">
+					<!-- #/ 代表的是根目录 -->
+					<!-- 这个比组件 目的 就是简化写#操作 -->
+					<!-- vue框架 通过浏览器的渲染 会自动将router-link渲染为a标签 -->
+					<router-link :to="item.link">{{item.name}}</router-link>
+				</li>
+				<!-- <li>
+                <a href="#/main">go to Main</a>
+                <router-link to="/main">go to Main</router-link>
+            </li> -->
+			</ul>
+			<!-- 设置路由出口 -->
+			<router-view></router-view>
+			<div class="header">底部</div>
+		</div>
+
+		<!-- 定义vue-router -->
+		<!-- 使用路由 先决条件： 要有组件 要有vue-router插件 -->
+		<!-- 使用路由必须要先设置好路由出口 （这个组件要在哪个位置进行显示） -->
+		<!-- 路由跳转使用a标签进行跳转 跳转方式和之前html跳转的方式不同 -->
+		<!-- 跳转必须要有#/组件名称 -->
+		<!-- 组件名称：是在router中进行设置的 通过关键字path 来设置跳转的路径 -->
+		<!-- 路径对应的组件：通过router中的关键字component 来进行捆绑组件 -->
+
+		<script src="../250314/vue.js"></script>
+		<script src="./node_modules/vue-router/dist/vue-router.js"></script>
+		<script>
+			// 定义组件
+			const home = {
+				template: '<div>Home组件</div>',
+			};
+			const main = {
+				template: '<div>Main组件</div>',
+			};
+			// 定义路由 vue-router
+			// 定义路由 必须是一个数组 数组中的内容必须是一个一个的对象
+			const routes = [
+				{
+					// path 跳转的链接
+					// component 对应哪个组件
+					path: '/',
+					component: home,
+				},
+				{
+					// path 跳转的链接
+					// component 对应哪个组件
+					path: '/main',
+					component: main,
+				},
+			];
+			// 创建router 实例
+			const router = new VueRouter({
+				routes,
+			});
+			// 注意点：定义了router 之后 必须要设置路由出口
+			new Vue({
+				el: '#app',
+				router,
+				data: {
+					arr: [
+						{
+							id: 1,
+							name: 'go to home',
+							link: '/',
+						},
+						{
+							id: 2,
+							name: 'go to main',
+							link: '/main',
+						},
+					],
+				},
+			});
+		</script>
+	</body>
+</html>

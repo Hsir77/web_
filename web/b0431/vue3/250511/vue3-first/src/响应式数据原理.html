@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// vue2响应式原理 使用的事 Object.defineProperty
+
+			// Object.defineProperty(参数1, 参数2, 参数3)
+			// 参数1: 绑定属性的目标对象
+			// 参数2: 绑定对象的属性名
+			// 参数3: 是一个对象 对绑定属性值的默认描述符 get set
+
+			let user = {
+				name: 'admin',
+				password: 'admin123',
+				userName: '',
+			};
+			Object.defineProperty(user, 'userName', {
+				get() {
+					// 获取数据的时候 会自动调用get方法
+					return this.name + '-' + this.password;
+				},
+				set(value) {
+					// 修改数据的时候调用set方法 这个方法会自动传递一个参数 这个参数就是修改后的值
+					console.log(value);
+					const userName = value.split('-');
+					this.name = userName[0];
+					this.password = userName[1];
+				},
+			});
+			user.userName = 'admin1-admin456';
+			console.log(user);
+
+			Object.defineProperty(user, 'phone', {
+				// value 属性值的默认值
+				value: 18312345678,
+				// writable: 设置属性值是否可以修改 属性值为布尔值
+				writable: true,
+				// enumerable:设置属性值是否可以遍历 属性值为布尔值
+				// configurable 设置属性值是否可以删除 属性值为布尔值
+			});
+			user.phone = 123;
+			console.log(user);
+
+			// vue3使用proxy 进行代理 将目标对象转换为代理对象
+
+			let user1 = {
+				name: 'admin1',
+				password: 'admin123',
+			};
+			// 参数1: 目标对象 参数2: 是一个对象 声明代理指定的方法
+			let proxy = new Proxy(user1, {
+				get: (target, prop) => {
+					console.log('调用get方法');
+					console.log(target, 'target'); //目标对象
+					console.log(prop, 'prop'); //获取的属性名
+					// 如果使用代理形式 必须使用Reflect
+					return Reflect.get(target, prop);
+				},
+				set: (target, prop, value) => {
+					console.log('调用set方法');
+					console.log(target, 'target');
+					console.log(prop, 'prop');
+					console.log(value, 'value');
+					// 拦截
+					if (value > 30) {
+						return Reflect.get(target, prop, value);
+					} else {
+						console.log('年龄必须大于30');
+					}
+				},
+			});
+			console.log(proxy.name);
+			proxy.age = 31;
+		</script>
+	</body>
+</html>

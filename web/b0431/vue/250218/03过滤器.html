@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+	</head>
+
+	<body>
+		<div id="root">
+			<h1>测试单个过滤器</h1>
+			<p>{{content|contentFilters}}</p>
+			<input type="text" name="" id="" :value="content|contentFilters" />
+			<h1>测试多个过滤器</h1>
+			<p>{{x|add(y,z)}}</p>
+		</div>
+		<script>
+			// Vue.filter("contentFilters", function (value) {
+			//     if (!value) {
+			//         return "";
+			//     }
+			//     console.log(value);
+			//     return value.replace("我上早八", "****");
+			// })
+
+			new Vue({
+				el: '#root',
+				data: {
+					content: "小明说：'我上早八'",
+					x: 50,
+					y: 60,
+					z: 100,
+				},
+				filters: {
+					contentFilters(value) {
+						if (!value) {
+							return '';
+						}
+						console.log(value);
+						return value.replace('我上早八', '****');
+					},
+					add(num1, num2, num3) {
+						return num1 + num2 + num3;
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

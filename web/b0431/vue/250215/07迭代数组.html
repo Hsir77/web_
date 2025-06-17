@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+	</head>
+
+	<body>
+		<div id="root">
+			<h3>1.迭代数组</h3>
+			<ul>
+				<!--
+                index是下标
+                key是特殊属性, 它会基于key的变化重新排列列表元素顺序, 并移除key不存在的元素
+            -->
+				<li v-for="(item,index) in emps" :key="index">
+					编号:{{index}},姓名: {{item.name}}, 工资: {{item.salary}}
+				</li>
+			</ul>
+
+			<h3>2.迭代对象</h3>
+			<ul>
+				<li v-for="(value,key,index) in person">第{{index}}个属性: {{key}}={{value}}</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					emps: [
+						{ name: '马云', salary: '20000' },
+						{ name: '马化腾', salary: '20001' },
+						{ name: '刘强东', salary: '20002' },
+					],
+					person: {
+						name: '小美',
+						age: 18,
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./node_modules/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="root">{{msg}}</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					msg: 'hello',
+				},
+				beforeCreate() {
+					console.log('beforeCreate', this.$el, this.$data);
+				},
+				created() {
+					console.log('created', this.$el, this.$data);
+				},
+				beforeMount() {
+					console.log('beforeMount', this.$el, this.$data);
+				},
+				mounted() {
+					//发送ajax请求时调用
+					console.log('mounted', this.$el, this.$data);
+				},
+				beforeUpdate() {
+					console.log('beforeUpdate', this.$el, this.$data);
+				},
+				updated() {
+					console.log('updated', this.$el, this.$data);
+				},
+				beforeDestroy() {
+					//用于收尾阶段
+					console.log('beforeDestroy');
+				},
+				destroyed() {
+					console.log('destroyed');
+				},
+			});
+		</script>
+	</body>
+</html>

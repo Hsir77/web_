@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+	</head>
+
+	<body>
+		<!--
+        1.插值语法
+        功能：用于拆解标签体的内容
+        写法：{{xxx}} xxx是js表达式 且可以直接读到data中的所有属性
+        2.指令语法
+        功能：用于拆解标签（例如：标签属性 标签体的内容 绑定事件......）
+    -->
+		<div id="root">
+			<h3>1.插值语法</h3>
+			<h3>{{name}}</h3>
+			<h3>{{age + 10}}</h3>
+			<span v-once>这个里面的值将不会改变: {{message}}</span>
+			<h3>2.v-html 输出真正的html内容</h3>
+			<span v-html="contentHtml"></span>
+			<h3>3.v-bind:src 绑定图片路径</h3>
+			<img v-bind:src="imgUrl" alt="" />
+			<img :src="imgUrl" alt="" />
+			<h3>4.v-bind:href 跳转到百度</h3>
+			<a :href="hrefUrl">跳转到百度</a>
+		</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					name: '小明',
+					age: 18,
+					message: '正常',
+					contentHtml: '<span style="color: pink;">粉色的字体</span><script>alert(123)<\/script><span>',
+					imgUrl: 'https://tse1-mm.cn.bing.net/th/id/OIP-C.1xgFjwVjv4FIm-jReoF4JQHaE1?rs=1&pid=ImgDetMain',
+					hrefUrl: 'https://www.baidu.com',
+				},
+			});
+		</script>
+	</body>
+</html>

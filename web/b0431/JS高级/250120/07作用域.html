@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//let 拥有块级作用域
+			// {
+			// 	let num = 123;
+			// 	console.log(num);
+			// }
+
+			//固定的局部作用域，无论let或者var在外部都不能调用
+			//推荐使用const和let
+			function fn() {
+				let a = 10;
+			}
+			fn();
+			console.log(a);
+			//按照冒泡的形式依次查找作用域 就近然后找父级直至全局
+		</script>
+	</body>
+</html>

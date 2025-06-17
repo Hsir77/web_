@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./node_modules/vue/dist/vue.js"></script>
+		<script src="./node_modules/vue-router/dist/vue-router.js"></script>
+		<style>
+			.header {
+				width: 800px;
+				height: 100px;
+				background-color: #ccc;
+				color: #fff;
+				text-align: center;
+			}
+			.left {
+				width: 200px;
+				height: 400px;
+				background-color: #ff0000;
+				float: left;
+			}
+			.main {
+				width: 600px;
+				height: 400px;
+				float: left;
+				background-color: aqua;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root">
+			<div class="header"><h1>头部组件</h1></div>
+			<div class="left">
+				<ul>
+					<li><a href="#/foo">go Foo</a></li>
+					<li><a href="#/bar">go Bar</a></li>
+				</ul>
+			</div>
+			<div class="main">
+				<!-- 4.路由出口，选择一个标签展示url对应的组件 -->
+				<router-view></router-view>
+			</div>
+		</div>
+		<script>
+			//1.创建组件
+			const Foo = {
+				template: '<h1>我是Foo组件</h1>',
+			};
+			const Bar = {
+				template: '<h1>我是Bar组件</h1>',
+			};
+			//2.创建路由表根据不同的url地址展示不同的组件
+			const router = new VueRouter({
+				routes: [
+					{ path: '/foo', component: Foo },
+					{ path: '/bar', component: Bar },
+				],
+			});
+			//3.将路由表注入到Vue实例中
+
+			new Vue({
+				el: '#root',
+				data: {},
+				router,
+			});
+		</script>
+	</body>
+</html>

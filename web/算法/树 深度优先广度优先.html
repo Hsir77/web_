@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const obj = {
+				val: 'a',
+				children: [
+					{ val: 'b', children: [{ val: 'd' }, { val: 'e' }] },
+					{ val: 'c', children: [{ val: 'f' }, { val: 'g' }] },
+				],
+			};
+			//深度优先
+			function deep(obj) {
+				console.log(obj.val);
+				if (obj.children) {
+					obj.children.forEach((element) => deep(element));
+				}
+			}
+
+			// deep(obj);
+
+			//广度优先
+			function bfs(root) {
+				if (!root) {
+					return;
+				}
+
+				const queue = [root];
+				const queue1 = queue.shift();
+				console.log(queue1);
+			}
+
+			bfs(obj);
+		</script>
+	</body>
+</html>

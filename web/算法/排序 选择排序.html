@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			let arr = [3, 5, 4, 2, 7, 1, 8];
+			function minsort(arr) {
+				for (let i = 0; i < arr.length - 1; i++) {
+					let minIndex = i;
+					for (let j = i + 1; j < arr.length; j++) {
+						if (arr[j] < arr[minIndex]) {
+							minIndex = j;
+						}
+					}
+					if (minIndex !== i) {
+						let temp = arr[i];
+						arr[i] = arr[minIndex];
+						arr[minIndex] = temp;
+					}
+				}
+				return arr;
+			}
+			console.log(minsort(arr));
+		</script>
+	</body>
+</html>

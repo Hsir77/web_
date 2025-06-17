@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./node_modules/vue/dist/vue.js"></script>
+		<script src="./node_modules/vue-resource/dist/vue-resource.js"></script>
+	</head>
+
+	<body>
+		<div id="root">
+			<h1>{{resData}}</h1>
+		</div>
+		<script>
+			//步骤1通过npm下载
+			//2sc引入
+			//liveserver插件
+			//this.$http
+			new Vue({
+				el: '#root',
+				data: {
+					resData: [],
+				},
+				mounted() {
+					this.$http
+						.get('http://127.0.0.1:5500/web/自学/v2/生命周期/db.json')
+						.then((response) => {
+							this.resData = response.data;
+							console.log('请求成功:', this.resData);
+						})
+						.catch((error) => {
+							console.error('请求出错:', error);
+						});
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// 数组的复制
+			let arr = [98, 14, 7, 4, 8, 8, 5, 45, , 5, 5];
+			let list1 = [...arr];
+			// 拼接
+			let list2 = ['b', ...arr];
+			console.log(list);
+
+			// Array.from 转换数组 将伪数组/自定义数组转换成真数组br
+			// 第一个参数是伪数组/自定义数组
+			// 第二个参数 是一个回调函数 每个元素都会执行这个回调函数
+			let list3 = Array.from({ 0: 'a', 3: 'b', length: 4 });
+			console.log(list);
+
+			function fn() {
+				// console.log(Array.from(arguments));
+				var arr1 = Array.from(arguments);
+				arr1.push('101');
+				// console.log(arr1);
+
+				let newArr = Array.from(arguments, function (n) {
+					console.log(n);
+					return (n += 'a');
+				});
+				// console.log(newArr);
+			}
+			fn(1, 2, 3, 4, 5, 6, 7, 8, 6, 2);
+
+			// find 根据回调函数中的返回值 结果为true时 返回当前循环的第xx项的值
+			let res4 = arr.find(function (item, index, arr) {
+				if (item == 5) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			console.log(res);
+
+			// findIndex 根据回调函数中的返回值 结果为true时 返回当前循环的第xx项的索引值
+			// 如果找不到 返回-1
+			let res5 = arr.findIndex(function (item, index, arr) {
+				if (item == 5) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			console.log(res);
+
+			// includes() 在数组中查找 如果有就返回true 如果没有就返回false
+			// console.log(arr.includes(5));
+
+			// fill 数组的填充 参数1 填充的内容 参数2 开始的索引 参数3 结束的索引-1
+			let list6 = new Array(5);
+			list.fill(666, 3, 5);
+			console.log(list);
+
+			// flat 数组的展开方法 参数 决定展开几层
+			let arr1 = [1, 2, 3, [4, 5, 6, [7, 8, 9, [0]]]];
+			let res7 = arr1.flat(2);
+			console.log(res);
+
+			// map 数组的循环/映射
+			let json = [
+				{ name: 'html', status: 1 },
+				{ name: 'css', status: 1 },
+				{ name: 'js', status: 0 },
+				{ name: 'ajax', status: 0 },
+				{ name: 'js高级', status: 0 },
+			];
+			let res8 = json.map(function (item, index, arr) {
+				return {
+					name: item.name,
+					status: item.status ? '已完成' : '还差点',
+				};
+			});
+			console.log(res, json);
+		</script>
+	</body>
+</html>

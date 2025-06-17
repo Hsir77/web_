@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+		<style>
+			.active {
+				color: green;
+			}
+
+			.delete {
+				color: orange;
+			}
+
+			.error {
+				color: red;
+			}
+
+			.session {
+				font-size: 25px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root">
+			<h3>class绑定 v-bind:class 或 :class</h3>
+			<p v-bind:class="activeClass">字符串表达式</p>
+			<p :class="{delete:isDelete, error:isError}" @click="fn()">对象表达式</p>
+			<p :class="['active','session']">数组表达式</p>
+
+			<h3>style绑定 v-bind:style :style</h3>
+			<p :style="{color:activeColor,fontSize:fondSize+'px'}">style绑定</p>
+		</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					activeClass: 'active',
+					isDelete: false,
+					isError: true,
+					activeColor: 'red',
+					fondSize: 50,
+				},
+				methods: {
+					fn() {
+						this.isDelete = !this.isDelete;
+						this.isError = !this.isError;
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+	</head>
+
+	<body>
+		<div id="root">
+			<p v-for="(item, index) in arr" v-if="item.visible" :key="index">{{ item.name }}</p>
+			<p @click="shouqi">{{ text }}</p>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					arr: [
+						{ name: '苹果', visible: true },
+						{ name: '香蕉', visible: true },
+						{ name: '橘子', visible: true },
+						{ name: '橙子', visible: true },
+						{ name: '柚子', visible: true },
+						{ name: '柠檬', visible: true },
+					],
+					text: '收起',
+				},
+				methods: {
+					shouqi() {
+						if (this.text === '收起') {
+							for (let i = 4; i < this.arr.length; i++) {
+								this.arr[i].visible = false;
+							}
+							this.text = '展开';
+						} else {
+							for (let i = 0; i < this.arr.length; i++) {
+								this.arr[i].visible = true;
+							}
+							this.text = '收起';
+						}
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

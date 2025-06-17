@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			//Object.values()等同于for in遍历取值
+			const obj = {
+				name: 'dd',
+				age: 18,
+				sex: 'male',
+			};
+			console.log(Object.values(obj).join('/'));
+			//****************************************************************************
+
+			function Person() {
+				this.name = 'tom';
+				this.age = 18;
+				this.say = function () {
+					console.log('Hi');
+				};
+			}
+			Person.prototype.sex = '男';
+			Person.prototype.sayHi = function () {
+				console.log('hello');
+			};
+
+			var p = new Person();
+			// console.log(p);
+			// hasOwnProperty 一个方法，用于判断对象本身（不包含原型）是否拥有某个属性
+			// console.log(p.hasOwnProperty("name"));
+			// console.log(p.hasOwnProperty("sex"));
+			// console.log(p.hasOwnProperty("say"));
+			// console.log(p.hasOwnProperty("sayHi"));
+
+			// propertyIsEnumerable
+			// 1. 判断属性是否属于对象本身
+			// 2. 判断是否可遍历
+			// console.log(p.propertyIsEnumerable("name"));
+			// console.log(p.propertyIsEnumerable("sex"));
+			// console.log(p.propertyIsEnumerable("say"));
+			// console.log(p.propertyIsEnumerable("sayHi"));
+
+			// 参数1 实例化对象
+			// 参数2 要操作的属性
+			// 参数3 对属性的操作（对象）
+			Object.defineProperty(p, 'name', {
+				value: 'lihua', // 修改任意属性的值
+				enumerable: false, // 控制当前添加的属性是否可被遍历，默认是true，可被遍历
+				writable: false, // 控制属性是否为可写
+				configurable: false, // 控制是否可被删除
+			});
+			p.name = '老鼠';
+			delete p.name;
+			// console.log(p.propertyIsEnumerable("name"));
+
+			function Animal() {}
+			function Human() {}
+			var a = new Animal();
+			Human.prototype = new Animal();
+			Human.prototype.configurable = Human;
+			var h = new Human();
+			console.log(h, a);
+
+			console.log(Animal.prototype.isPrototypeOf(h));
+			console.log(Human.prototype.isPrototypeOf(h));
+
+			console.log(typeof p.toString());
+			var p = 'abc';
+			console.log(p.toString());
+			console.log(typeof p.toLocaleString());
+
+			var data = new Date();
+			console.log(data);
+			console.log(data.toString());
+			console.log(data.toLocaleString());
+
+			console.log(Date());
+			console.log(Date().toString());
+			console.log(Date().toLocaleString());
+		</script>
+	</body>
+</html>

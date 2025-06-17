@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			fieldset {
+				width: 900px;
+				height: 350px;
+				display: flex;
+				justify-content: space-between;
+				margin: 100px auto;
+			}
+			.textarea-first {
+				width: 350px;
+				height: 350px;
+				background-color: chocolate;
+				color: aliceblue;
+				font-size: 18px;
+			}
+			.textarea-second {
+				width: 350px;
+				height: 350px;
+				background-color: rgb(228, 226, 112);
+				color: rgb(83, 175, 255);
+				font-size: 18px;
+			}
+			button {
+				width: 100px;
+				height: 40px;
+				background-color: rgb(255, 170, 52);
+				text-align: center;
+				line-height: 40px;
+				margin-top: 15px;
+				color: aliceblue;
+				font-size: 17px;
+			}
+			.light {
+				width: 120px;
+				height: 20px;
+				background-color: rgb(255, 255, 255);
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+			}
+			.light .light1 {
+				width: 5px;
+				height: 5px;
+				background-color: rgb(255, 255, 255);
+			}
+			.Progress {
+				width: 90px;
+				height: 40px;
+				background-color: rgb(255, 255, 255);
+				margin-top: 15px;
+				margin-bottom: 25px;
+
+				display: flex;
+				justify-content: space-between;
+			}
+			.Progress div {
+				line-height: 40px;
+				color: rgb(0, 0, 0);
+				font-size: 17px;
+				font-weight: 600;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset>
+			<textarea name="" class="textarea-first"></textarea>
+			<div class="middle">
+				<button>点击右移</button>
+				<div class="Progress">
+					<div>0</div>
+					<div>/</div>
+					<div>14</div>
+				</div>
+				<div class="light">
+					<div class="light1"></div>
+					<div class="light1"></div>
+					<div class="light1"></div>
+					<div class="light1"></div>
+					<div class="light1"></div>
+					<div class="light1"></div>
+				</div>
+			</div>
+
+			<textarea name="" class="textarea-second"></textarea>
+		</fieldset>
+		<script>
+			var textarea = document.querySelectorAll('textarea');
+			var btn = document.querySelector('button');
+			var pro = document.querySelectorAll('.Progress div');
+			var light = document.querySelectorAll('.light .light1');
+			var lightall = document.querySelectorAll('.light');
+			var num2 = textarea[0].value.length;
+			btn.onclick = function () {
+				var num2 = textarea[0].value.length;
+				pro[2].innerHTML = num2;
+
+				ms();
+
+				txt();
+			};
+			//！！！！！！
+			function ms() {
+				let index = 0;
+				intervalId = setInterval(function () {
+					for (var i = 0; i < light.length; i++) {
+						light[i].style.backgroundColor = 'white';
+					}
+
+					if (index < light.length) {
+						light[index].style.backgroundColor = 'black';
+						index++;
+					} else {
+						index = 0;
+					}
+				}, 200);
+			}
+
+			function txt() {
+				var txtx = setInterval(function () {
+					var str1 = textarea[0].value;
+					var str2 = textarea[1].value;
+					if (str1.length > 0) {
+						var char = str1.charAt(0);
+						textarea[1].value = str2 + char;
+						textarea[0].value = str1.slice(1);
+						pro[0].innerHTML++;
+					} else {
+						clearInterval(txtx);
+						clearInterval(intervalId);
+						pro[0].innerHTML = num2;
+					}
+				}, 200);
+			}
+			//在函数里面不给变量定义 会自动升级为全局变量
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//join
+			//数组转字符串(拼接)
+			//join()里默认,进行拼接
+			const arr1 = ['h', 'e', 'l', 'l', 'o'];
+			const arrs1 = arr1.join('');
+			console.log(arrs1);
+
+			//split
+			//字符串转位数组(分割)
+			//split()放由谁来分割
+			const arr2 = 'hello,world';
+			const arrs2 = arr2.split(',');
+			console.log(arrs2);
+
+			//substring
+			//字符串的截取
+			//两个参数第一个是开始索引，第二个是结束索引
+			const arr3 = 'helloworld';
+			const arrs3 = arr3.substring(0, 6);
+			console.log(arrs3);
+
+			//字符串转对象
+			JSON.parse(/*json字符串*/);
+
+			//对象转字符串
+			JSON.stringify(/*对象*/);
+		</script>
+	</body>
+</html>

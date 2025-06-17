@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<button>按钮</button>
+		<script>
+			// 函数的拓展
+			// 1. 函数的参数可以使用默认值
+			// 2. 函数参数可以使用解构赋值
+			// 3. 可以使用解构赋值
+
+			// 示例1：带默认参数的函数
+			function fn(a, b, c = 10) {
+				console.log(a, b, c);
+			}
+			fn(1, 2);
+
+			// 示例2：数组解构赋值作为函数参数
+			function fnArray([a, b = 10, c]) {
+				console.log(a, b, c);
+			}
+			fnArray([1, , 3]);
+
+			// 示例3：对象解构赋值作为函数参数
+			function fnObject({ a, b = 10, c }) {
+				console.log(a, b, c);
+			}
+			fnObject({ a: 1, c: 3 });
+
+			// 示例4：混合参数情况
+			function fnMixed(a, b = 10, c) {
+				console.log(a, b, c);
+			}
+			fnMixed(1, undefined, 3);
+
+			// 箭头函数
+			// 基本形式
+			let fnArrowBasic = (a, b) => {
+				console.log(a, b);
+				return a + b;
+			};
+			console.log(fnArrowBasic(1, 6));
+
+			// 简化写法示例
+			// 1. 如果箭头函数的参数只有一个 可以省略小括号
+			let fnSingleParam = (n) => {
+				return n;
+			};
+			console.log(fnSingleParam(5));
+
+			// 2. 如果箭头函数的函数体只有一行可以省略大括号
+			let fnSingleLine = (n) => console.log(n);
+			fnSingleLine(9);
+
+			// 3. 如果这一行代码就是返回值可以省略return
+			let fnReturnOmitted = (n) => n + 1;
+			console.log(fnReturnOmitted(1));
+
+			// 4. 如果这一行代码是返回值并且是对象 那么这个对象必须加小括号
+			let fnReturnObject = (n) => ({ age: n });
+			console.log(fnReturnObject(18));
+
+			// 箭头函数和普通函数相比的特性
+			// 1. 箭头函数没有 arguments 可以使用...代替
+			let fnRestParams = (...res) => {
+				console.log(res);
+			};
+			fnRestParams(1, 2, 3, 4, 5, 6);
+
+			// 2. 不能作为构造函数
+			let fnConstructor = (name, age) => {
+				this.name = name;
+				this.age = age;
+			};
+			// 这里不能使用 new 操作符，因为箭头函数不能作为构造函数
+			// let Person = new fnConstructor("小明", 18);
+			// console.log(Person);
+
+			// 3. 自身没有this指向 它的指向依赖于上一级作用域
+			document.querySelector('button').onclick = function () {
+				console.log(this);
+			};
+
+			document.querySelector('button').onclick = () => {
+				console.log(this);
+			};
+		</script>
+	</body>
+</html>

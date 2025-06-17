@@ -1,0 +1,12 @@
+{
+  "name": "250210",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01http设置响应报文.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

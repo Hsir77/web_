@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+		<style>
+			.all {
+				display: flex;
+				flex-direction: column;
+			}
+			.top {
+				width: 100%;
+				height: 50px;
+				border-bottom: 1px solid rgb(162, 162, 162);
+				display: flex;
+				justify-content: center; /* 修改这里 */
+			}
+			a {
+				font-size: 30px;
+				width: 20%;
+				text-align: center;
+			}
+			input {
+				font-size: 30px;
+			}
+			.inp {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
+			.zhanghao {
+				width: 90%;
+				height: 80px;
+				margin: 60px 0;
+				border: 1px solid;
+				border-radius: 15px;
+			}
+			button {
+				width: 95%;
+				height: 80px;
+				font-size: 35px;
+				background-color: rgb(113, 113, 255);
+				color: azure;
+				border-radius: 15px;
+			}
+			.erwei {
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root">
+			<div class="all">
+				<div class="top">
+					<a href="#" class="login" @click="visible=!visible">账号登录</a>
+					<a href="#" class="erwei" @click="visible=!visible">二维码登录</a>
+				</div>
+				<div class="inp" v-if="visible">
+					<input type="text" class="zhanghao" placeholder="请输入手机号/邮箱" />
+					<input type="text" class="zhanghao" placeholder="请输入密码" />
+					<button>登录</button>
+				</div>
+				<div class="erwei" v-if="!visible">
+					<img src="./img/5791cbfb727f13c65cf731e98328d57.png" alt="" />
+				</div>
+			</div>
+		</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					visible: true,
+				},
+			});
+		</script>
+	</body>
+</html>

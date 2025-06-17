@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.all {
+				width: 800px;
+				height: 300px;
+				margin: 0 auto;
+				margin-top: 150px;
+				background-color: black;
+				border-radius: 5px;
+			}
+			button {
+				width: 140px;
+				height: 60px;
+				font-size: 20px;
+				display: block;
+				color: aliceblue;
+				background-color: rgb(47, 47, 51);
+				margin: 0 330px;
+				margin-bottom: 70px;
+			}
+			header {
+				color: #929292;
+				text-align: center;
+				font-size: 30px;
+				font-weight: 700;
+				height: 85px;
+				line-height: 85px;
+			}
+			nav {
+				height: 110px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			nav div {
+				color: aliceblue;
+				font-size: 45px;
+				font-weight: 900;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<header>2025年1月20日&nbsp;&nbsp;星期一</header>
+			<nav>
+				<div class="time">0</div>
+				<div class="time">0</div>
+				<div class="yinhao">:</div>
+				<div class="time">0</div>
+				<div class="time">0</div>
+				<div class="yinhao">:</div>
+				<div class="time">0</div>
+				<div class="time">0</div>
+			</nav>
+			<button>暂停</button>
+		</div>
+		<script>
+			var times = document.querySelectorAll('nav>.time');
+			var btn = document.querySelector('button');
+			let work = false;
+			let intervalId;
+
+			function ms() {
+				intervalId = setInterval(function () {
+					var now = new Date();
+					var nowdate = now.getTime();
+
+					times[0].innerHTML = parseInt(((nowdate / 60000) % 60) / 10);
+					times[1].innerHTML = parseInt((nowdate / 60000 / 60) % 10);
+					times[2].innerHTML = parseInt(((nowdate / 1000 / 60) % 60) / 10);
+					times[3].innerHTML = parseInt(((nowdate / 1000 / 60) % 60) % 10);
+					times[4].innerHTML = parseInt(((nowdate / 1000) % 60) / 10);
+					times[5].innerHTML = parseInt(((nowdate / 1000) % 60) % 10);
+				}, 1000);
+			}
+			btn.onclick = function () {
+				if (!work) {
+					ms();
+					work = true;
+					btn.innerHTML = '暂停';
+				} else {
+					clearInterval(intervalId);
+					work = false;
+					btn.innerHTML = '开始';
+				}
+			};
+		</script>
+	</body>
+</html>

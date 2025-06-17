@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			Function.prototype.myapply = function (context, argsArray) {
+				if (typeof this !== 'function') {
+					throw new TypeError('调用者必须是函数');
+				}
+				context = context || window;
+				const key = Symbol('temp');
+				context[key] = this;
+				// 处理参数：确保 argsArray 是数组或类数组
+				const args = argsArray || [];
+				const result = context[key](...args);
+				delete context[key];
+				return result;
+			};
+
+			// 测试用例
+			function test(a, b, c) {
+				console.log(this.name, a, b, c); // 正确应输出参数展开后的值
+			}
+			const obj = { name: 'dongming' };
+			test.myapply(obj, [1, 2, 3]); // 输出：dongming 1 2 3
+		</script>
+	</body>
+</html>

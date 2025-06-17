@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./ajax.js"></script>
+		<script src="./template-web.js"></script>
+		<style>
+			table {
+				border: 1px solid #fff;
+				background-color: orange;
+				width: 80%;
+				margin: 0 auto;
+			}
+
+			tr {
+				text-align: center;
+				height: 30px;
+			}
+
+			td {
+				border: 1px solid #fff;
+			}
+
+			.title {
+				background-color: #b97902;
+				color: #fff;
+			}
+
+			button {
+				margin: 10px auto;
+				border: none;
+				background-color: yellowgreen;
+				width: 200px;
+				height: 50px;
+				border-radius: 10px;
+				font-size: 18px;
+				display: block;
+			}
+
+			.maskLayer {
+				position: absolute;
+				width: 80%;
+				background-color: #0000003e;
+				display: none;
+			}
+
+			.maskLayer > div {
+				width: 500px;
+				height: 350px;
+				margin: 100px auto;
+				background-color: #fff;
+				border-radius: 10px;
+			}
+
+			.mTitle {
+				text-align: center;
+				width: 100%;
+				height: 40px;
+				background-color: #b97902;
+				color: #fff;
+				border-radius: 10px 10px 0 0;
+				line-height: 40px;
+				margin-bottom: 20px;
+			}
+
+			.cancel {
+				position: absolute;
+				right: 10px;
+				top: 8px;
+				width: 25px;
+				height: 25px;
+			}
+
+			.mTop {
+				position: relative;
+			}
+
+			.mTitle input {
+				border: 1px solid orange;
+				width: 300px;
+				border-radius: 20px;
+				height: 30px;
+				outline: orange;
+			}
+
+			.mItem {
+				width: 100%;
+				height: 50px;
+				margin: 10px 0;
+				margin-left: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="maskLayer">
+			<div class="mTop">
+				<div class="mTitle">成员信息描述</div>
+				<div class="cancel">X</div>
+			</div>
+			<div class="mItem">
+				<div class="text">姓名:</div>
+				<div class="input">
+					<input type="text" />
+				</div>
+			</div>
+			<div class="mItem">
+				<div class="text">城市:</div>
+				<div class="input">
+					<input type="text" />
+				</div>
+			</div>
+			<div class="mItem">
+				<div class="text">邮箱:</div>
+				<div class="input">
+					<input type="text" />
+				</div>
+			</div>
+			<button class="determine">确认</button>
+		</div>
+		<button class="add">添加成员</button>
+		<table>
+			<thead>
+				<tr class="title">
+					<td>姓名</td>
+					<td>城市</td>
+					<td>邮箱</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody id="app"></tbody>
+		</table>
+		<script id="temp" type="text/html">
+			{{each user}}
+			<tr class="title">
+				<td>{{$value.id}}</td>
+				<td>{{$value.username}}</td>
+				<td>{{$value.address.city}}</td>
+				<td>{{$value.email}}</td>
+				<td class="del">删除</td>
+			</tr>
+			{{/each}}
+		</script>
+		<script>
+			ajax('https://jsonplaceholder.typicode.com/users', 'get', {}, function (res) {
+				var html = template('temp', { users: res });
+				console.log(html);
+				document.querySelector('#app').innerHTML = html;
+			});
+			const maskLayer = document.querySelector('.maskLayer');
+			const add = document.querySelector('.add');
+			const cancel = document.querySelectorAll('.cancel');
+			const input = document.querySelectorAll('.input');
+			const determine = document.querySelectorAll('.determine');
+			add.onclick = function () {
+				maskLayer.style.display = 'block';
+			};
+			cancel.forEach(function (e) {
+				e.onclick = function () {
+					maskLayer.style.display = 'none';
+				};
+			});
+			let obj = {};
+			const handler = {
+				set(target, key, value) {
+					if (key === 'id') {
+						console.log(target, key, value);
+						return (target[key] = value);
+					} else if (key === 'username') {
+						return (target[key] = value);
+					} else if (key === 'city') {
+						return (target[key] = value);
+					} else if (key === 'email') {
+						return (target[key] = value);
+					}
+				},
+			};
+			const inputProxy = new Proxy(obj, handler);
+			input[0].addEventListener('keyup', function (e) {
+				inputProxy.username = e.target.value;
+			});
+			input[1].addEventListener('keyup', function (e) {
+				inputProxy.city = e.target.value;
+			});
+			input[2].addEventListener('keyup', function (e) {
+				inputProxy.email = e.target.value;
+			});
+			determine.forEach(function (e) {
+				e.addEventListener('click', function () {
+					var tr = document.createElement('tr');
+					for (var i = 0; i < 4; i++) {
+						var td = document.createElement('td');
+						tr.appendChild(td);
+					}
+					document.body.appendChild(tr);
+					maskLayer.style.display = 'none';
+					console.log(body.lastChild.children[0]);
+					body.lastChild.children[1].innerHTML = obj.username;
+					body.lastChild.children[3].innerHTML = obj.city;
+					body.lastChild.children[4].innerHTML = obj.email;
+					body.lastChild.children[4].classList.add('del');
+				});
+			});
+			document.body.addEventListener('click', function (e) {
+				console.log(e.target.className);
+				if (e.target.classList.contains('del')) {
+					e.target.parentNode.remove();
+				}
+			});
+		</script>
+	</body>
+</html>

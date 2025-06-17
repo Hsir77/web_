@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// 把class当成构造函数看
+			class Person {
+				// 属性
+				name;
+				age;
+				// 静态属性
+				static sex = 'nv';
+
+				// 构造函数
+				constructor(name, age, sex) {
+					this.name = name;
+					this.age = age;
+					this.sex = sex;
+				}
+
+				// 方法
+				hello() {
+					console.log('hello');
+				}
+
+				// 静态方法
+				static sayHi() {
+					console.log('hi');
+				}
+			}
+
+			let p1 = new Person('小明', 18, 'nan');
+			console.log(p1);
+			p1.hello();
+
+			console.log(Person.sex);
+			Person.sayHi();
+
+			// 继承：学生继承人类
+			class Stu extends Person {
+				study;
+				constructor(study) {
+					// 调用父类构造函数并传入部分参数
+					super('小红', '18');
+					this.study = study;
+				}
+			}
+
+			let s = new Stu('js');
+			console.log(s);
+		</script>
+	</body>
+</html>

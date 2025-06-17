@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://192.168.150.76:3000/ -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>留言本</title>
+  <link rel="stylesheet" href="/public/bootstrap.css">
+</head>
+
+<body>
+  <div class="header container">
+    <div class="page-header">
+      <h1>Example page header <small>Subtext for header</small></h1>
+      <!--提交路径的时候其实不用把正栈路径给出去，告诉要访问那个模块，按照/post这个名字判断就行了，
+        后台request接收到，如果有一个url请求访问的是/post这个字符串就去找对应的文件，在前台页面不能决定去哪
+        是在后台pathname进行判断，然后readFile里面的路径决定的-->
+      <a class="btn btn-success" href="/post">发表留言</a>
+    </div>
+  </div>
+  <div class="comments container">
+    <ul class="list-group">
+      {{each list}}
+      <li class="list-group-item">{{$value.name}}说:{{$value.content}}
+        <span class="pull-right">{{$value.time}}</span>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</body>
+
+</html>

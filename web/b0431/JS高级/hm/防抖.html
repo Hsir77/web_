@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.box {
+				width: 500px;
+				height: 500px;
+				background-color: #666;
+				color: #fff;
+				font-size: 30px;
+				text-align: center;
+				line-height: 500px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box"></div>
+		<script>
+			//防抖函数
+			//手写防抖用定时器实现
+			//1.声明定时器变量
+			//2.事件触发之后判断有没有定时器，如果有就清除
+			//3.如果没有，开启定时器，存到定时器变量里
+			//4.内部写函数调用
+			// 防抖函数实现
+			const box = document.querySelector('.box');
+			let i = 1;
+			function mouseMove() {
+				box.innerHTML = i++;
+			}
+			function debounce(fn, delay) {
+				let timer;
+				return function () {
+					if (timer) clearTimeout(timer);
+
+					timer = setTimeout(() => {
+						fn();
+					}, delay);
+				};
+			}
+
+			box.addEventListener('mousemove', debounce(mouseMove, 500));
+		</script>
+	</body>
+</html>

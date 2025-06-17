@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//总体来说，new有三个作用
+			//1.创建空对象，绑定原型链
+			//2.改变构造函数的this指向，使其指向创建的实例
+			//3.通过new构造函数返回结果，该结果为生成的实例
+			//构造函数
+			function Fn(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			//new 部分
+			function writeNew(Constructor, ...args) {
+				// 1. 创建对象并绑定原型链
+
+				const newobj = Object.create(Constructor.prototype); //不用__proto__==prototype的原因是因为兼容性
+				// 2. 执行构造函数并绑定 this
+				const result = Constructor.apply(newobj, args); //用apply的原因是可能有多个参数，则在形参部分应用拓展运算符，和apply传递
+				// 3. 处理构造函数返回值
+				return result instanceof Object ? result : newobj; //校验返回的是不是一个对象，防御异常
+			}
+
+			// 使用示例
+			const obj = writeNew(Fn, 'Alice', 18);
+			console.log(obj);
+		</script>
+	</body>
+</html>

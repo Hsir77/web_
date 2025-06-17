@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			Function.prototype.mybind = function (context, ...args) {
+				if (typeof this !== 'function') {
+					throw new TypeError('调用者必须是函数');
+				}
+				const self = this; // 保存原函数
+				context = context || window; // 处理默认上下文
+				context = Object(context); // 确保原始值转为对象
+
+				return function (...innerArgs) {
+					// 合并绑定参数和调用参数
+					const combinedArgs = args.concat(innerArgs);
+					// 使用闭包中的 context 和 self，无需修改上下文对象
+					return self.apply(context, combinedArgs);
+				};
+			};
+
+			// 测试用例
+			function test(a, b, c) {
+				console.log(this.name, a, b, c);
+			}
+			const obj = { name: 'dongming' };
+			const boundFn = test.mybind(obj, 1);
+			boundFn(2, 3); // 输出：dongming 1 2 3
+		</script>
+	</body>
+</html>

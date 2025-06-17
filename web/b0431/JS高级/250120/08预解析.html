@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			console.log(a);
+			fn();
+			var a = 123;
+			function fn() {
+				//函数整体会提升 函数优先级会更高 若变量有初始值则变量的优先级更高
+				console.log(456);
+			}
+		</script>
+	</body>
+</html>

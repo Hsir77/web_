@@ -7,34 +7,87 @@
 	</head>
 	<body>
 		<script>
+			/*
+			搞清map filter foreach reduce
+			Map 迭代数组，用于返回处理后的数组数据
+			Filter 过滤数组，用于返回符合条件的数组数据
+			Foreach遍历数组，用于遍历查找数组不返回数据
+			Reduce累加数组，用于累加求和数据返回处理结果
+			*/
+
+			//every
 			var arr = [5, 8, -9, 16, -12, -14, 68];
 			arr.every(function (item, index, arr) {
 				console.log(item, index, arr);
 				if (index == 4) {
 					return false;
 				} else {
-					return ture;
+					return true;
 				}
 			});
-			var res = arr.filter(function (item, index, arr) {
-				//过滤 返回值为true的值形成一个新数组
+
+			//some
+			var res3 = arr.some(function (item, index, arr) {
 				console.log(item, index, arr);
-				return item < 0;
 			});
-			console.log(res);
-			/********************/
-			var res = arr.map(function (item, index, arr) {
-				//形成一个新的映射
+			console.log(res3);
+
+			//reduce
+			let res4 = arr.reduce((prev /*上一次值*/, current /*当前值*/) => {
+				return prev + current;
+			}, 0);
+			console.log(res4);
+
+			//map
+			//与foreach相同，但有返回值，当需要基于原数组创建一个新数组
+			var res2 = arr.map(function (item, index, arr) {
 				console.log(item, index, arr);
 				return 111;
 			});
-			console.log(res);
-			var res = arr.some(function (item, index, arr) {
-				//对数组中的每一项运行函数如果碰到true停止并返回true
-				console.log(item, index, arr);
+			console.log(res2);
+
+			//foreach
+			//foreach没有返回值，不能修改数组的元素，可以修改对象的基本数据
+			//用于操作dom，遍历查询数组对象
+			const arr1 = [1, 2, 3];
+			arr1.forEach((item) => {
+				item = item * 2;
 			});
-			console.log(res);
-			//如何清空数组
+			console.log(arr1);
+
+			const objArr = [{ val: 1 }, { val: 2 }];
+			objArr.forEach((item) => {
+				item.val = item.val * 2;
+			});
+			console.log(objArr);
+
+			//例外通过index索引foreach修改数组当中的数据
+			const numbers = [1, 2, 3];
+			numbers.forEach((item, index) => {
+				numbers[index] = item * 2;
+			});
+			console.log(numbers); // 输出 [2, 4, 6]
+
+			//find
+			//查询数组有没有符合条件的元素，有的话直接返回该元素
+			const arrobj = [
+				{ name: 'mi', price: 1999 },
+				{ name: 'huawei', price: 3999 },
+				{ name: 'samsung', price: 5999 },
+				{ name: 'apple', price: 7999 },
+			];
+			const res5 = arrobj.find((item, index) => {
+				return item.name == 'mi';
+			});
+			console.log(res5);
+
+			//filter
+			//查询数组有没有符合条件的元素，有的话直接返回该元素存放在新数组中
+			var res1 = arr.filter(function (item, index, arr) {
+				console.log(item, index, arr);
+				return item < 0;
+			});
+			console.log(res1);
 		</script>
 	</body>
 </html>

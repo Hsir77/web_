@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// 迭代器：提供一个接口（iterator），为不同的数据类型统一迭代方式
+			// 定义字符串
+			let str = 'abc';
+			// 定义数组
+			let arr = [1, 2, 3, 4, 5];
+			// 定义对象
+			let obj = {
+				name: 'aaa',
+				age: 18,
+			};
+
+			// 使用for...of遍历字符串（注释掉，仅作示例展示）
+			// for (const i of str) {
+			//   console.log(i);
+			// }
+			// 使用for...of遍历数组（注释掉，仅作示例展示）
+			// for (const i of arr) {
+			//   console.log(i);
+			// }
+			// 直接使用for...of遍历普通对象会报错（注释掉，仅作示例展示）
+			// for (const i of obj) {
+			//   console.log(i);
+			// }
+
+			// 获取字符串的迭代器（注释掉，仅作示例展示）
+			// let fn = str[Symbol.iterator]();
+			// console.log(fn.next());
+			// console.log(fn.next());
+			// console.log(fn.next());
+			// console.log(fn.next());
+
+			// 定义一个生成器函数（注释掉，仅作示例展示）
+			// function* fn() {
+			//   yield "a";
+			//   yield "b";
+			//   yield "c";
+			// }
+			// 获取生成器函数的迭代器对象（注释掉，仅作示例展示）
+			// let f = fn();
+			// console.log(f.next());
+			// console.log(f.next());
+			// console.log(f.next());
+			// console.log(f.next());
+
+			// 定义新对象obj1
+			let obj1 = {
+				name: '小明',
+				age: 25,
+			};
+			// 为obj1添加迭代器方法
+			obj1[Symbol.iterator] = function* () {
+				for (const i of Object.values(obj1)) {
+					yield i;
+				}
+			};
+
+			console.log(obj1);
+			// 使用for...of遍历obj1
+			for (const i of obj1) {
+				console.log(i);
+			}
+		</script>
+	</body>
+</html>

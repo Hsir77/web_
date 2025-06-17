@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+		<style>
+			/* 新时期 隐藏后的效果 */
+			.v-leave-to,
+			.v-enter {
+				opacity: 0;
+			}
+
+			/* 显示 隐藏 过程中的效果 */
+			.v-leave-active,
+			.v-enter-active {
+				transition: opacity 1s;
+			}
+
+			.v2-enter-active {
+				transition: all 1s;
+			}
+
+			.v2-leave-active {
+				transition: all 3s;
+			}
+
+			.v2-enter,
+			.v2-leave-to {
+				opacity: 0;
+				transform: translateX(10px);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root">
+			<button @click="show=!show">渐变效果</button>
+			<transition name="v">
+				<p v-show="show">测试测试测试</p>
+			</transition>
+		</div>
+		<div id="app">
+			<button @click="show=!show">渐变平滑过渡</button>
+			<transition name="v2">
+				<p v-show="show">测试测试测试</p>
+			</transition>
+		</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					show: true,
+				},
+			});
+			new Vue({
+				el: '#app',
+				data: {
+					show: true,
+				},
+			});
+		</script>
+	</body>
+</html>

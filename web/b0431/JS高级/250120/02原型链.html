@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function Person() {}
+
+			// 原型链 实例化对象->构造函数.原型->Object.prototype->null
+			// 属性搜索原则，也就是属性的查找顺序，在访问对象的成员的时候，会遵循如下的原则：
+			// 1.首先在当前对象中查找，如果找到，停止查找，直接使用，如果没有找到，继续下一步
+			// 2.在该对象的原型中查找，如果找到，停止查找，直接使用，如果没有找到，继续下一步
+			// 3.在该对象的原型的原型中查找，如果找到，停止查找，直接使用，如果没有找到，继续下一步。
+			// 4.继续往上查找，直到查找到Object.prototype还没有，那么是属性就返回 undefined，是方法，就返回 undefined
+
+			var v1 = new Person();
+
+			console.log(Person);
+			console.log(v1.__proto__);
+			console.log(Person.prototype);
+			console.log(v1.__proto__ === Person.prototype);
+			console.log(Person.prototype.__proto__ === Object.prototype);
+			console.log(Object.prototype.__proto__);
+		</script>
+	</body>
+</html>

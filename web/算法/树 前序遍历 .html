@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			const obj = {
+				val: 'a',
+				left: { val: 'b', left: { val: 'd' }, right: { val: 'e' } },
+
+				right: { val: 'c', left: { val: 'f' }, right: { val: 'g' } },
+			};
+			//递归实现
+			function preorder1(obj) {
+				if (!obj) {
+					return;
+				}
+				console.log(obj.val);
+				preorder(obj.left);
+				preorder(obj.right);
+			}
+			// preorder1(obj);
+
+			//栈实现
+
+			function preorder2(obj) {
+				let arr = [];
+				let stack = [obj];
+				while (stack.length > 0) {
+					let current = stack.pop();
+					if (current) {
+						arr.push(current.val);
+						stack.push(current.right);
+						stack.push(current.left);
+					}
+				}
+				return arr;
+			}
+
+			console.log(preorder2(obj));
+		</script>
+	</body>
+</html>

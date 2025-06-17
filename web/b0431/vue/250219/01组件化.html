@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <compoent-a></compoent-a>
+    <compoent-b></compoent-b>
+    <compoent-c></compoent-c>
+  </div>
+  <script>
+    /*
+    组件名
+    1.驼峰式：用横线分隔符
+    2.自命名不能和标签重名
+    3.使用组件时，必须采用横线分隔符的方式进行引用
+    */
+    Vue.component("compoentA", {
+      template: "<div><h1>这里是头部组件-----{{name}}</h1></div>",
+      data() {
+        return {
+          name: "全局组件"
+        }
+      }
+    })
+    new Vue({
+      el: "#root",
+      data: {},
+      components: {
+        'compoent-b': {
+          template: "<div>这里是局部注册-----{{name}}</div>",
+          data() {
+            return {
+              name: "局部组件"
+            }
+          }
+        },
+        'compoent-c': {
+          template: "<div>这里是局部注册-----{{name}}</div>",
+          data() {
+            return {
+              name: "局部组件"
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

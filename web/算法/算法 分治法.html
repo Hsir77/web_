@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//分治法
+			//1.分治法有拆分 解决 合并三个环节组成
+			//2.通常采用递归思想(拆分后调用函数)
+			//3.拆分通常与解决合并分开写
+			// 拆分函数，将数组拆分为左右两部分
+			//example
+			function divideArray(arr) {
+				const mid = Math.floor(arr.length / 2);
+				return [arr.slice(0, mid), arr.slice(mid)];
+			}
+
+			// 处理和合并函数，递归计算数组元素总和
+			function conquerAndCombine(arr) {
+				if (arr.length === 0) {
+					return 0;
+				}
+				if (arr.length === 1) {
+					return arr[0];
+				}
+				const [left, right] = divideArray(arr);
+				const leftSum = conquerAndCombine(left);
+				const rightSum = conquerAndCombine(right);
+				return leftSum + rightSum;
+			}
+
+			// 测试代码
+			const arr = [1, 2, 3, 4, 5];
+			const result = conquerAndCombine(arr);
+			console.log(`数组 [${arr}] 的元素总和为: ${result}`);
+		</script>
+	</body>
+</html>

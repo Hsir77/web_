@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// 定义原始对象
+			let obj = {
+				name: '小明',
+				age: 18,
+			};
+
+			// 创建普通代理对象
+			let proxyObj = new Proxy(obj, {
+				get(target, prop) {
+					console.log('get方法', target, prop);
+					return Reflect.get(target, prop);
+				},
+				set(target, prop, value) {
+					console.log('set方法', target, prop, value);
+					return Reflect.set(target, prop, value);
+				},
+				deleteProperty(target, prop) {
+					console.log('deleteProperty方法', target, prop);
+					return Reflect.deleteProperty(target, prop);
+				},
+			});
+
+			// 测试普通代理对象的操作
+			console.log(proxyObj.name);
+			proxyObj.name = '小红';
+			obj.name = '小美';
+			// delete proxyObj.name;
+			console.log(proxyObj, obj);
+
+			// 创建可撤销代理
+			let { proxy: pro, revoke } = Proxy.revocable(obj, {
+				get(target, prop) {
+					console.log('get方法', target, prop);
+					return Reflect.get(target, prop);
+				},
+			});
+			console.log(pro.name);
+			revoke(); // 撤销代理
+			// 尝试访问已撤销代理的属性，会抛出异常，这里注释掉避免影响后续代码执行
+			// console.log(pro.name);
+		</script>
+	</body>
+</html>

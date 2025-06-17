@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item, index) in resData" :key="index">{{item.id}} --- {{item.title}}</li>
+			</ul>
+		</div>
+
+		<script src="../250314/vue.js"></script>
+		<script src="./node_modules/vue-resource/dist/vue-resource.js"></script>
+		<script src="./node_modules/axios/dist/axios.js"></script>
+		<script>
+			const http = 'https://jsonplaceholder.typicode.com/posts';
+			new Vue({
+				el: '#app',
+				data: {
+					resData: [],
+				},
+				created() {
+					// 接口请求地址 都是一个异步函数
+					// this.$http.get(http).then(res => {
+					//     // console.log(res.data);
+					//     this.resData = res.data;
+					// }, err => {
+					//     console.log(err);
+					// })
+
+					// Promise(等待，发送成功，失败)
+					axios
+						.get(http)
+						.then((res) => {
+							console.log(res);
+							this.resData = res.data;
+						})
+						.catch((err) => {
+							alert(err);
+						});
+				},
+			});
+		</script>
+	</body>
+</html>

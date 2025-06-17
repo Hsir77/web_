@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/signin/">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.10/examples/signin/signin.css"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <!-- action="/stu/add" method="post" -->
+    <form action="/students/add" method="post">
+        <h2 class="form-signin-heading">学生信息</h2>
+        <label for="">name</label>
+        <!-- name -->
+        <input type="text" id="" class="form-control" name="name" required minlength="2">
+
+        <label for="">sex</label><br />
+
+        <label class="radio-inline">
+            <!-- 判断哪个被选中  性别  sex -->
+            <input type="radio" name="sex" id="" value="0">男
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="sex" id="" value="1" checked>女
+        </label>
+
+        <br />
+
+        <!-- timer 时间 -->
+        <label for="">timer</label>
+        <input type="text" id="" class="form-control" name="timer" required >
+
+        <!-- 内容  -->
+        <label for="">content</label>
+        <input type="text" id="" class="form-control" name="content" required minlength="2">
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+    </form>
+
+
+</body>
+
+</html>

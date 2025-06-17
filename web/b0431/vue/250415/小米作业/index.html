@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .box {
+            width: 1656px;
+        }
+
+        header {
+            background-color: rgb(33, 33, 33);
+            font-size: 12px;
+            color: #b0b0b0;
+        }
+
+        header ul:first-child li {
+            border-left: 1px solid #b0b0b0;
+            padding: 0 5px;
+        }
+
+        header ul:first-child li:first-child {
+            border-left: none;
+        }
+
+        header ul:first-child {
+            height: 40px;
+            width: 65%;
+            display: flex;
+            align-items: center;
+        }
+
+        .banner {
+            margin: 0 auto;
+            width: 1226px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .banner ul:last-child {
+            height: 40px;
+            width: 30%;
+            display: flex;
+            align-items: center;
+        }
+
+        .banner ul:last-child li {
+            border-left: 1px solid #b0b0b0;
+            padding: 0 5px;
+        }
+
+        .banner ul:last-child li:first-child {
+            border-left: none;
+        }
+
+        .banner img {
+            width: 15px;
+            height: 15px;
+        }
+
+        #top-gouwu {
+            height: 40px;
+            background-color: rgb(67, 67, 67);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+        }
+
+        nav {
+            width: 1226px;
+            height: 100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 56px;
+            height: 56px;
+            background: url(./顶部/logo.png) no-repeat center/100% 100%;
+            margin-right: 188px;
+        }
+
+        .nav-ul {
+            display: flex;
+            margin-right: 90px;
+        }
+
+        .nav-ul li {
+            margin-right: 20px;
+        }
+
+        .nav-ul li:last-child {
+            margin: 0;
+        }
+
+        .kuang {
+            width: 244px;
+            height: 50px;
+            border: 1px solid gray;
+        }
+
+        .tubiao {
+            background: url(./顶部/搜索.png) no-repeat center/20px 20px;
+            width: 52px;
+            height: 50px;
+            border: 1px solid gray;
+            border-left: none;
+        }
+
+        .search {
+            display: flex;
+            justify-content: center;
+            width: 296px;
+        }
+
+        .section-left {
+            width: 232px;
+            float: left;
+        }
+
+        section {
+            width: 1226px;
+            margin: 0 auto;
+        }
+
+        .section-left ul {
+            background-color: #b0b0b0;
+            height: 460px;
+            box-sizing: border-box;
+            padding: 34px 20px 0 40px;
+        }
+
+        .section-left ul li {
+            display: flex;
+            justify-content: space-between;
+            height: 42px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .section-left ul a {
+            color: white;
+        }
+
+        .section-right {
+            width: 994px;
+            background: url(./顶部/banner2.webp) no-repeat center/100% 100%;
+            height: 460px;
+            float: right;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        aside img {
+            width: 316px;
+            height: 170px;
+            float: left;
+            margin-left: 14px;
+        }
+
+        aside>div {
+            width: 234px;
+            height: 170px;
+            float: left;
+            font-size: 12px;
+            background-color: rgb(32, 32, 32);
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        aside {
+            width: 1226px;
+            margin: 14px auto 0 auto;
+        }
+
+        .clearfix::after,
+        .clearfix::before {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .miaosha {
+            border: 1px solid rgb(122, 122, 122);
+            width: 76px;
+            height: 83px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .miaosha div {
+            width: 30px;
+            height: 30px;
+            background: url(./顶部/米粉卡.png) no-repeat center/100% 100%;
+            margin-bottom: 5px;
+        }
+
+        .middle {
+            margin-top: 40px;
+            background-color: #f6f6f6;
+        }
+
+        .middle-m {
+            width: 1226px;
+            margin: 0 auto;
+            padding: 22px 0;
+        }
+
+        .text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .middle-m>.text>div {
+            display: flex;
+        }
+
+        .middle-m>.text>div>a {
+            color: #c0c0c0;
+            text-align: center;
+            line-height: 24px;
+            width: 36px;
+            height: 24px;
+            border: 1px solid #c0c0c0;
+        }
+
+        .middle-m-tu {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .middle-m-tu img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .middle-m-tu div {
+            background-color: white;
+            width: 234px;
+            height: 340px;
+            margin-left: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .middle-m-tu div:first-child {
+            margin: 0;
+        }
+
+        .middle-m-tu div:first-child img {
+            width: 30px;
+            height: 40px;
+        }
+
+        .middle-m-tu div:first-child h6 {
+            margin: 34px 0;
+            font-size: 15px;
+            color: rgba(0, 0, 0, .54);
+        }
+
+        .middle-m-tu div:first-child ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        .middle-m-tu div:first-child ul li {
+            height: 46px;
+            text-align: center;
+            line-height: 46px;
+        }
+
+        .middle-m-tu div:first-child ul li:nth-child(odd) {
+            width: 33px;
+            background-color: #605751;
+            color: white;
+        }
+
+        .middle-m-tu div:first-child ul li:nth-child(even) {
+            color: blue;
+            font-size: 28px;
+            margin: 0 3px;
+        }
+
+        .middle-t {
+            width: 1226px;
+            margin: 0 auto;
+        }
+
+        .text p:first-child {
+            font-size: 20px;
+            font-weight: 700px;
+        }
+
+        .jiantou {
+            width: 20px;
+            height: 20px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .big-tu {
+            width: 234px;
+            height: 614px;
+            background: url(./手机/c583f2edc613f1be20fa415910b13ce3.webp) no-repeat center/100% 100%;
+        }
+
+        .tu {
+            display: flex;
+        }
+
+        .min-tu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: space-between;
+            width: 992px;
+        }
+
+        .min-tu div {
+            background-color: white;
+            width: 234px;
+            height: 300px;
+            margin-left: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .min-tu img {
+            width: 160px;
+            height: 160px;
+        }
+
+        .min-tu div p:last-child {
+            color: red;
+            margin-top: 20px;
+        }
+
+        .tu-b {
+            margin-top: 36px;
+            height: 120px;
+            background: url(./41d16e66381cfeda7b6b39ab67678d5e.webp) no-repeat center/100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <header>
+            <div class="banner">
+                <ul>
+                    <li>小米商城</li>
+                    <li>MIUI</li>
+                    <li>loT</li>
+                    <li>云服务</li>
+                    <li>天星数科</li>
+                    <li>有品</li>
+                    <li>小爱开放平台</li>
+                    <li>企业团购</li>
+                    <li>资质证照</li>
+                    <li>协议规则</li>
+                    <li>下载app</li>
+                    <li>智能生活</li>
+                    <li>Select Location</li>
+                </ul>
+
+                <ul>
+                    <li>登录</li>
+                    <li>注册</li>
+                    <li>消息通知</li>
+                    <li id="top-gouwu">
+                        <img src="./侧边/d7db56d1d850113f016c95e289e36efa.png" alt="">
+                        <span>购物车 (0)</span>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+
+        <nav>
+            <div class="logo"></div>
+            <ul class="nav-ul">
+                <li>小米手机</li>
+                <li>Redmi红米</li>
+                <li>电视</li>
+                <li>笔记本</li>
+                <li>家电</li>
+                <li>路由器</li>
+                <li>智能硬件</li>
+                <li>服务</li>
+                <li>社区</li>
+            </ul>
+            <div class="search">
+                <div class="kuang"></div>
+                <div class="tubiao"></div>
+            </div>
+        </nav>
+
+        <section>
+            <div class="section-left">
+                <ul>
+                    <li>
+                        <a href="#">手机 电话卡</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">电视 盒子</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">笔记本 显示器</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">家电 插线板</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">出行 穿戴</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">智能 路由器</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">电源 配件</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">健康 儿童</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">耳机 音响</a>
+                        <span>&gt</span>
+                    </li>
+                    <li>
+                        <a href="#">生活 箱包</a>
+                        <span>&gt</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="section-right"></div>
+        </section>
+        <div class="clear"></div>
+
+        <aside class="clearfix">
+            <div>
+                <div class="miaosha">
+                    <div></div>
+                    <p>小米秒杀</p>
+                </div>
+                <div class="miaosha">
+                    <div></div>
+                    <p>企业团购</p>
+                </div>
+                <div class="miaosha">
+                    <div></div>
+                    <p>F码通道</p>
+                </div>
+                <div class="miaosha">
+                    <div></div>
+                    <p>米粉卡</p>
+                </div>
+                <div class="miaosha">
+                    <div></div>
+                    <p>以旧换新</p>
+                </div>
+                <div class="miaosha">
+                    <div></div>
+                    <p>话费充值</p>
+                </div>
+            </div>
+            <img src="./顶部/小米11.jpg" alt="">
+            <img src="./顶部/小米降噪耳机 Pro.png" alt="">
+            <img src="./顶部/Redmi 9A.jpg" alt="">
+        </aside>
+
+        <div class="middle">
+            <div class="middle-m">
+                <div class="text">
+                    <p>小米秒杀</p>
+                    <div>
+                        <a href="#">&lt;</a>
+                        <a href="#">&gt;</a>
+                    </div>
+                </div>
+                <div class="middle-m-tu">
+                    <div>
+                        <img src="./小米秒杀/秒杀.jpg" alt="">
+                        <h6>距离结束还有</h6>
+                        <ul>
+                            <li>00</li>
+                            <li>:</li>
+                            <li>17</li>
+                            <li>:</li>
+                            <li>36</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="./家电/116fc43816b87192be4e67cf762e8da5.webp" alt="">
+                        <h6>米家扫地机器人</h6>
+                        <p>3D精准，扫脱不碰撞</p>
+                        <p>1099元起</p>
+                    </div>
+                    <div>
+                        <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                        <h6>标题</h6>
+                        <p>5G小金刚，期间长续航</p>
+                        <p>1099元起</p>
+                    </div>
+                    <div>
+                        <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                        <h6>标题</h6>
+                        <p>5G小金刚，期间长续航</p>
+                        <p>1099元起</p>
+                    </div>
+                    <div>
+                        <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                        <h6>标题</h6>
+                        <p>5G小金刚，期间长续航</p>
+                        <p>1099元起</p>
+                    </div>
+                </div>
+            </div>
+            <div class="middle-t">
+                <div class="text">
+                    <p>手机</p>
+                    <p>
+                        查看更多
+                        <img class="jiantou" src="./家电/1626227145601.png" alt="">
+                    </p>
+                </div>
+                <div class="tu">
+                    <div class="big-tu"></div>
+                    <div class="min-tu">
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                        <div>
+                            <img src="./手机/61454401f855cf5ed64747a6ac04bae5.webp" alt="">
+                            <h6>标题</h6>
+                            <p>5G小金刚，期间长续航</p>
+                            <p>1099元起</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tu-b">
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            下
+        </div>
+    </div>
+</body>
+
+</html>

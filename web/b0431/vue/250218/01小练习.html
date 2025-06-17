@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+	</head>
+
+	<body>
+		<div id="root">
+			<input type="text" name="" id="" placeholder="请输入内容" @keyup.enter="search" v-model="val" />
+			<ul>
+				<li v-for="(item,index) in articles" :key="index" v-if="item.visible">
+					{{item.title}}<a :href="item.url"><img :src="item.image" alt="" /></a>
+				</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					val: '',
+					articles: [
+						{
+							title: '百度',
+							url: 'https://www.baidu.com/',
+							image: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+							visible: false,
+						},
+						{
+							title: '百度1',
+							url: 'https://www.baidu.com/',
+							image: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+							visible: false,
+						},
+						{
+							title: '百度2',
+							url: 'https://www.baidu.com/',
+							image: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+							visible: false,
+						},
+						{
+							title: '百度3',
+							url: 'https://www.baidu.com/',
+							image: 'https://www.baidu.com/img/PCtm_d9c8750bed0b3c7d089fa7d55720d6cf.png',
+							visible: false,
+						},
+						{
+							title: '小米商城',
+							url: 'https://www.mi.com/shop',
+							image: 'https://cdn.cnbj1.fds.api.mi-img.com/mi.com-assets/shop/img/logo-mi2.png',
+							visible: false,
+						},
+						{
+							title: 'bilibili',
+							url: 'https://www.bilibili.com/',
+							image: 'https://img1.baidu.com/it/u=1944117848,1840655305&fm=253&fmt=auto&app=120&f=PNG?w=754&h=473',
+							visible: false,
+						},
+						{
+							title: '网易云音乐',
+							url: 'https://music.163.com/',
+							image: 'https://img.zcool.cn/community/0134e358295a61a84a0d304f7728b7.png?x-oss-process=image/auto-orient,1/resize,m_lfit,w_1280,limit_1/sharpen,100/quality,q_100',
+							visible: false,
+						},
+						{
+							title: '抖音',
+							url: 'https://www.douyin.com/',
+							image: 'https://img.zcool.cn/community/019bed5a61cec8a8012113c73d3979.jpg@2o.jpg',
+							visible: false,
+						},
+						{
+							title: '新浪微博',
+							url: 'https://weibo.com/',
+							image: 'https://img1.baidu.com/it/u=3798422093,1738924160&fm=253&fmt=auto&app=138&f=GIF?w=325&h=270',
+							visible: false,
+						},
+					],
+				},
+				methods: {
+					search() {
+						this.articles.forEach((element, index) => {
+							this.articles[index].visible = false;
+
+							if (element.title.includes(this.val)) {
+								this.articles[index].visible = true;
+							}
+						});
+						console.log(this.val);
+					},
+				},
+			});
+		</script>
+	</body>
+</html>

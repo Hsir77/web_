@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+		<style>
+			.box {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				margin-top: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root">
+			<h3>v - if条件渲染</h3>
+			<input type="checkbox" v-model="seen" />勾选后显示红色小方块
+			<div class="box" v-if="seen"></div>
+
+			<p v-else="seen">红色小方块消失了</p>
+
+			<h3>v - show条件渲染</h3>
+			<div class="box" v-show="seen"></div>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#root',
+				data: {
+					seen: true,
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./vue.js"></script>
+	</head>
+
+	<body>
+		<!--
+        事件的基本使用
+        1.使用v - on="xxx" 或者@xxx 绑定事件 其中xxx是事件名称
+        2.事件回调需要配在methods对象中 最终在vm身上
+        3.methods中配置的函数不能是箭头函数 否则this就不是vm
+    -->
+		<div id="root">
+			<h2>{{num}}</h2>
+			<button v-on:click="showInfo">点我+1</button>
+			<button @click="showInfo2(66,$event)">点我-1</button>
+		</div>
+		<script>
+			const vm = new Vue({
+				el: '#root',
+				data: {
+					num: 100,
+				},
+				methods: {
+					showInfo(even) {
+						console.log(even);
+						console.log(this);
+						this.num++;
+					},
+					showInfo2(num, even) {
+						console.log(even);
+						console.log(this);
+						this.num -= num;
+					},
+				},
+			});
+			console.log(vm);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			const foo = {
+				foo: 'foo',
+				bar: {
+					bar: 'bar',
+				},
+				aa: 20,
+				arr: [1, 2, 3],
+			};
+
+			let obj = {};
+
+			foo.bar.baz = foo;
+
+			let obj1 = structuredClone(foo);
+
+			// function copy(newObj, OldObj) {b
+			// 	for (const key in OldObj) {
+			// 		if (typeof OldObj[key] === 'object') {
+			// 			newObj[key] = {};
+			// 			copy(newObj[key], OldObj[key]);
+			// 		} else {
+			// 			newObj[key] = OldObj[key];
+			// 		}
+			// 	}
+			// 	return newObj;
+			// }
+
+			// copy(obj, foo);
+
+			console.log(obj1, foo);
+			console.log(obj1 === foo);
+			console.log(obj1.bar === foo.bar);
+		</script>
+	</body>
+</html>

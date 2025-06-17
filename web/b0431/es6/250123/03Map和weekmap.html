@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// Map对象相关操作说明
+			// set()：更新和存储
+			// get()：取值
+			// has()：判断有无指定key值
+			// delete()：删除
+			// clear()：清除
+			// forEach：循环
+			// size：长度
+
+			// 创建Map对象
+			let map = new Map();
+
+			// 使用set方法添加键值对
+			map.set('set', '新增1');
+			map.set(123, '新增2');
+			map.set([1, 2, 3], '新增3');
+			// 注意：这里[123]和上面的123是不同的键，因为数组是引用类型
+			map.set([123], '新增3');
+
+			// 打印Map对象
+			console.log(map);
+			// 获取键为"set"的值
+			console.log(map.get('set'));
+
+			// 创建包含初始值的Map对象
+			let arr = [123];
+			let map1 = new Map([
+				['set', 'set'],
+				[123, 'set'],
+				[arr, 'set'],
+			]);
+			console.log(map1);
+
+			// 判断map1中是否存在键123和arr
+			console.log(map1.has(123));
+			console.log(map1.has(arr));
+
+			// 删除map1中键为123的键值对并打印结果
+			console.log(map1.delete(123));
+			// 尝试调用clear方法，但该方法无返回值，这里打印结果无意义
+			// console.log(map1.clear());
+			// 打印map1的大小
+			console.log(map1.size);
+
+			// 遍历map
+			map.forEach(function (value, key, map) {
+				console.log(value, key, map);
+			});
+
+			// WeakMap相关说明
+			// 1.只接受对象作为键名，不接受其他数据类型作为键名
+			// 2.因为键名所指的对象会触发垃圾回收
+			// 3.没有clear，没有size，无法遍历
+
+			// 创建WeakMap对象并尝试添加键值对（注意：键必须是对象）
+			// 这里"{ "123": 123 }"写法有误，应该是对象字面量{ "123": 123 }
+			let weakMap = new WeakMap([[{ 123: 123 }, 'xxx']]);
+			console.log(weakMap);
+		</script>
+	</body>
+</html>
