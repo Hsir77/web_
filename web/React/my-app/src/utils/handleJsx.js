@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 
 // **********注意*************
 // 以下的语法适用React16以下
@@ -16,7 +16,37 @@ export function traverseVirtualDom(obj,callback){
 }
 
 //将virtualDOM转为真实DOM
-export  function render(){}
+export  function myRender(virtualDom,rootNode){
+    let { type , props} = virtualDom
+    if(typeof type==='string'){
+        let ele=document.createElement(type)
+        traverseVirtualDom(props,(key,val)=>{
+            if(key=="className"){
+                ele.setAttribute('class',val)
+            }else if(key=='style'){
+                for (const key in props["style"]) {
+                     ele.style[key] = props["style"][key];
+                }
+            }else if(key=='children'){
+                let children=props['children']
+                if(!Array.isArray(children)){
+                    children=[children]
+                }
+                children.forEach((child) => {
+                if(typeof child === 'number' || typeof child === 'string'){  
+                        ele.textContent=child
+                    }else{
+                        myRender(child,ele)
+                    }
+                })
+            }
+
+        })
+        if(rootNode){
+            rootNode.appendChild(ele)
+        }
+    }
+}
 
 //将Jsx语法转换成virtualDOM
 export  function createElement(tagName,props,...children){

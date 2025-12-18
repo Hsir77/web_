@@ -1,34 +1,26 @@
 import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {  jsx  as  _jsx  } from "react/jsx-runtime" ;   
-import { createElement } from '@/utils/handleJsx.js';
+import { createElement ,myRender} from '@/utils/handleJsx.js';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <div class="first">
-      <span>666</span>
-      <span>
-        <a href=""></a>
-        </span>
-    </div>
-  </StrictMode>,
-)
-console.log(
- createElement(
+myRender(
+createElement(
   "div",
-  { className: "first" },
-  "333",
-  createElement("span", null, "666"),
-  createElement(
-    "span",
-    null,
-    createElement("a", { href: "" })
-  )
-))
-console.log(
- React.createElement(
-  "div",
-  { className: "first" },
+  { 
+    className: "first",
+    style: {
+      backgroundColor: "#f5f5f5",
+      padding: "20px",
+      borderRadius: "8px",
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+      fontFamily: "Arial, sans-serif",
+      color: "#333",
+      minHeight: "100px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px"
+    }
+  },
   "333",
   React.createElement("span", null, "666"),
   React.createElement(
@@ -36,12 +28,27 @@ console.log(
     null,
     React.createElement("a", { href: "" })
   )
-))
-let arr=[1,2,3]
-arr[Symbol("A")]=4;
-Array.prototype.B=function(){
-  console.log('嘻嘻')
-}
-let a=Object.getOwnPropertyNames(arr)
-let b=Object.getOwnPropertySymbols(arr)
-console.log(a,b)
+),document.getElementById('root')
+)
+// createRoot(document.getElementById('root')).render(
+//   // <StrictMode>
+//     // <div class="first">
+//     //   <span>666</span>
+//     //   <span>
+//     //     <a href=""></a>
+//     //     </span>
+//     // </div>
+//   // {/* </StrictMode>, */}
+// )
+// console.log(
+//  createElement(
+//   "div",
+//   { className: "first" },
+//   "333",
+//   createElement("span", null, "666"),
+//   createElement(
+//     "span",
+//     null,
+//     createElement("a", { href: "" })
+//   )
+// ))
