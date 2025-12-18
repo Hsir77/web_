@@ -7,8 +7,21 @@
 	</head>
 	<body>
 		<script>
-			array.filter((item, index) => console.log(item.indexof()));
+			function Animal(type) {
+  this.type = type; // 自有属性
+}
 
+Animal.prototype.eat = function() { // 原型属性
+  console.log('eating');
+};
+
+const dog = new Animal('dog');
+dog.name = 'Buddy'; // 自有属性
+
+// for...in 遍历
+for (let key in dog) {
+  console.log(key);
+}
 			const array = [1, 2, 3, 4, 4, 3, 2, 1];
 		</script>
 	</body>

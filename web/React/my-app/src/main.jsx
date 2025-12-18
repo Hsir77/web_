@@ -37,4 +37,11 @@ console.log(
     React.createElement("a", { href: "" })
   )
 ))
-
+let arr=[1,2,3]
+arr[Symbol("A")]=4;
+Array.prototype.B=function(){
+  console.log('嘻嘻')
+}
+let a=Object.getOwnPropertyNames(arr)
+let b=Object.getOwnPropertySymbols(arr)
+console.log(a,b)
