@@ -2,6 +2,7 @@ import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {  jsx  as  _jsx  } from "react/jsx-runtime" ;   
 import FunctionDemo from './components/functionDemo/index';
+import UseReducerDemo from './components/useReducer--learn/index';
 // import { createElement ,myRender} from '../utils/handleJsx/handleJsx.js';
 
 // myRender(
@@ -44,17 +45,10 @@ import FunctionDemo from './components/functionDemo/index';
 //   )
 // ))
 
-  let functionDemoobj={a:1,b:2}
-    functionDemoobj.c=3;
-    functionDemoobj.a=4;
-    delete functionDemoobj.b;
 
 createRoot(document.getElementById('root')).render(
   <>
-    <div class="first">
-      666
-    </div>
-    <FunctionDemo obj={functionDemoobj}></FunctionDemo> 
+   <UseReducerDemo></UseReducerDemo>
   </>
 )
 
