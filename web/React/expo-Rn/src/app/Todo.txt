@@ -1,0 +1,14 @@
+//Todo
+//1、了解React.Navigation和expo-router的差异
+//2、了解expo的原理和启动流程
+//3、了解项目怎么在电脑上启动而在手机调试，也就是他们之间的连接原理
+//4、了解美团的框架怎么实现的
+//5、学习Rn的原理和代码
+// store/
+// ├── store.ts              # Redux Store 创建和缓存处理
+// ├── state.ts              # 状态定义和初始值
+// ├── model.ts              # 类型定义（TypeScript 接口）
+// ├── actionTypes.ts        # Action 类型常量
+// ├── actionCreators.ts     # Action 创建函数
+// ├── actionTeamUp.ts       # 拼搭子相关的异步 Action
+// └── reducer.ts            # Reducer 处理状态更新
