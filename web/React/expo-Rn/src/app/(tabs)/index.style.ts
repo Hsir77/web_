@@ -4,7 +4,7 @@ export const Styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#333',
-    textAlign: 'center',       
+    textAlign: 'center',
   },
   detailButtom: {
     backgroundColor: '#61dade',
@@ -21,5 +21,4 @@ export const Styles = StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 20,
   },
- 
 });
