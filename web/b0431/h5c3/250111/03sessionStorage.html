@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="text" />
+		<button>存储</button>
+		<button>获取</button>
+		<button>更新</button>
+		<button>删除</button>
+		<button>清除</button>
+		<div></div>
+		<script>
+			//存储大小 5mb
+			//存储位置客户端 不予服务器通信
+			//存储类型字符串
+			//获取方式 window.sessionStorage
+			//应用场景 敏感账号的一次性登录
+			//生命周期为浏览器页面的生命周期，同源窗口始终存在，关闭浏览器则销毁
+			var inp = document.querySelector('input');
+			var btns = document.querySelectorAll('button');
+			var div = document.querySelector('div');
+
+			btns[0].onclick = function () {
+				window.sessionStorage.setItem('username', inp.value);
+				window.sessionStorage.setItem('password', 963852);
+				window.sessionStorage.setItem('age', 22);
+			};
+			btns[1].onclick = function () {
+				div.innerText = window.sessionStorage.getItem('username');
+			};
+			btns[2].onclick = function () {
+				window.sessionStorage.setItem('username', inp.value);
+			};
+			btns[3].onclick = function () {
+				window.sessionStorage.removeItem('username');
+			};
+			btns[4].onclick = function () {
+				window.sessionStorage.clear();
+			};
+		</script>
+	</body>
+</html>

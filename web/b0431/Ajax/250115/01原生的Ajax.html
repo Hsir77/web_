@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button>摁扭</button>
+		<script>
+			//浏览器与服务器交互的api
+			//AJAX异步：同时做很多件事情
+
+			//服务器和浏览器进行沟通
+			//请求和相应 浏览器发起 》服务器》响应浏览器
+
+			//https://www.doubao.com/chat/?channel=
+			//超文本传输协议
+			//协议 ip/域名 目录? 参数 端口号
+
+			//http://127.0.0.1； 本地设备端口号
+			document.querySelector('button').onclick = function () {
+				//创建ajax异步对象
+				var xhr = new XMLHttpRequest();
+				// //设置请求行open()
+				// //请求类型，接口地址
+				// xhr.open('get', 'https://jsonplaceholder.typicode.com/posts');
+				// //发送请求
+				// xhr.send();
+				// //请求成功以后得操作
+				// xhr.onload = function () {
+				// 	console.log(xhr.responseText);
+				// };
+				xhr.open('post', 'https://jsonplaceholder.typicode.com/posts');
+				//设置请求头
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				xhr.send('id=1');
+				xhr.onload = function () {
+					console.log(xhr.responseText);
+				};
+			};
+		</script>
+	</body>
+</html>

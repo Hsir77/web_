@@ -1,0 +1,52 @@
+# 依赖相关
+node_modules/
+bower_components/
+
+# 构建产物
+dist/
+build/
+lib/
+es/
+out/
+tmp/
+temp/
+
+# 测试和覆盖率
+coverage/
+__snapshots__/
+__tests__/
+test/
+tests/
+
+# 示例/演示/文档
+demo/
+examples/
+docs/
+
+# 资源文件
+assets/
+public/
+static/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.webp
+*.mp4
+*.mp3
+
+# 环境和配置
+.env*
+.vscode/
+.idea/
+.DS_Store
+
+# 包管理器生成
+*.tgz
+*.log
+
+# 其他你不希望格式化的目录，可按需添加
+wrapper/
+scripts/

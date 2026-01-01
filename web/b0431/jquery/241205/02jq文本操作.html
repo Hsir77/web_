@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+</head>
+<body>
+  <div>
+    <span>我是内容</span>
+  </div>
+  <input type="text">
+  <script>
+    console.log($("div").html);
+    $("div").html("<p>666</p>")
+    //带标签
+    console.log($("div").text);
+    $("div").text("666")
+    //纯文本
+
+    $("input").val("123456")
+    console.log($("input").val());
+    //获取表单中的值
+  </script>
+</body>
+</html>

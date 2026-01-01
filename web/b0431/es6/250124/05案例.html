@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			img {
+				width: 500px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script>
+			// 定义三张图片的URL
+			let img1 = 'https://img0.baidu.com/it/u=2099161817,1753752038&fm=253&fmt=auto&app=120&f=JPEG?w=588&h=1339';
+			let img2 = 'https://img1.baidu.com/it/u=1225692248,8796388389&fm=253&app=138&f=JPEG?w=182&h=785';
+			let img3 = 'https://img1.baidu.com/it/u=248902655,3887301845&fm=253&app=138&f=JPEG?w=800&h=1487';
+
+			// 定义函数，通过传入的URL获取图片，返回一个Promise对象
+			function getImg(url) {
+				return new Promise((res, rej) => {
+					let img = document.createElement('img');
+					img.src = url;
+					img.onload = function () {
+						res(img);
+					};
+					img.onerror = function (err) {
+						res(err);
+					};
+				});
+			}
+
+			// 函数功能疑似为展示图片，将图片元素添加到body中
+			function shouImg(img) {
+				document.body.append(img);
+			}
+
+			// 以下代码注释掉的部分，功能似乎是等待所有传入的Promise都解决（成功或失败）时，
+			// 执行shouImg函数，但原代码未完整实现此功能
+			// Promise.all([getImg(img1), getImg(img2), getImg(img3)]).then(shouImg);
+
+			// Promise.race的功能是：只要有任意一个Promise被解决（成功或失败）时，
+			// 就执行then中的回调函数shouImg，将解决的结果（图片元素或错误信息）传入
+			Promise.race([getImg(img1), getImg(img2), getImg(img3)]).then(shouImg);
+		</script>
+	</body>
+</html>

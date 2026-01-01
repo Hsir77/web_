@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var str = 'abcdefgABCDEFG';
+			//对url进行编码
+			console.log(decodeURIComponent('E:\WeGameApps\downloading'));
+			//对URL进行编码
+			console.log(encodeURIComponent('E:\WeGameApps\downloading'));
+
+			//字符串的拼接
+			console.log(str.concat([1, 2, 3, [4, 5, 6]]));
+
+			//字符串的截取 从某索引到某索引
+			console.log(str.slice(2, 5));
+
+			//字符串的截取 从某索引后数几个
+			console.log(str.substr(2, 2));
+
+			//字符串的替换方法
+			//第一个参数是被替换，第二个是替换的
+			//不会改变原字符串
+			console.log(str.replace('a', 'ccc'));
+			console.log(str);
+
+			//分割字符串
+			//以xx为分割
+			console.log(str.split('c'));
+
+			//转换大小写
+			console.log(str.toLocaleLowerCase); //小写
+			console.log(str.toLocaleUpperCase); //大写
+
+			//去除空白
+			console.log(str.trim());
+		</script>
+	</body>
+</html>

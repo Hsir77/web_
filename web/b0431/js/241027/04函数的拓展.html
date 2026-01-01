@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			var num = 123;
+			// 函数声明
+			function fn() {
+				console.log(num);
+				var num1 = 456;
+				console.log(num1);
+			}
+			fn();
+
+			console.log(num);
+			console.log(num1);
+			函数的表达式形式;
+			var fn = function () {
+				console.log(123);
+			};
+			fn();
+
+			通过创建对象声明函数;
+			var fn = new Function('console.log(123);');
+			fn();
+
+			// 作用域 作用域链
+			// 全局作用域中的  变量或者是函数 在任意位置都可以使用
+			// 局部作用域中的 变量或者函数 只能在局部中使用
+			var a = 10;
+			function fn() {
+				var item = 'hello';
+				console.log(item);
+				function fn1() {
+					console.log(item);
+					console.log(a);
+				}
+				fn1();
+			}
+			fn();
+			console.log(item);
+
+			就近原则;
+			var a = 10;
+			function fn() {
+				var a = 'hello';
+				console.log(a, 1); //这里是根据就近原则会先在本作用域中查找a变量 如果没有谱就去上一级查找a变量 直至全局变量
+				function fn1() {
+					console.log(a, 2);
+				}
+				fn1();
+			}
+			fn();
+			console.log(a, 3);
+
+			var a = 10;
+			function fn() {
+				// 如果在函数中 没有使用var关键字进行声明
+				// 那么 此变量会变成全局的
+				b = 'cccc';
+				a = 'hello';
+
+				console.log(a, 1);
+				function fn2() {
+					console.log(a, 2);
+				}
+				fn2();
+			}
+			fn();
+			console.log(a);
+			console.log(b);
+
+			function fn() {
+				// b,c,d就是隐式全局变量（等号）
+				// var a = b = c = d = 1
+				// b,c,d就是隐式全局变量（分号）
+				// var a = 1; b = 1; c = 1; d = 1\
+				// b,c,d就不是隐式全局变量（逗号）
+				var a = 1,
+					b = 1,
+					c = 1,
+					d = 1;
+			}
+			fn();
+			console.log(d);
+			console.log(c);
+			console.log(b);
+			console.log(a);
+
+			function fn() {
+				num = 123;
+				function fn2() {
+					num = 789;
+					console.log(num);
+				}
+				fn2();
+			}
+			var num = 456;
+			fn();
+
+			// 预解析
+			// 有var关键字声明的变量 或 function关键字声明的函数时会发生
+			// 先找到var function和参数 ，然后会把他们提前，然后再解析一行执行一行
+			// 函数范围内照样会发生变量声明提升
+			// 如何变量名和函数名重名 走函数
+
+			console.log(num);
+			var num = 5;
+			fn();
+			function fn() {
+				console.log(1123);
+			}
+
+			function fn() {
+				var n;
+				console.log(n); // ？
+				var n = 10;
+				console.log(n); // ？
+			}
+			var n = 20;
+			fn(n);
+
+			f1();
+			function f1() {
+				var b = 9;
+				console.log(a);
+				console.log(b);
+				var a = 123;
+			}
+
+			console.log(fn);
+			var fn = '123';
+			function fn() {
+				console.log(456);
+			}
+
+			// ●函数不调用不执行
+			// ●函数名就等于（整个函数）
+			// ●加载函数的时候，只加载函数名，不加载函数体
+			// ●参数相当于局部变量
+			// ●就近原则使用变量
+			// ●两个平级的函数中的变量不会相互影响（可以使用同样的形参名）
+		</script>
+	</body>
+</html>

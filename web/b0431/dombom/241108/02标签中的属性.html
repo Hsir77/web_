@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<img src="" alt="ceshi" class="dome" />
+		<script>
+			var img = document.querySelector('img');
+			console.log(img.alt);
+
+			//修改属性值
+			img.alt = 'yes';
+			console.log(img.alt);
+
+			//在标签身上绑定属性
+			img.setAttribute('sex', 1);
+			console.log(img.setAttribute('sex'));
+		</script>
+	</body>
+</html>

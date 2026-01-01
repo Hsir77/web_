@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.a1 {
+				width: 500px;
+				height: 500px;
+
+				position: absolute;
+				left: 210px;
+				top: 8px;
+			}
+			.a2 {
+				width: 200px;
+				height: 100px;
+				background-color: rgb(123, 231, 255);
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a1"></div>
+		<div class="a2"></div>
+		<div class="a2"></div>
+		<div class="a2"></div>
+		<div class="a2"></div>
+		<script>
+			var div = document.getElementsByClassName('a2');
+			var div1 = document.querySelector('.a1');
+			var div2 = document.querySelectorAll('div');
+			for (var i = 0; i < div.length; i++) {
+				div[i].onmouseover = function () {
+					for (var j = 0; j < div.length; j++) {
+						div[j].style.backgroundColor = ' rgb(123, 231, 255)';
+					}
+					this.style.backgroundColor = 'red';
+					div1.style.backgroundColor = ' rgb(255, 183, 227)';
+				};
+				div2[i].onmouseout = function () {
+					div1.style.backgroundColor = '';
+				};
+			}
+		</script>
+	</body>
+</html>

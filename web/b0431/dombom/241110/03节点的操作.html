@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>111111111111111111111</h1>
+		<div>2222222</div>
+		<script>
+			var div = document.createElement('div');
+			console.log(div);
+			div.innerText = '添加的内容';
+			document.body.append(div); //在末尾追加元素,多个
+
+			document.body.insertBefore(div, document.querySelector('h1'));
+			//在某元素之前添加元素
+
+			document.querySelector('h1').remove();
+			//删除自身
+
+			document.body.removeChild(document.querySelector('h1'));
+			//通过父级元素删除子级节点
+
+			var newH1 = document.querySelector('h1').cloneNode(true);
+			console.log(newH1);
+			//复制
+		</script>
+	</body>
+</html>

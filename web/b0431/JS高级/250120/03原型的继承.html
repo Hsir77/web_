@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			var Anumal = {
+				name: 'Anumal',
+				age: '5',
+				say: function () {
+					console.log('动物怎么叫');
+				},
+			};
+
+			function Dog(name) {
+				this.name = name;
+			}
+
+			Dog.prototype.extend = function (obj) {
+				for (const key in obj) {
+					this[key] = obj[key];
+				}
+			};
+			Dog.prototype.extend(Anumal);
+
+			console.log(Dog.prototype);
+
+			var p1 = new Dog('旺财');
+			console.log(p1);
+
+			Dog.prototype = {
+				age: 20,
+				sayHello: function () {
+					console.log('hello');
+				},
+				constructor: Dog,
+			};
+
+			// 如果对原型进行升级操作，那么在覆盖之前的new操作是拿不到升级后的值的，就要对new的时机进行把控
+			// 还要对constructor进行手动赋值
+			var p2 = new Dog();
+			console.log(p1, p2);
+		</script>
+	</body>
+</html>

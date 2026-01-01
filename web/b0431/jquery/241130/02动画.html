@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../day01/jq.min.js"></script>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="showBtn">点击显示div</button>
+    <button class="hideBtn">点击隐藏div</button>
+    <button class="toggleBtn">点击切换div</button>
+    <div></div>
+
+    <!-- 
+    1.显示与隐藏效果
+    show(speed,easing,fn) hide()
+    参数1.代表速度 可以用毫秒值 slow缓慢的 normal正常的 fast快速的
+    2.摆动方式 直线linear 摆动 swing
+    3.回调函数 fn
+    **这些参数都可以省略
+    -->
+    <script>
+        // $(".hideBtn").click(function () {
+        //     $("div").hide(500, function () {
+        //         alert("执行好了")
+        //     })
+        // })
+        // $(".showBtn").click(function () {
+        //     $("div").show(500)
+        // })
+        // $(".toggleBtn").click(function () {
+        //     $("div").toggle(500)
+        // })
+
+        // 滑动
+        // $(".hideBtn").click(function () {
+        //     $("div").slideUp(500, function () {
+        //         alert("执行好了")
+        //     })
+        // })
+        // $(".showBtn").click(function () {
+        //     $("div").slideDown(500)
+        // })
+        // $(".toggleBtn").click(function () {
+        //     $("div").slideToggle(500)
+        // })
+
+        // 淡入淡出
+        $(".hideBtn").click(function () {
+            // $("div").fadeOut(500)
+            $("div").fadeTo(500, 0.5)//第二个参数是透明度
+
+        })
+        $(".showBtn").click(function () {
+            $("div").fadeIn(500)
+        })
+        $(".toggleBtn").click(function () {
+            $("div").fadeToggle(500)
+        })
+
+
+    </script>
+</body>
+
+</html>

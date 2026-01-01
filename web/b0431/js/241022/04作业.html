@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//.古典问题: 有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问一年后的兔子总数为多少?
+
+			var old = 0;
+			var all = 2;
+			var later = 2;
+			var front = 0;
+			var register;
+			var a = prompt('输入月份');
+
+			for (var i = 1; i <= a - 1; i++) {
+				register = front;
+				front = later;
+				old = old + register;
+				later = old;
+				all = front + later + old;
+				
+			}
+			document.write('在 ' + a + ' 个月后，兔子总数为：' + all);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,276 @@
+/* * {
+	margin: 0;
+	padding: 0;
+} */
+.all {
+	margin: 0 auto;
+}
+.clearfix::after {
+	content: '';
+	clear: both;
+	height: 0;
+	display: block;
+}
+.one {
+	height: 39px;
+	width: 1200px;
+	background-color: #055c92;
+	border-bottom: 1px solid #b2c3ce;
+	margin: 0 auto;
+	padding: 0 72px;
+}
+.text-left,
+.text-right {
+	color: #ffffff;
+	font-size: 12px;
+}
+.text-left {
+	float: left;
+	line-height: 39px;
+}
+.text-right {
+	float: right;
+	line-height: 39px;
+}
+.two {
+	height: 114px;
+	width: 1200px;
+	margin: 0 auto;
+	background-color: white;
+}
+.two1 {
+	float: left;
+	margin-top: 30px;
+	margin-right: 76px;
+}
+.two2,
+.two3,
+.two4,
+.two5,
+.two6 {
+	font-size: 16px;
+	color: #333333;
+	display: inline-block;
+	line-height: 114px;
+	margin: 0 20px;
+}
+.three {
+	background-color: #ffffff;
+	height: 400px;
+	width: 1200px;
+
+	margin: 0 auto;
+	margin-bottom: 39px;
+}
+
+.three1 {
+	margin-right: 10px;
+	display: inline-block;
+	height: 400px;
+	width: 958px;
+	background-image: url(../images/banner.jpg);
+}
+.three2 {
+	height: 400px;
+	width: 232px;
+	float: right;
+}
+.three2-top {
+	background-color: #055c92;
+	border: 1px solid #e0e0e0;
+	height: 44px;
+	width: 232px;
+}
+.three2-toptext {
+	text-align: center;
+	line-height: 44px;
+}
+.three2-bottom {
+	float: right;
+}
+l1.li::marker {
+	margin: 0 8px;
+	width: 4px;
+	height: 4px;
+	color: #055c92;
+}
+.l1 {
+	font-size: 12px;
+	color: #333333;
+	margin-bottom: 16px;
+}
+.l0 {
+	margin-top: 33px;
+	font-size: 12px;
+	color: #333333;
+	margin-bottom: 16px;
+}
+.four {
+	height: 507px;
+	background-color: #f3f3f3;
+	width: 1200px;
+	margin: 0 auto;
+
+	padding: 0 72px;
+	overflow: hidden;
+}
+.smallfour {
+	height: 349px;
+	width: 1200px;
+	background-color: #f3f3f3;
+	margin-top: 50px;
+	margin-bottom: 108px;
+	position: relative;
+}
+.four1 {
+	width: 232px;
+	height: 349px;
+	background-color: #f5717c;
+	overflow: hidden;
+	position: relative;
+	margin-right: 10px;
+}
+.four1-in1 {
+	font-size: 20px;
+	color: #ffffff;
+	font-weight: 700;
+	margin-top: 36px;
+	margin-left: 19px;
+}
+.four1-in2 {
+	font-size: 14px;
+	color: #ffffff;
+
+	margin-top: 14px;
+	margin-left: 19px;
+	margin-bottom: 33px;
+}
+.four1-in3 {
+	height: 156px;
+	width: 111px;
+
+	position: absolute;
+	left: 50%;
+	margin-left: -55px;
+}
+.four2,
+.four3,
+.four4,
+.four5,
+.four6,
+.four7,
+.four8,
+.four9 {
+	width: 232px;
+	height: 170px;
+	background-color: #ffffff;
+}
+.four2 {
+	position: absolute;
+	left: 242px;
+	top: 0px;
+}
+.four2-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+.tuoyuan {
+	position: absolute;
+	top: 40px;
+	right: 82px;
+}
+.four3 {
+	position: absolute;
+	left: 484px;
+	top: 0px;
+}
+.four3-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+.four4 {
+	position: absolute;
+	left: 726px;
+	top: 0px;
+}
+.four4-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+.four5 {
+	position: absolute;
+	left: 968px;
+	top: 0px;
+}
+.four5-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+
+.four6 {
+	position: absolute;
+	left: 242px;
+	top: 180px;
+}
+.four6-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+.four7 {
+	position: absolute;
+	left: 484px;
+	top: 180px;
+}
+.four7-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+.four8 {
+	position: absolute;
+	left: 726px;
+	top: 180px;
+}
+.four8-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+.four9 {
+	position: absolute;
+	left: 968px;
+	top: 180px;
+}
+.four9-1 {
+	vertical-align: middle;
+	position: absolute;
+	top: 52px;
+	right: 82px;
+}
+.five {
+	height: 201px;
+	width: 1200px;
+	background-color: #ffffff;
+	margin: 0 auto;
+	padding: 0 72px;
+}
+.smallfive {
+	height: 146px;
+	width: 1200px;
+	background-color: #ffffff;
+	margin: 0 auto;
+	margin-top: 55px;
+}
+

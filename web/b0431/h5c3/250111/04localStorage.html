@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="text" />
+		<button>存储</button>
+		<button>获取</button>
+		<button>更新</button>
+		<button>删除</button>
+		<button>清除</button>
+		<div></div> 
+		<script>
+			//存储大小 20mb
+			//存储位置客户端 不予服务器通信
+			//存储类型字符串，可以将对象JSON.stringify() 编码后存储
+			//获取方式 window.localStorage
+			//应用场景  长期登录，或判断是否已经登录
+			//生命周期永久除非手动删除，否则不会消失
+			var inp = document.querySelector('input');
+			var btns = document.querySelectorAll('button');
+			var div = document.querySelector('div');
+
+			btns[0].onclick = function () {
+				window.localStorage.setItem('username', inp.value);
+				window.localStorage.setItem('password', 963852);
+				window.localStorage.setItem('age', 22);
+			};
+			btns[1].onclick = function () {
+				div.innerText = window.localStorage.getItem('username');
+			};
+			btns[2].onclick = function () {
+				window.localStorage.setItem('username', inp.value);
+			};
+			btns[3].onclick = function () {
+				window.localStorage.removeItem('username');
+			};
+			btns[4].onclick = function () {
+				window.localStorage.clear();
+			};
+		</script>
+	</body>
+</html>

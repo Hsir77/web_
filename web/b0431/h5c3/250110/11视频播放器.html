@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="./css/font-awesome.css" />
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+			}
+			.vid {
+				position: absolute;
+				left: 400px;
+				top: 120px;
+			}
+			.icon-play {
+				position: absolute;
+				left: 415px;
+				top: 485px;
+				cursor: pointer;
+				color: red;
+			}
+			.icon-pause {
+				position: absolute;
+				left: 415px;
+				top: 485px;
+				cursor: pointer;
+				color: red;
+			}
+			.icon-resize-full {
+				position: absolute;
+				left: 1021px;
+				top: 485px;
+				cursor: pointer;
+				color: red;
+			}
+			.progress1 {
+				height: 10px;
+				width: 500px;
+				border-radius: 10px;
+				background-color: rgba(255, 4, 4, 0.118);
+				position: absolute;
+				left: 450px;
+				top: 485px;
+			}
+			.progress2 {
+				height: 10px;
+				width: 0px;
+				border-radius: 10px;
+
+				background-color: rgba(255, 4, 4, 0.827);
+				position: absolute;
+				left: 450px;
+				top: 485px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="vid"><video src="./video/movie.mp4"></video></div>
+		<div class="icon-play"></div>
+		<div class="qwer1"></div>
+		<div class="icon-resize-full"></div>
+		<div class="progress1"></div>
+		<div class="progress2"></div>
+
+		<script>
+			var video = document.querySelector('video');
+			var play = document.querySelector('.icon-play');
+			var pause = document.querySelector('.qwer1');
+			var full = document.querySelector('.icon-resize-full');
+			var p2 = document.querySelector('.progress2');
+			var p1 = document.querySelector('.progress1');
+
+			document.querySelectorAll('div')[2].onclick = function () {
+				if (video.RequestFullScreen) {
+					video.RequestFullScreen();
+				} else if (video.webkitRequestFullScreen) {
+					video.webkitRequestFullScreen();
+				} else if (video.mozRequestFullScreen) {
+					video.mozRequestFullScreen();
+				}
+			};
+			play.onclick = function () {
+				video.play();
+				play.classList.remove('icon-play');
+				pause.classList.add('icon-pause');
+			};
+			pause.onclick = function () {
+				video.pause();
+				pause.classList.remove('icon-pause');
+				play.classList.add('icon-play');
+			};
+			full.onclick = function () {
+				video.webkitRequestFullScreen();
+			};
+			video.ontimeupdate = function () {
+				var wi = (video.currentTime / video.duration) * p1.offsetWidth;
+				console.log(wi);
+				p2.style.width = wi + 'px';
+			};
+		</script>
+	</body>
+</html>

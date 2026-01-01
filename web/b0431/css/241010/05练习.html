@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.all {
+				width: 970px;
+				height: 603px;
+				display: inline-block;
+			}
+			.clearfix::after {
+				content: '';
+				clear: both;
+				height: 0;
+				display: block;
+			}
+
+			.red {
+				width: 277px;
+				height: 103px;
+				background-color: red;
+				float: left;
+			}
+			.greenall {
+				width: 679px;
+				height: 103px;
+				float: right;
+			}
+			.green1 {
+				width: 137px;
+				height: 49px;
+				background-color: greenyellow;
+				float: right;
+				margin-bottom: 10px;
+			}
+			.green2 {
+				width: 679px;
+				height: 46px;
+				background-color: greenyellow;
+				float: right;
+			}
+			.middle {
+				margin-top: 10px;
+				float: left;
+				margin-bottom: 10px;
+			}
+			.yellow {
+				width: 310px;
+				height: 435px;
+				background-color: yellow;
+				float: left;
+				margin-right: 10px;
+			}
+
+			.blueall {
+				width: 450px;
+				height: 400px;
+				overflow: hidden;
+				float: left;
+				margin-bottom: 10px;
+			}
+
+			.blue1 {
+				width: 450px;
+				height: 240px;
+				background-color: blue;
+				overflow: hidden;
+				margin-bottom: 10px;
+				float: left;
+			}
+			.blue2 {
+				width: 450px;
+				height: 110px;
+				background-color: blue;
+				overflow: hidden;
+				margin-bottom: 10px;
+				float: left;
+			}
+			.blue3 {
+				width: 450px;
+				height: 30px;
+				background-color: blue;
+				overflow: hidden;
+				float: left;
+			}
+			.greenn {
+				width: 650px;
+				height: 25px;
+				background-color: rgb(0, 95, 17);
+				overflow: hidden;
+			}
+			.purple {
+				width: 190px;
+				height: 400px;
+				background-color: rgb(247, 8, 223);
+				overflow: hidden;
+				float: right;
+			}
+			.bottom {
+				width: 970px;
+				height: 35px;
+				background-color: darkblue;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all clearfix">
+			<div class="top">
+				<div class="red"></div>
+				<div class="greenall">
+					<div class="green1"></div>
+					<div class="green2"></div>
+				</div>
+			</div>
+			<div class="middle clearfix">
+				<div class="yellow"></div>
+
+				<div class="blueall">
+					<div class="blue1"></div>
+					<div class="blue2"></div>
+					<div class="blue3"></div>
+				</div>
+
+				<div class="purple"></div>
+				<div class="greenn"></div>
+			</div>
+			<div class="bottom"></div>
+		</div>
+	</body>
+</html>

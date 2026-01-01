@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//自动捕获异常
+			try {
+				//可能会出错的代码
+				console.log(a);
+				//出错之后的代码不会执行
+				var b = '123';
+				console.log(b);
+			} catch (error) {
+				//上面try所出的问题
+				console.log(error);
+			}
+
+			//手动捕获异常
+			function fn(aaa) {
+				if (aaa === undefined) {
+					throw new Error('参数');
+				}
+			}
+			try {
+				fn();
+			} catch (err) {
+				console.log(err);
+			}
+			//错误传递机制
+			//当被调用的函数内部发生异常时，异常会会一层层向外抛出
+			//类似于冒泡
+			function f1() {
+				fn2();
+			}
+			function fn2() {
+				fn3();
+			}
+			function fn3() {
+				throw new Error('我是错误');
+			}
+			try {
+				f1(1);
+			} catch (error) {
+				console.log(error);
+			}
+		</script>
+	</body>
+</html>

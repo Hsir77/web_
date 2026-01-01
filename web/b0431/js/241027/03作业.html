@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var a = prompt('年');
+			var b = prompt('月');
+			var c = prompt('日');
+			if (a > 0 && b > 0 && b < 13 && c > 0 && c < 32) {
+				document.write(zuoye(a, b, c));
+			} else {
+				document.write('格式不正确');
+			}
+
+			function zuoye(a, b, c) {
+				var a1,
+					b1 = 0,
+					c1;
+				a = parseInt(a);
+				b = parseInt(b);
+				c = parseInt(c);
+				if ((a % 4 == 0 && a % 100 != 0) || a % 400 == 0) {
+					a1 = 366;
+				} else {
+					a1 = 365;
+				}
+				var month1 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+				var month2 = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+				if (a1 == 365) {
+					for (var i = 0; i < b - 1; i++) {
+						b1 += month1[i];
+					}
+				} else {
+					for (var i = 0; i < b - 1; i++) {
+						b1 += month2[i];
+					}
+				}
+				c1 = b1 + c;
+				return c1;
+			}
+		</script>
+	</body>
+</html>

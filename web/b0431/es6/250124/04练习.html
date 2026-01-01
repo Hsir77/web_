@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				background-color: #000;
+				height: 600px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="stars"></div>
+		<script>
+			// 获取class为stars的元素
+			var stars = document.querySelector('.stars');
+
+			// 定义一个对象构造函数
+			var Obj = function () {};
+			Obj.prototype.drasStar = function () {
+				// 创建一个div元素
+				var div = document.createElement('div');
+				div.style.width = '7px';
+				div.style.height = '7px';
+				div.style.position = 'relative';
+				// 随机设置div的水平位置
+				div.style.left = Math.floor(Math.random() * document.body.clientWidth) + 'px';
+				// 随机设置div的垂直位置
+				div.style.top = Math.floor(Math.random() * document.body.clientHeight) + 'px';
+				div.style.overflow = 'hidden';
+				console.log(document.body.clientHeight);
+				stars.appendChild(div);
+
+				// 创建一个img元素
+				var star = document.createElement('img');
+				star.src = './images/star.png';
+				star.style.width = '49px';
+				star.style.height = '49px';
+				star.style.position = 'absolute';
+
+				div.appendChild(star);
+				play(star);
+			};
+
+			// 定义一个函数来控制元素移动
+			function play(ele) {
+				var i = Math.floor(Math.random() * 7);
+				var time = setInterval(function () {
+					if (i < 7) {
+						console.log(i * 7 + 'px');
+						ele.style.left = -i * 7 + 'px';
+						i++;
+					} else {
+						i = 0;
+					}
+				}, 100);
+			}
+
+			// 循环创建30个星星对象并调用绘制方法
+			for (var i = 0; i < 30; i++) {
+				var obj = new Obj();
+				obj.drasStar();
+			}
+
+			// 这里play函数调用时star未定义，可能是个错误，假设是要对stars操作
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<button>1</button>
+		<button>2</button>
+		<button>3</button>
+		<button>4</button>
+		<script>
+			// var btn = document.querySelectorAll('button');
+			// for (var i = 0; i < btn.length; i++) {
+			// 	btn[i].onclick = function () {
+			// 		for (var j = 0; j < 4; j++) {
+			// 			btn[j].style.backgroundColor = 'white';
+			// 		}
+			// 		this.style.backgroundColor = 'red';
+			// 	};
+			// }
+
+			var btnAll = document.queryselectorAll('button');
+			for (var i = 0; i < btnAll.length; i++) {
+				btnAll[i].onclick = function () {
+					this.style.backgroundcolor = 'red';
+					getsib(this).forEach(function (item) {
+						item.style.backgroundcolor = '';
+					});
+				};
+			}
+			function getsib(ele) {
+				var eleArr = ele.parentNode.childrenvar;
+				child = [];
+				for (var i = 0; i < eleArr.length; i++) {
+					if (eleArr[i] !== ele) {
+						child.push(eleArr[i]);
+					}
+				}
+				return child;
+			}
+		</script>
+	</body>
+</html>

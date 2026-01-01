@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<button>按钮</button>
+		<script>
+			// function fn() {
+			//     console.log(this);//指向window
+			// }
+			// fn()
+
+			// 构造函数中 this指向new出来的对象
+			// function Person(name) {
+			//     this.name = name;
+			//     console.log(this);
+			// }
+			// var p = new Person("小美")
+
+			// var obj = {
+			//     age: 20,
+			//     eat: function () {
+			//         console.log(this);//所在的对象
+			//     },
+			//     t: this,
+			//     OO: {
+			//         AA: this
+			//     }
+			// }
+			// obj.eat()
+			// console.log(obj.t);
+			// console.log(obj.OO.AA);
+
+			// 事件中的this指的是被触发的对象
+			// var btn = document.querySelector("button")
+			// btn.onclick = function () {
+			//     console.log(this);
+			// }
+
+			// // 定时器中的this指的是window
+			// setTimeout(function () {
+			//     console.log(this);
+			// }, 1000)
+
+			function Person(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+
+			var p = new Person('小美', 20);
+
+			function Sex(sex) {
+				this.sex = sex;
+			}
+			var p1 = new Sex('女');
+			console.log(p, p1);
+
+			// apply 方法 由调用者提供结构
+			// 第一个参数是this指向的提供者
+			// 第二个参数 是一个数组 其中的每一项作为调用者的参数
+			Person.apply(p1, ['小米', 25]);
+			console.log(p1);
+
+			// call 用法和apply一样 只不过参数是依次传递
+			Person.call(p1, '小李', 16);
+			console.log(p1);
+
+			// bind 返回值是一个函数 需要我们手动执行
+			var newP = Person.bind(p1, '小琳', 15);
+			console.log(newP);
+			newP();
+			console.log(p1);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			ul {
+				margin: 0 auto;
+				width: 400px;
+				height: 400px;
+				background-color: aqua;
+			}
+			li {
+				margin: 0 auto;
+				width: 300px;
+				height: 300px;
+				background-color: aqua;
+			}
+			div {
+				margin: 0 auto;
+				width: 200px;
+				height: 200px;
+				background-color: rgb(1, 50, 50);
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><div></div></li>
+		</ul>
+		<script>
+			var ul = document.querySelector('ul');
+			var li = document.querySelector('li');
+			var div = document.querySelector('div');
+			//事件的三个阶段 捕获 触发 冒泡
+
+			//冒泡 事件被处罚后在父级元素中 如果有相同事件 则一并触发
+			//顺序是 从触发元素开始 一层一层向上触发
+			div.onclick = function () {
+				console.log('div');
+				event.stopPropagation();
+			};
+			li.onclick = function () {
+				console.log('div');
+			};
+			ul.onclick = function () {
+				console.log('div');
+			};
+			//2.设置事件的方式 事件的监听
+			//事件的捕获 利用addEventListener
+			//在事件的第三的参数设置true 使事件从冒泡变为捕捉
+			div.addEventListener(
+				'click',
+				function () {
+					console.log('div');
+				},
+				true,
+			);
+
+			li.addEventListener('click', function () {
+				console.log('li');
+				event.stopPropagation();
+			});
+			ul.addEventListener('click', function () {
+				console.log('ul');
+				event.stopPropagation();
+			});
+			//不能冒泡
+			//blur focus
+			//load unload
+			//mouseover mouseout
+		</script>
+	</body>
+</html>

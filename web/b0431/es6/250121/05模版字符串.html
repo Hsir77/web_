@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// es6 引入的声明字符串的方式 【`】
+			let str = 'abc';
+			console.log(`我的名字是小明
+        我今年十八岁
+        我喜欢抽烟喝酒烫头
+        `);
+
+			// 模板字符串 `${}`
+			// 模板字符串需要使用反引号
+			const name = '小明';
+			const age = 18;
+			const hobbie = '学习，跑步，游泳';
+			const str1 = '我的名字' + name + ',我今年' + age + '岁，我喜欢' + hobbie;
+			console.log(str1);
+			const str2 = `我的名字是${name},我今年${age}岁，我喜欢${hobbie}`;
+			console.log(str2);
+
+			// let str4 = `${alert(1 + 2)}
+			// 123
+			// 456${str}
+			// `
+			// console.log(str4);
+
+			// 1.includes 查询字符串中是否包含谁 返回一个boolean值
+			console.log(str.includes('v'));
+
+			// 2.startsWith 查询是否以xx开头
+			console.log(str.startsWith('abcd'));
+
+			// 3.endsWith 查询是否以xx结尾
+			console.log(str.endsWith('c'));
+
+			// 4.repeat 字符串的重复操作 返回值是重复后的字符串
+			let newStr = str.repeat(3);
+			console.log(newStr, str);
+
+			// 5.padStart 用于补全头部
+			// 参数1 字符串的长度
+			// 参数2 用于补全的字符
+			console.log(str.padStart(6, '*'));
+
+			// 5.padEnd 用于补全尾部
+			// 参数1 字符串的长度
+			// 参数2 用于补全的字符
+			console.log(str.padEnd(6, '*'));
+		</script>
+	</body>
+</html>

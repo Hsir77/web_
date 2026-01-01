@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="div1">
+			div
+
+			<ul>
+				ul
+				<li>li</li>
+			</ul>
+			<a href="#"></a>
+		</div>
+		<script>
+			var li = document.getElementsByTagName('li')[0];
+			//通过子元素获取父元素
+			console.log(li.parentElement);
+			console.log(li.parentNode);
+
+			var ul = document.querySelector('ul');
+			//查找下一个兄弟元素
+			console.log(ul.nextElementSibling); //用这个
+			console.log(ul.nextSibling);
+
+			var div = document.getElementById('div1');
+			console.log(div.firstChild); //用这个
+			console.log(div.firstElementChild);
+
+			console.log(div.lastChild);
+
+			console.log(div.children);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+  <style>
+    body{
+      height: 2000px;
+    }
+   .big{
+      width: 700px;
+      height: 700px;
+      background-color: aquamarine;
+      margin: 0 auto;
+      margin-top: 500px;
+    }
+    .hui{
+      width: 100px;
+      height: 100px;
+      background-color: brown;
+      position: fixed;
+         bottom: 0;
+         right: 0;
+      text-align: center;
+      line-height: 100px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="big"></div>
+  <div class="hui">回去</div>
+  <script>
+    var boxtop=$(".big").offset().top
+    $(window).scroll(function(){
+      if($(document).scrollTop()>=boxtop){
+        $(".hui").fadeIn()
+      }
+      else{
+        $(".hui").fadeOut()
+      }
+      
+    })
+    $(".hui").click(function(){
+      $("html").stop().animate({
+        scrollTop:0
+      })
+    })
+  </script>
+</body>
+</html>

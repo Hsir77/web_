@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>控制表格列宽</title>
+		<script src="./ajax.js"></script>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			.tianjia {
+				width: 100px;
+				height: 50px;
+				background-color: chartreuse;
+				display: block;
+				margin: 0 auto;
+			}
+			table {
+				border-collapse: collapse;
+				margin: 0 auto;
+			}
+
+			th,
+			td {
+				border: 1px solid black;
+			}
+
+			th:first-child,
+			td:first-child {
+				width: 50px;
+				text-align: center;
+				line-height: 50px;
+			}
+
+			th:nth-child(2),
+			td:nth-child(2) {
+				width: 300px;
+				text-align: center;
+				line-height: 50px;
+			}
+			th:nth-child(3),
+			td:nth-child(3) {
+				width: 200px;
+				text-align: center;
+				line-height: 50px;
+			}
+			th:nth-child(4),
+			td:nth-child(4) {
+				width: 400px;
+				text-align: center;
+				line-height: 50px;
+			}
+			th:nth-child(5),
+			td:nth-child(5) {
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+			}
+			tr:first-child {
+				background-color: rgb(255, 0, 0);
+			}
+			a {
+				text-decoration: none;
+			}
+			.all {
+				display: none;
+				z-index: 100;
+
+				position: fixed;
+				top: 25%;
+				left: 40%;
+				width: 400px;
+				height: 250px;
+				background-color: rgb(117, 255, 167);
+			}
+			.queren {
+				width: 100px;
+				height: 50px;
+				background-color: rgb(255, 175, 28);
+				margin-top: 10px;
+			}
+			h3 {
+				background-color: gold;
+				width: 100%;
+				text-align: center;
+			}
+			.hidden {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+			}
+			.close {
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				top: -2px;
+				left: 380px;
+
+				font-size: 28px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button class="tianjia">添加成员</button>
+
+		<div class="all">
+			<div class="hidden">
+				<button class="close">X</button>
+				<h3>成员信息描述</h3>
+				<div>编号:</div>
+				<input type="text" />
+				<div>姓名:</div>
+				<input type="text" />
+				<div>城市:</div>
+				<input type="text" />
+				<div>邮箱:</div>
+				<input type="text" />
+				<button class="queren">确认</button>
+			</div>
+		</div>
+
+		<div id="app"></div>
+		<script src="./template-web.js"></script>
+		<script id="temp" type="text/html">
+			<table>
+				<tr>
+					<td>编号</td>
+					<td>姓名</td>
+					<td>城市</td>
+					<td>邮箱</td>
+					<td>操作</td>
+				</tr>
+				{{each res}}
+				<tr>
+					<td>{{$value.id}}</td>
+					<td>{{$value.name}}</td>
+					<td>{{$value.address.city}}</td>
+					<td>{{$value.email}}</td>
+					<td><a class="delete" href="">删除</a></td>
+				</tr>
+				{{/each}}
+			</table>
+		</script>
+		<script>
+			var tianjia = document.querySelector('.tianjia');
+			var close1 = document.querySelector('.close');
+
+			var all = document.querySelector('.all');
+			var delete1 = document.querySelectorAll('.delete');
+			console.log(delete1);
+
+			tianjia.onclick = function () {
+				all.style.display = 'block';
+			};
+			close1.onclick = function () {
+				all.style.display = 'none';
+			};
+			ajax('https://jsonplaceholder.typicode.com/users', 'get', {}, function (res) {
+				var html = template('temp', { res });
+				document.getElementById('app').innerHTML = html;
+			});
+			for (let i = 0; i < delete1.length; i++) {
+				delete1[i].onclick = function (event) {
+					event.preventDefault();
+					console.log(i);
+				};
+			}
+		</script>
+	</body>
+</html>

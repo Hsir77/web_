@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="./jq.js"></script>
+	</head>
+	<body>
+		<div></div>
+		<button>摁扭</button>
+		<button>摁扭</button>
+		<button>摁扭</button>
+		<button>摁扭</button>
+		<button>摁扭</button>
+
+		<script>
+			var $btn = $('button');
+			$btn.click(function () {
+				$(this)
+					.css({
+						width: 100,
+						color: 'red',
+					})
+					.siblings()
+					.css({
+						color: '',
+						width: '',
+					});
+			});
+		</script>
+	</body>
+</html>

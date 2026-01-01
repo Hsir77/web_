@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div></div>
+		<script>
+			var div1 = document.querySelector('div');
+			var a = 10;
+			var button;
+			var time = setInterval(function () {
+				//多次，异步执行
+
+				a = a - 1;
+				div1.textContent = a;
+				if (a == 0) {
+					clearInterval(time);
+				}
+			}, 1000);
+
+			var button = document.querySelector('button');
+			button.onclick = function () {
+				// history.forward()前进
+				// history.back()后退
+				//history.go(-1)后退
+			};
+		</script>
+	</body>
+</html>

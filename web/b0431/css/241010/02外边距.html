@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.top {
+				width: 200px;
+				height: 200px;
+				background-color: aqua;
+				margin-bottom: 30px;
+			}
+			.bottom {
+				width: 200px;
+				height: 200px;
+				background-color: rgb(252, 24, 24);
+				margin-top: 50px;
+			}
+			/* 外边距合并两个兄弟元素取最大 */
+			/* 只有垂直方向 */
+			.father {
+				width: 400px;
+				height: 400px;
+				background-color: rgb(67, 134, 0);
+				border: 1px solid rgb(67, 134, 0);
+				overflow: hidden;
+			}
+			.son {
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				margin-top: 50px;
+			}
+			/* 外边距的塌陷问题 */
+			/* 在嵌套关系中子元素设置上外边距时会带着父盒子一起向下 */
+			/* 1加border */
+			/* 2加内容 */
+			/* 3加overflow：hidden*/
+		</style>
+	</head>
+	<body>
+		<div class="top"></div>
+		<div class="bottom"></div>
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</body>
+</html>

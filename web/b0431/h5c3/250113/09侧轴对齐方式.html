@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-size: 35px;
+			}
+
+			div {
+				width: 90%;
+				margin: 40px auto;
+			}
+
+			ul {
+				border: 1px solid;
+			}
+
+			li {
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				margin: 10px;
+			}
+
+			div:nth-child(1) ul {
+				display: flex;
+				justify-content: flex-start;
+			}
+
+			div:nth-child(2) ul {
+				display: flex;
+				justify-content: flex-end;
+			}
+
+			div:nth-child(3) ul {
+				display: flex;
+				justify-content: center;
+			}
+
+			div:nth-child(4) ul {
+				display: flex;
+				justify-content: space-around;
+			}
+
+			div:nth-child(5) ul {
+				display: flex;
+				justify-content: space-between;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<h3>起点对齐</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>终点对齐</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>中间对齐</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>环绕</h3>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+		<div>
+			<h3>两端对齐</h3>
+			<!-- 以字体对齐 -->
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
+	</body>
+</html>

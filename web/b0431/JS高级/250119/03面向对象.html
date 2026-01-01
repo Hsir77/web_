@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: aqua;
+				margin: 5px;
+			}
+			span {
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<span>1111</span>
+		<span>2222</span>
+		<span>3333</span>
+		<script>
+			var tool = {
+				getElem: {
+					getTag: function (TagName) {
+						return document.getElementsByTagName(TagName);
+					},
+					getid: function (id) {
+						return document.getElementsByTagName(id);
+					},
+					getClass: function (Class) {
+						return document.getElementsByTagName(Class);
+					},
+				},
+				steCss: function setCss(obj, arrt, value) {
+					for (var i = 0; i < obj.length; i++) {
+						obj[i].style[arrt] = value;
+					}
+				},
+			};
+			var div = tool.getElem.getTag('div');
+			tool.steCss(div, 'border', '1px solid blue');
+		</script>
+	</body>
+</html>

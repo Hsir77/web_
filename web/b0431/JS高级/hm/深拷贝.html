@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//在js内存机制中，不同的数据类型存储到不同的地方，简单数据类型直接存储到栈中，而复杂数据类型存在堆中，通过在栈存储地址指向堆中的实际值
+			const obj1 = {
+				name: 'davie',
+				age: 18,
+				hobbies: [1, 2, 3],
+			};
+
+			const obj2 = obj1;
+			console.log(obj2);
+			obj2.age = 20;
+			console.log(obj2);
+			console.log(obj1);
+			//说明复制的是地址，而两个地址指向同一个对象，修改一个则另一个被修改，不能实现深拷贝
+
+			/*****************************************/
+			//递归实现深拷贝
+			const obj3 = {};
+			function deepcopy(newdata, olddata) {
+				for (const key in olddata) {
+					if (olddata[key] instanceof Array) {
+						newdata[key] = [];
+						deepcopy(newdata[key], olddata[key]);
+					} else {
+						newdata[key] = olddata[key];
+					}
+				}
+			}
+			deepcopy(obj3, obj1);
+
+			obj3.hobbies[0] = 9;
+			console.log(obj1);
+			console.log(obj3);
+			//实现深拷贝
+
+			JSON.parse(JSON.stringify());
+			//该方法自动实现深拷贝
+		</script>
+	</body>
+</html>

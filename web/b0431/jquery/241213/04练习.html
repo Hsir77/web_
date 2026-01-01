@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+  <style>
+    .all{
+      width: 600px;
+      height: 400px;
+      border: 1px solid;
+      margin: 0 auto;
+    }
+    .left{
+      height: 400px;
+      width: 100px;
+      line-height: 400px;
+      display: inline-block;
+    }
+    .middle{
+      height: 399px;
+      width: 399px;
+      display: inline-block;
+    }
+    #top{
+      height: 199px;
+      width: 399px;
+      display: inline-block;
+    }
+    ol{
+      list-style: none;
+    }
+    .right{
+      height: 199px;
+      width: 100px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="all">
+    <div class="left">微博发布</div>
+    <div class="middle">
+      <textarea name="" id="top"></textarea>
+      <ol></ol>
+    </div>
+    <div class="right"><button>发布</button></div>
+  </div>
+  <script>
+    $(function(){ 
+
+       $("button").click(function(){
+      var text=$("#top").val()
+      console.log(text);
+      var li=$("<li></li>").text(text)
+      $("ol").prepend(li)
+    })
+
+
+  })
+  
+  </script>
+</body>
+</html>

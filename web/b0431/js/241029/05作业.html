@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 找到数组中每个字母出现的次数,并存储到对象中
+			var arr = prompt('1');
+			var arr1 = [];
+			var obj = {};
+			for (var i = 0; i < arr.length; i++) {
+				if (arr1[arr[i]] === undefined) {
+					arr1[arr[i]] = 1;
+				} else {
+					arr1[arr[i]] += 1;
+				}
+				obj[arr[i]] = arr1[arr[i]];
+			}
+			console.log(arr1);
+			console.log(obj);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <ul>
+    <li>1111</li>
+  </ul>
+  <button>点我</button>
+  <script>
+    // $("div").on({
+    //   click:function(){
+    //     $(this).css("background","pink")
+    //   },
+    //   mouseover:function(){
+    //     $(this).css("background","red")
+    //   },
+    //   mouseout:function(){
+    //     $(this).css("background","blue")
+    //   }
+    // })
+    $("ul").on("click","li",function(){
+      alert(222)
+    })
+    //事件的委派  on
+    $("button").on("click",function(){
+      var li=$("<li>11112</li>")
+      $("ul").append(li)
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.all {
+				display: flex;
+				justify-content: center;
+			}
+			.picture {
+				width: 80px;
+				height: 30px;
+				background-color: rgb(72, 72, 73);
+				color: aliceblue;
+				text-align: center;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="all">
+			<input type="text" />
+			<div class="picture">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<button>验证</button>
+		</div>
+
+		<script>
+			var yanzheng = document.querySelectorAll('.picture>span');
+			var input = document.querySelector('input');
+			var mima = [];
+			var str = '';
+
+			var btn = document.querySelector('button');
+			for (var i = 0; i < yanzheng.length; i++) {
+				yanzheng[i].innerHTML = ascii();
+				mima.push(yanzheng[i].innerHTML);
+			}
+			str = mima.join('');
+			console.log(str);
+
+			function ascii() {
+				let asciiCode = Math.floor(Math.random() * (122 - 48 + 1)) + 48;
+				let randomChar = String.fromCharCode(asciiCode);
+				return randomChar;
+			}
+
+			btn.onclick = function () {
+				if (str == input.value) {
+					alert('通过');
+				} else {
+					alert('失败');
+					mima = [];
+					str = '';
+					for (var i = 0; i < yanzheng.length; i++) {
+						yanzheng[i].innerHTML = ascii();
+						mima.push(yanzheng[i].innerHTML);
+					}
+					str = mima.join('');
+				}
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//一个具有封闭不对外公开或者空间
+			//js中闭包就是函数
+			//里层函数用到外侧函数的数据
+			//闭包可以实现数据私有化 并且让外侧访问内侧数据
+			//容易造成内存泄漏
+			//经典写法
+			// 定义外部函数 outer
+			function outer() {
+				// 在 outer 函数作用域内声明变量 i 并赋值为 1
+				let i = 1;
+				// 返回一个匿名函数，该匿名函数形成了闭包
+				return function () {
+					// 匿名函数内部输出外层函数作用域中的变量 i 的值
+					console.log(i);
+				};
+			}
+
+			// 调用 outer 函数，并将返回的匿名函数赋值给 fun 常量
+			const fun = outer();
+			// 调用 fun ，执行返回的匿名函数，输出 i 的值
+			fun();
+
+			//高级写法
+			// 定义外部函数 fn
+			function fn() {
+				// 在 fn 函数作用域内声明变量 count 并初始化为 1
+				let count = 1;
+				// 定义内部函数 fun
+				function fun() {
+					// 将 count 的值自增 1
+					count++;
+					// 打印函数被调用的次数
+					console.log(`函数被调用${count}次`);
+				}
+				// 返回内部函数 fun
+				return fun;
+			}
+
+			// 调用 fn 函数，并将返回的内部函数 fun 赋值给 result 常量
+			const result = fn();
+			// 调用 result 函数，此时 count 自增为 2 并打印调用次数
+			result();
+			// 再次调用 result 函数，count 自增为 3 并打印调用次数
+			result();
+		</script>
+	</body>
+</html>

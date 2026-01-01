@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="../day01/jq.min.js"></script>
+		<style>
+			.con {
+				/* border: 1px solid black; */
+				width: 606px;
+				overflow: hidden;
+				display: flex;
+				flex-wrap: wrap;
+				margin: 100px auto;
+				background-color: black;
+			}
+
+			.con-item {
+				/* float: left; */
+				width: 200px;
+				height: 200px;
+				border: 1px solid white;
+				background-color: yellowgreen;
+				cursor: pointer;
+			}
+
+			img {
+				height: 200px;
+				width: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="con">
+			<div class="con-item"><img src="./京剧/1.jpg" /></div>
+			<div class="con-item"><img src="./京剧/2.jpg" /></div>
+			<div class="con-item"><img src="./京剧/3.jpg" /></div>
+			<div class="con-item"><img src="./京剧/4.jpg" /></div>
+			<div class="con-item"><img src="./京剧/5.jpg" /></div>
+			<div class="con-item"><img src="./京剧/6.jpg" /></div>
+			<div class="con-item"><img src="./京剧/7.jpg" /></div>
+			<div class="con-item"><img src="./京剧/8.jpg" /></div>
+			<div class="con-item"><img src="./京剧/9.jpg" /></div>
+		</div>
+
+		<script>
+			$('.con-item').hover(
+				function () {
+					$(this).stop().fadeTo(500, 1).siblings().stop().fadeTo(500, 0.4);
+				},
+				function () {
+					$(this).stop().fadeTo(500, 1).siblings().stop().fadeTo(500, 1);
+				},
+			);
+		</script>
+	</body>
+</html>

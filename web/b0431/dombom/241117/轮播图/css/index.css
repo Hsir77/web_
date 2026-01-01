@@ -1,0 +1,92 @@
+* {
+	text-decoration: none;
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+
+.fbox {
+	position: relative;
+	width: 520px;
+	height: 280px;
+	margin: 200px auto;
+	overflow: hidden;
+}
+
+a {
+	display: none;
+	background-color: rgba(87, 87, 87, 0.815);
+	width: 60px;
+	height: 60px;
+	color: white;
+	text-align: center;
+	line-height: 60px;
+	z-index: 99;
+	font-size: 40px;
+}
+
+.topa {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 0 50% 50% 0;
+}
+
+.buttoma {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	border-radius: 50% 0 0 50%;
+}
+
+.buttom {
+	background-color: rgba(172, 169, 169, 0.664);
+	border-radius: 25px;
+	left: 50%;
+	top: 80%;
+	transform: translateX(-50%);
+	position: absolute;
+}
+
+.buttom ul {
+	overflow: hidden;
+}
+
+.buttom ul li {
+	float: left;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: white;
+	margin: 5px;
+}
+
+.tu {
+	width: 520px;
+	height: 280px;
+	background: url(../img/ad1.png) no-repeat center center/100% 100%;
+	float: left;
+}
+.a1 {
+	background: url(../img/淘宝.jpg) no-repeat center center/100% 100%;
+}
+.a2 {
+	background: url(../img/ad2.png) no-repeat center center/100% 100%;
+}
+.a3 {
+	background: url(../img/ad3.png) no-repeat center center/100% 100%;
+}
+.a4 {
+	background: url(../img/ad4.png) no-repeat center center/100% 100%;
+}
+
+.mbox {
+	width: 3120px;
+	overflow: hidden;
+	position: absolute;
+}
+
+#red {
+	background-color: red;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//数组是一个复杂数据类型 允许嵌套任意数据类型
+			var arr = []; //空数组
+			console.log(arr);
+			var list = new Array(3);
+			list = [1, 2, 3, 4];
+			console.log(list);
+			var newArr = [1, 'a', ture, null, undefined]; //允许嵌套任意数据leixing
+			console.log(newArr);
+
+			var newlist = [
+				[1, 2, 3, 4],
+				['a', 'b', 'c', 'd'],
+			];
+
+			for (var w = 0; w < newlist[0].length; w++) {
+				console.log(newlist[0][w]);
+			}
+			for (var e = 0; e < newlist[1].length; e++) {
+				console.log(newlist[1][e]);
+			}
+		</script>
+	</body>
+</html>

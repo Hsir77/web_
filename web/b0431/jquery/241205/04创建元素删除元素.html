@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../241129/jq.js"></script>
+</head>
+<body>
+  <ul>
+    <li> 我是li</li>
+  </ul>
+  <script>
+    var li=$("<li>我是创建的</li>")
+    $("ul").append(li)//内部添加最后面
+    $("ul").prepend(li)//内部添加最前面
+    $("ul").after(li)//外部最后
+    $("ul").before(li)//外部最前
+
+    $("ul").remove//自杀
+  </script>
+</body>
+</html>

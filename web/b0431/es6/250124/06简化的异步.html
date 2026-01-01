@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// 关于async和await的说明
+			// async修饰的函数是异步函数，其返回值是一个Promise对象
+			// await只能在async函数中使用，它会暂停函数执行，直到Promise执行完毕后，再继续执行后面的代码并返回结果
+
+			// 示例1：简单的async函数（被注释，仅作示例）
+			// let fn = async () => {
+			//   return "a"
+			// }
+			// console.log(fn());
+			// fn().then(r => {
+			//   console.log(r);
+			// })
+
+			// 示例2：Promise的基本用法（被注释，仅作示例）
+			// let p = new Promise((res, rej) => {
+			//   res(10)
+			// })
+			// p.then(e => {
+			//   console.log(e);
+			// })
+
+			// 示例3：在async函数中使用await（被注释，仅作示例）
+			// let fn = async () => {
+			//   let res = await p
+			//   console.log(res);
+			// }
+			// fn()
+
+			// 定义函数f1，返回一个Promise，1秒后打印"任务1"并resolve
+			function f1() {
+				return new Promise((res) => {
+					setTimeout(() => {
+						console.log('任务1');
+						res();
+					}, 1000);
+				});
+			}
+
+			// 定义函数f2，返回一个Promise，1秒后打印"任务2"并resolve
+			function f2() {
+				return new Promise((res) => {
+					setTimeout(() => {
+						console.log('任务2');
+						res();
+					}, 1000);
+				});
+			}
+
+			// 定义函数f3，返回一个Promise，1秒后打印"任务3"并resolve
+			function f3() {
+				return new Promise((res) => {
+					setTimeout(() => {
+						console.log('任务3');
+						res();
+					}, 1000);
+				});
+			}
+
+			// 被注释的init函数示例，之前仅依次调用f1、f2、f3，未处理Promise结果
+			// function init() {
+			//   f1()
+			//   f2()
+			//   f3()
+			// }
+			// console.log(init());
+
+			// 定义async函数init，使用await按顺序等待f1、f2、f3的Promise完成
+			async function init() {
+				await f1();
+				await f2();
+				await f3();
+			}
+
+			// 调用init函数启动异步流程
+			init();
+		</script>
+	</body>
+</html>

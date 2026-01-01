@@ -1,0 +1,46 @@
+{
+    "singers": [
+        {
+            "singer_name": "周杰伦",
+            "singer_pic": "https://img0.baidu.com/it/u=1349937094,1434150395&fm=253&fmt=auto&app=138&f=PNG?w=596&h=500",
+            "other_name": "Jay Chou",
+            "singer_id": 4558,
+            "id": 1
+        },
+        {
+            "singer_name": "林俊杰",
+            "singer_pic": "https://img1.baidu.com/it/u=1269546838,3765598067&fm=253&fmt=auto&app=120&f=JPEG?w=799&h=500",
+            "other_name": "JJ Lin",
+            "singer_id": 4658,
+            "id": 2
+        },
+        {
+            "singer_name": "邓紫棋",
+            "singer_pic": "https://img0.baidu.com/it/u=3360075620,3827849135&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500",
+            "other_name": "Glorla Tang",
+            "singer_id": 4480,
+            "id": 3
+        },
+        {
+            "singer_name": "王心凌",
+            "singer_pic": "https://img0.baidu.com/it/u=1186287446,729832653&fm=253&fmt=auto&app=120&f=JPEG?w=628&h=500",
+            "other_name": "Cyndi Wang",
+            "singer_id": 4356,
+            "id": 4
+        },
+        {
+            "singer_name": "许嵩",
+            "singer_pic": "https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2022%2F0203%2Faae5a3c5j00r6qg450013d200ig00igg004k004k.jpg&thumbnail=660x2147483647&quality=80&type=jpg",
+            "other_name": "Vae",
+            "singer_id": 4789,
+            "id": 5
+        },
+        {
+            "singer_name": "成毅",
+            "singer_pic": "https://bj.bcebos.com/bjh-pixel/17071906850148523801_4_ainote_new.jpg",
+            "other_name": "Vae",
+            "singer_id": 4789,
+            "id": 6
+        }
+    ]
+}

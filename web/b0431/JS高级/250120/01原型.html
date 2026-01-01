@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			function Person(name) {
+				this.name = name;
+				// this.say = function (jiao) {
+				//     console.log(this.name + jiao);
+				// }
+				// this.say = say
+			}
+
+			// function say(jiao) {
+			//     console.log(this.name + jiao);
+			// }
+
+			var p1 = new Person('小帅');
+			var p2 = new Person('小美');
+
+			console.log(p1, p2);
+			console.log(p1.__proto__);
+			console.log(Person.prototype);
+			//对象原型__proto__指向原型对象prototype
+			console.log(p1.__proto__ === Person.prototype);
+
+			Person.prototype.say = function () {
+				console.log('hello world');
+			};
+			Person.prototype.age = 18;
+			p1.say();
+			p2.say();
+			console.log(p1.say === p2.say);
+
+			/**********************************/
+			//可以在原型上定义自己的方法
+			Array.prototype.max = function () {
+				return Math.max(...this);
+				//在原型中this指向实例化对象
+				//这里指向arr
+			};
+			const arr = [1, 2, 3, 4];
+			console.log(arr.max());
+
+			/*************************************/
+			//constructor是原型对象的一个属性，指向原型对象的构造函数
+			function Abc() {}
+			const abc = new Abc();
+			console.log(Abc === Abc.prototype.constructor);
+			console.log(abc.__proto__ === Abc.prototype);
+			//构造函数创建出来的实例，为什么能用原型的方法，原因在于实例有————proto————指向与构造函数的prototype一样
+			//对象原型__proto__指向原型对象prototype
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			body {
+				background-color: yellow;
+			}
+			div {
+				width: 105px;
+				height: 200px;
+				background: url(./images/rocket.png) no-repeat bottom;
+				position: relative;
+				left: -100px;
+				top: 600px;
+			}
+			body:hover div {
+				transform: translate(400px, -600px) rotate(45deg);
+				transition: all 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

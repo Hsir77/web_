@@ -1,0 +1,16 @@
+table {
+	border: 1px solid;
+	border-collapse: collapse;
+}
+td {
+	width: 200px;
+	height: 100px;
+	border: 2px solid white;
+	padding: 8px;
+}
+.red > td {
+	background-color: rgb(255, 187, 187);
+}
+.blue > td {
+	background-color: skyblue;
+}

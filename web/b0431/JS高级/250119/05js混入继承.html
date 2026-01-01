@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			//三大特性
+			//1.封装性
+			//2.继承性
+			//3.多态性 调用同一个方法实现不同形态
+			var obj = {
+				name: '123',
+				age: '456',
+				sex: '789',
+			};
+			var obj2 = {
+				say: function () {
+					console.log(666);
+				},
+				say2: function () {
+					console.log(777);
+				},
+			};
+			for (const key in obj2) {
+				obj[key] = obj2[key];
+			}
+			console.log(obj);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 给定一个数组 nums 和 一个目标值 target
+			// nums = [2, 5, 7, 11, 15, 4, 20]   target=9
+			// 请你在数组中找出“和”为target的那两个数,并返回其索引值
+			// 你可以按照任意顺序返回
+			var nums = [2, 5, 7, 11, 15, 4, 20];
+			var target = 9;
+			for (var i = 0; i < nums.length; i++) {
+				for (var j = 0; j < nums.length; j++) {
+					if (nums[i] + nums[j] == target && nums[i] != nums[j]) {
+						var r1 = nums.indexOf(nums[i], 0);
+						var r2 = nums.indexOf(nums[j], 0);
+						console.log(r1, r2);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

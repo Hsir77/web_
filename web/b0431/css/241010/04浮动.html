@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			div {
+				width: 200px;
+				height: 200px;
+				border: 1px solid;
+				display: inline;
+				float: left;
+			}
+			/* 浮动 */
+			/* 设置之后脱离标准流产生脱标现象 */
+			/* 标准流时从上至下从左至右 */
+			/*  兄弟  */
+			/* 浮动后会自动转为行内快模式  */
+			/* 对前面的块级元素无影响  */
+			/* 对后面的块级元素会盖住  */
+			/* 对前面的行内块级元素会排列在浮动后面  */
+			/* 对后面的行内块级元素会排列在浮动后面  */
+			/* 对前面的行内级元素会排列在浮动后面  */
+			/* 对后面的行内级元素会排列在浮动后面  */
+			/* 额外标签法 */
+			/* 再瘦带浮动影响之前设置 */
+			/* 父子  */
+			/* 会导致父级元素检测不到子元素从而不能设置宽高  */
+			/* 解决方法 */
+			/* overflow：hidden */
+			/* 添加伪类clearfix */
+			ul {
+				background-color: yellow;
+				/* overflow: hidden; */
+			}
+			.clearfix::after {
+				content: '';
+				clear: both;
+				height: 0;
+				display: block;
+			}
+			/* 父子用 */
+			.clearfix {
+				width: 0;
+				height: 0;
+				clear: both;
+			}
+			/* 兄弟用 */
+		</style>
+	</head>
+	<body>
+		<p></p>
+		<ul>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+		</ul>
+
+		<p></p>
+	</body>
+</html>

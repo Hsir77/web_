@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script>
+			// 声明变量age并赋值为18
+			let age = 18;
+			// 定义对象obj
+			let obj = {
+				// 当对象中的属性与外部属性重名时并且还想获取到外部的值，直接写名字就行
+				age,
+
+				hello: function () {
+					console.log('hello');
+				},
+
+				sayHi() {
+					console.log('hi');
+				},
+			};
+			console.log(obj);
+
+			obj.hello();
+
+			obj.sayHi();
+
+			// 定义对象obj1
+			var obj1 = {
+				name: '小美',
+			};
+
+			// 获取对象中的所有key形成一个新数组
+			console.log(Object.keys(obj));
+			// 获取对象中的所有value形成一个新数组
+			console.log(Object.values(obj));
+			// 获取对象中的所有key, value形成一个新数组
+			console.log(Object.entries(obj));
+			// 合并两个对象，参数二合并到参数一中
+			console.log(Object.assign(obj, obj1));
+		</script>
+	</body>
+</html>
