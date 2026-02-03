@@ -16,9 +16,6 @@ const IndexComponent = () => {
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <Text style={Styles.helloText}>Hello World</Text>
-        <TouchableOpacity onPress={() => handleToDetailPage()} style={Styles.detailButtom}>
-          <Text style={Styles.detailText}>跳转Detail</Text>
-        </TouchableOpacity>
       </SafeAreaView>
     </SafeAreaProvider>
   );
