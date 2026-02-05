@@ -1,4 +1,3 @@
-# storage.py
 import pymysql
 from typing import List, Dict
 
@@ -24,16 +23,23 @@ class MySQLStorage:
             "name": "",
             "source": "",
             "url": "",
-            "book_id": ""
+            "book_id": "",
+            "gender": "male|female"
           }
         ]
         """
         sql = """
-        INSERT INTO book_source (name, source, url, book_id)
-        VALUES (%s, %s, %s, %s)
+        INSERT INTO book_source (name, source, url, book_id, gender)
+        VALUES (%s, %s, %s, %s, %s)
         """
         values = [
-            (r["name"], r["source"], r["url"], r["book_id"])
+            (
+                r["name"],
+                r["source"],
+                r["url"],
+                r["book_id"],
+                r["gender"]
+            )
             for r in rows
         ]
         self.cursor.executemany(sql, values)

@@ -15,6 +15,10 @@ PAGE_LIST = range(1, 6)
 
 DATE_TYPE = 1
 RANK_DATE = "202601"
+GENDER_MAP = {
+    0: "male",
+    1: "female"
+}
 
 HEADERS = {
     "Accept": "application/json, text/plain, */*",
@@ -29,6 +33,7 @@ def run():
     crawl_time = datetime.now()
 
     for is_girl in IS_GIRL_LIST:
+        gender = GENDER_MAP[is_girl]
         for rank_type in RANK_TYPE_LIST:
             for page in PAGE_LIST:
                 params = {
@@ -39,7 +44,7 @@ def run():
                     "page": page
                 }
 
-                data = fetch_json(API_URL, params, HEADERS)
+                data = fetch_json(API_URL, params, HEADERS, method="GET")
                 books = data.get("data", {}).get("table_data", [])
 
                 rows = []
@@ -55,7 +60,8 @@ def run():
                         "name": book.get("title"),
                         "source": SITE,
                         "url": f"https://www.qimao.com/shuku/{book_id}/",
-                        "book_id": book_id
+                        "book_id": book_id,
+                        "gender": gender
                     })
 
                 if rows:
