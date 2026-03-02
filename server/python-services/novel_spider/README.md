@@ -1,0 +1,1 @@
+poetry run python -m novel_spider.book_data.shuqi_data_spider

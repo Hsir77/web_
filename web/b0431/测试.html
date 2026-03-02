@@ -1,28 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>闭包计数器</title>
-	</head>
-	<body>
-		<script>
-			function Animal(type) {
-  this.type = type; // 自有属性
-}
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>七猫热度分析 Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #f5f7fa;
+    }
+    .container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 20px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .chart {
+      height: 350px;
+    }
+    .full {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔥 七猫小说热度分析</h2>
 
-Animal.prototype.eat = function() { // 原型属性
-  console.log('eating');
-};
+    <div class="grid">
+      <div class="card">
+        <h3>分类 × 平均阅读数</h3>
+        <div id="readChart" class="chart"></div>
+      </div>
 
-const dog = new Animal('dog');
-dog.name = 'Buddy'; // 自有属性
+      <div class="card">
+        <h3>分类 × 平均评分</h3>
+        <div id="scoreChart" class="chart"></div>
+      </div>
 
-// for...in 遍历
-for (let key in dog) {
-  console.log(key);
-}
-			const array = [1, 2, 3, 4, 4, 3, 2, 1];
-		</script>
-	</body>
+      <div class="card">
+        <h3>阅读数 vs 评分</h3>
+        <div id="scatter1" class="chart"></div>
+      </div>
+
+      <div class="card">
+        <h3>人气值 vs 阅读数</h3>
+        <div id="scatter2" class="chart"></div>
+      </div>
+
+      <div class="card full">
+        <h3>TOP10 热门小说</h3>
+        <div id="topChart" class="chart"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Mock 数据 =====
+    const categories = ["玄幻", "都市", "言情", "历史", "科幻"];
+    const readAvg = [120, 95, 150, 80, 60]; // 万
+    const scoreAvg = [8.5, 8.2, 9.1, 8.0, 8.8];
+
+    // ===== 1. 分类 × 阅读数 =====
+    echarts.init(document.getElementById("readChart")).setOption({
+      tooltip: {},
+      xAxis: { type: "category", data: categories },
+      yAxis: { type: "value", name: "万次" },
+      series: [{ type: "bar", data: readAvg }]
+    });
+
+    // ===== 2. 分类 × 评分 =====
+    echarts.init(document.getElementById("scoreChart")).setOption({
+      tooltip: {},
+      xAxis: { type: "category", data: categories },
+      yAxis: { type: "value", min: 7 },
+      series: [{ type: "bar", data: scoreAvg }]
+    });
+
+    // ===== 3. 阅读 vs 评分 =====
+    const scatterData1 = [
+      [120, 8.5],
+      [200, 8.0],
+      [80, 9.2],
+      [300, 7.8],
+      [150, 8.9]
+    ];
+
+    echarts.init(document.getElementById("scatter1")).setOption({
+      tooltip: {},
+      xAxis: { name: "阅读数(万)" },
+      yAxis: { name: "评分" },
+      series: [{
+        type: "scatter",
+        data: scatterData1
+      }]
+    });
+
+    // ===== 4. 人气 vs 阅读 =====
+    const scatterData2 = [
+      [120, 300],
+      [200, 500],
+      [80, 200],
+      [300, 800],
+      [150, 400]
+    ];
+
+    echarts.init(document.getElementById("scatter2")).setOption({
+      tooltip: {},
+      xAxis: { name: "阅读数(万)" },
+      yAxis: { name: "人气值" },
+      series: [{
+        type: "scatter",
+        data: scatterData2
+      }]
+    });
+
+    // ===== 5. TOP10 =====
+    const books = ["书A","书B","书C","书D","书E","书F","书G","书H","书I","书J"];
+    const values = [300,280,260,240,220,200,180,160,140,120];
+
+    echarts.init(document.getElementById("topChart")).setOption({
+      tooltip: {},
+      xAxis: { type: "value" },
+      yAxis: { type: "category", data: books },
+      series: [{
+        type: "bar",
+        data: values
+      }]
+    });
+
+    // 自适应
+    window.addEventListener("resize", () => {
+      echarts.getInstanceByDom(document.getElementById("readChart")).resize();
+      echarts.getInstanceByDom(document.getElementById("scoreChart")).resize();
+      echarts.getInstanceByDom(document.getElementById("scatter1")).resize();
+      echarts.getInstanceByDom(document.getElementById("scatter2")).resize();
+      echarts.getInstanceByDom(document.getElementById("topChart")).resize();
+    });
+  </script>
+</body>
 </html>

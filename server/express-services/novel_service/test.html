@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>权限测试</title>
+      <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <h2>登录测试</h2>
+
+    <button onclick="loginAdmin()">登录 Admin</button>
+    <button onclick="loginSuperAdmin()">登录 SuperAdmin</button>
+    <button onclick="registerAdmin2()">注册 admin2</button>
+    <button onclick="getUserInfo()">获取用户信息</button>
+    <button onclick="deleteUser()">删除 admin2</button>
+    <button onclick="getUserList()">获取用户列表</button>
+    <button onclick="getRoleList()">查看用户角色</button>
+    <button onclick="getRoleChange()">修改用户角色</button>
+
+    <pre id="output"></pre>
+    <button onclick="testAddBook()">测试增加书籍</button>
+    <button onclick="testDeleteBookByUrl()">按 URL 删除（测试）</button>
+    <button onclick="testDeleteBookByName()">按书名删除（测试）</button>
+    <div style="margin-top: 10px; display: flex; flex-direction: column">
+      <div>
+        <button onclick="getCategoryZongheng()">测试纵横分类接口</button>
+        <button onclick="getCategoryQimao()">测试七猫分类接口</button>
+        <button onclick="getCategoryShuqi()">测试书旗分类接口</button>
+      </div>
+      <div>
+        <button onclick="getWordDistribution()">测试字数分布</button>
+        <button onclick="getWordcountStatus()">测试字数×状态</button>
+      </div>
+      <div>
+        <button onclick="getStatusBar()">测试状态统计</button>
+
+        <button onclick="getGenderBar()">测试性别柱状图</button>
+        <button onclick="getGenderScatter()">测试性别男女柱状图</button>
+      </div>
+
+      <div>
+        <button onclick="getChapterCount()">测试章节数量统计</button>
+        <button onclick="getChapterDistribution()">测试章节分布</button>
+      </div>
+    </div>
+    <div id="scatterChart" style="width: 100%; height: 500px"></div>
+    <script>
+      const BASE_URL = "http://localhost:3000";
+
+      function log(data) {
+        document.getElementById("output").innerText = JSON.stringify(
+          data,
+          null,
+          2,
+        );
+      }
+
+      // 登录 Admin
+      async function loginAdmin() {
+        const res = await fetch(`${BASE_URL}/api/novel/login`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: "admin",
+            password: "123456",
+          }),
+        });
+
+        const data = await res.json();
+        log(data);
+      }
+
+      // 登录 SuperAdmin
+      async function loginSuperAdmin() {
+        const res = await fetch(`${BASE_URL}/api/novel/login`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: "super_admin",
+            password: "123456",
+          }),
+        });
+
+        const data = await res.json();
+        log(data);
+      }
+
+      // ✅ 注册 admin2（管理员）
+      async function registerAdmin2() {
+        const res = await fetch(`${BASE_URL}/api/novel/register`, {
+          method: "POST",
+          credentials: "include", // ⭐ 必须带 cookie（权限校验）
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: "admin2",
+            password: "123456",
+            role_name: "管理员", // ⚠️ 必须和数据库一致
+          }),
+        });
+
+        const data = await res.json();
+        log(data);
+      }
+
+      // 获取用户信息
+      async function getUserInfo() {
+        const res = await fetch(`${BASE_URL}/api/novel/current-user`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        const data = await res.json();
+        log(data);
+      }
+
+      async function deleteUser() {
+        const res = await fetch(`${BASE_URL}/api/novel/deleteUser`, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: "admin2",
+          }),
+        });
+
+        const data = await res.json();
+        log(data);
+      }
+      async function getUserList() {
+        const res = await fetch(`${BASE_URL}/api/novel/user`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        const data = await res.json();
+        log(data);
+      }
+      async function getRoleList() {
+        const res = await fetch("http://localhost:3000/api/novel/roleList", {
+          method: "GET",
+          credentials: "include",
+        });
+
+        const data = await res.json();
+        log(data);
+      }
+      // 传 username + role_name
+      async function getRoleChange() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/roleChange",
+            {
+              method: "POST",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                username: "admin2",
+                role_name: "登录用户",
+              }),
+            },
+          );
+
+          const data = await res.json();
+          log(data);
+        } catch (err) {
+          log({ message: "修改角色失败", error: err.message });
+        }
+      }
+
+      async function testAddBook(params) {
+        try {
+          const res = await fetch("http://localhost:3000/api/novel/book/add", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              url: "https://www.zongheng.com/detail/993352",
+              source: "zongheng",
+              gender: "male",
+            }),
+          });
+
+          const data = await res.json();
+          log(data);
+        } catch (err) {
+          log({ message: "添加小说失败", error: err.message });
+        }
+      }
+
+      // 带 Token 的删除（推荐）
+      // 1. 按 URL 删除小说（和你的添加格式完全一致）
+      async function testDeleteBookByUrl(params) {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/book/delete",
+            {
+              method: "POST",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                url: "https://www.zongheng.com/detail/993352", // 和添加的URL一致
+                source: "zongheng",
+              }),
+            },
+          );
+
+          const data = await res.json();
+          log(data);
+        } catch (err) {
+          log({ message: "按URL删除小说失败", error: err.message });
+        }
+      }
+
+      // 2. 按书名删除小说（格式对齐）
+      async function testDeleteBookByName(params) {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/book/delete",
+            {
+              method: "POST",
+              credentials: "include",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                book_name: "控辩双方", // 替换成真实书名
+                source: "shuqi",
+              }),
+            },
+          );
+
+          const data = await res.json();
+          log(data);
+        } catch (err) {
+          log({ message: "按书名删除小说失败", error: err.message });
+        }
+      }
+
+      // *******************************************************************
+      // 可视化
+      async function getCategoryZongheng() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/category/zongheng",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      async function getCategoryQimao() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/category/qimao",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      async function getCategoryShuqi() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/category/shuqi",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      // 内容分析
+      // 字数维度
+      async function getWordDistribution() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/content/word_count",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+          console.log("字数分布：", data);
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      // 字数 × 连载状态
+      async function getWordcountStatus() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/content/word_count/status",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+          console.log("字数×状态：", data);
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      // 状态维度
+      async function getStatusBar() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/content/status",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+          console.log("字数×状态：", data);
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      // 性别维度
+      async function getGenderBar() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/content/gender",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+          console.log("字数×状态：", data);
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+      async function getGenderScatter() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/content/gender/word_count",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+          console.log("字数×状态：", data);
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      // 章节维度
+      async function getChapterCount() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/content/chaptor/word_count",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+          console.log("章节散点数据：", data);
+
+          renderScatterChart(data.data); // 调用渲染函数
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+
+      function renderScatterChart(data) {
+        // 转换数据为 [x, y] 格式
+        const scatterData = data.map((item) => [
+          item.chapter_count,
+          item.word_count,
+        ]);
+
+        const chartDom = document.getElementById("scatterChart");
+        const myChart = echarts.init(chartDom);
+
+        const option = {
+          title: {
+            text: "章节数 × 字数散点图",
+          },
+          tooltip: {
+            trigger: "item",
+            formatter: function (params) {
+              return `章节数: ${params.value[0]}<br>字数: ${params.value[1]}`;
+            },
+          },
+          xAxis: {
+            name: "章节数",
+            type: "value",
+          },
+          yAxis: {
+            name: "字数",
+            type: "value",
+          },
+          series: [
+            {
+              name: "书籍",
+              type: "scatter",
+              data: scatterData,
+              symbolSize: 10, // 点大小
+              itemStyle: {
+                color: "#5470C6",
+              },
+            },
+          ],
+        };
+
+        myChart.setOption(option);
+      }
+
+      async function getChapterDistribution() {
+        try {
+          const res = await fetch(
+            "http://localhost:3000/api/novel/echarts/content/chaptor/average",
+            {
+              method: "GET",
+              credentials: "include",
+            },
+          );
+
+          const data = await res.json();
+          console.log("字数×状态：", data);
+        } catch (err) {
+          console.error("请求失败：", err);
+        }
+      }
+    </script>
+  </body>
+</html>

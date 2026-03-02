@@ -1,0 +1,198 @@
+<!-- HTML 按钮 -->
+<div>
+  <button onclick="loginAdmin()">登录 Admin</button>
+  <button onclick="loginSuperAdmin()">登录 SuperAdmin</button>
+  <button onclick="getWeeklySubscribe()">纵横分类*周订阅</button>
+  <button onclick="getTotalSubscribe()">纵横分类*总订阅</button>
+  <button onclick="getClickSubscribe()">纵横点击*订阅</button>
+  <button onclick="getTop10ClickSubscribe()">纵横Top10总订阅</button>
+</div>
+
+<div id="chartContainer" style="width: 100%; height: 500px"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script>
+  const BASE_URL = "http://localhost:3000/api/novel";
+
+  async function loginAdmin() {
+    const res = await fetch(`${BASE_URL}/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: "admin",
+        password: "123456",
+      }),
+    });
+
+    const data = await res.json();
+    log(data);
+  }
+
+  // 登录 SuperAdmin
+  async function loginSuperAdmin() {
+    const res = await fetch(`${BASE_URL}/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: "super_admin",
+        password: "123456",
+      }),
+    });
+
+    const data = await res.json();
+    log(data);
+  }
+  // 纵横分类*周订阅（柱状图）
+  async function getWeeklySubscribe() {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/echarts/ranking/shuqi/top10/category_popularity`,
+        {
+          method: "GET",
+          credentials: "include",
+        },
+      );
+      const data = await res.json();
+      console.log("纵横分类*周订阅:", data);
+
+      renderBarChart(data.data, "分类*周订阅", "分类", "周订阅数");
+    } catch (err) {
+      console.error("请求失败：", err);
+    }
+  }
+
+  // 纵横分类*总订阅（柱状图）
+  async function getTotalSubscribe() {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/echarts/popularity/zongheng/category/total/subscribe`,
+        {
+          method: "GET",
+          credentials: "include",
+        },
+      );
+      const data = await res.json();
+      console.log("纵横分类*总订阅:", data);
+
+      renderBarChart(data.data, "分类*总订阅", "分类", "总订阅数");
+    } catch (err) {
+      console.error("请求失败：", err);
+    }
+  }
+
+  // 纵横点击*订阅（散点图）
+  async function getClickSubscribe() {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/echarts/popularity/zongheng/click/subscribe`,
+        {
+          method: "GET",
+          credentials: "include",
+        },
+      );
+      const data = await res.json();
+      console.log("纵横点击*订阅:", data);
+
+      renderScatterChart(data.data, "点击数*总订阅", "总点击数", "总订阅数");
+    } catch (err) {
+      console.error("请求失败：", err);
+    }
+  }
+
+  // 纵横Top10总订阅（横向柱状图）
+  async function getTop10ClickSubscribe() {
+    try {
+      const res = await fetch(
+        `${BASE_URL}/echarts/ranking/zongheng/top10/click_subscribe`,
+        {
+          method: "GET",
+          credentials: "include",
+        },
+      );
+      const data = await res.json();
+      console.log("纵横Top10总订阅:", data);
+
+      renderHorizontalBarChart(data.data, "Top10总订阅", "书名", "总订阅数");
+    } catch (err) {
+      console.error("请求失败：", err);
+    }
+  }
+
+  /* ---------- 图表渲染函数 ---------- */
+
+  // 普通柱状图
+  function renderBarChart(data, titleText, xName, yName) {
+    const chartDom = document.getElementById("chartContainer");
+    const myChart = echarts.init(chartDom);
+
+    const xData = data.map((item) => item.category || item.book_name);
+    const yData = data.map((item) => item.value);
+
+    const option = {
+      title: { text: titleText },
+      tooltip: { trigger: "axis" },
+      xAxis: { type: "category", name: xName, data: xData },
+      yAxis: { type: "value", name: yName },
+      series: [{ type: "bar", data: yData, itemStyle: { color: "#5470C6" } }],
+    };
+
+    myChart.setOption(option);
+  }
+
+  // 横向柱状图（Top10）
+  function renderHorizontalBarChart(data, titleText, yName, xName) {
+    const chartDom = document.getElementById("chartContainer");
+    const myChart = echarts.init(chartDom);
+
+    const yData = data.map((item) => item.book_name);
+    const xData = data.map((item) => item.value);
+
+    const option = {
+      title: { text: titleText },
+      tooltip: { trigger: "axis" },
+      xAxis: { type: "value", name: xName },
+      yAxis: { type: "category", name: yName, data: yData },
+      series: [{ type: "bar", data: xData, itemStyle: { color: "#91CC75" } }],
+    };
+
+    myChart.setOption(option);
+  }
+
+  // 散点图
+  function renderScatterChart(data, titleText, xName, yName) {
+    const chartDom = document.getElementById("chartContainer");
+    const myChart = echarts.init(chartDom);
+
+    const scatterData = data.map((item) => [
+      item.click_count,
+      item.subscribe_count,
+    ]);
+
+    const option = {
+      title: { text: titleText },
+      tooltip: {
+        trigger: "item",
+        formatter: (params) =>
+          `${xName}: ${params.value[0]}<br>${yName}: ${params.value[1]}`,
+      },
+      xAxis: { type: "value", name: xName },
+      yAxis: { type: "value", name: yName },
+      series: [
+        {
+          type: "scatter",
+          data: scatterData,
+          symbolSize: 10,
+          itemStyle: { color: "#EE6666" },
+        },
+      ],
+    };
+
+    myChart.setOption(option);
+  }
+</script>

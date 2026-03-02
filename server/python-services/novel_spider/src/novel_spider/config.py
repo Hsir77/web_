@@ -7,3 +7,17 @@ MYSQL_CONFIG = {
     "charset": "utf8mb4",
     "autocommit": False
 }
+
+
+from enum import Enum
+
+
+class SourceEnum(str, Enum):
+    ZONGHENG = "zongheng"
+    QIMAO = "qimao"
+    SHUQI = "shuqi"
+
+
+class TableEnum(str, Enum):
+    BOOK_SOURCE = "book_source"
+

@@ -1,0 +1,400 @@
+# 完整接口文档（8个Controller全量整理 · 极简版）
+## 一、小说基础管理接口（第一个Controller）
+### 1. 添加小说
+- **URL**：/api/book/add
+- **请求类型**：POST
+- **权限**：novel:add
+- **功能**：通过URL调用爬虫爬取小说信息并入库
+- **入参**：`application/json`
+  - url：string
+  - source：string
+  - gender：string
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：object
+    - book_id：string
+
+### 2. 删除小说
+- **URL**：/api/book/delete
+- **请求类型**：POST
+- **权限**：novel:delete
+- **功能**：按平台+URL/书名删除小说
+- **入参**：`application/json`
+  - source：string
+  - url：string（可选）
+  - book_name：string（可选）
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：object
+    - source：string
+    - book_id：string
+    - delete_by：string
+
+---
+
+## 二、书架/阅读接口（第二个Controller）
+### 1. 加入书架
+- **URL**：/api/bookshelf/add
+- **请求类型**：POST
+- **权限**：无显式权限校验
+- **功能**：将小说加入用户书架（收藏）
+- **入参**：`application/json`
+  - user_id：string/number
+  - book_id：string/number
+  - source：string
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：any
+
+### 2. 删除书架
+- **URL**：/api/bookshelf/delete
+- **请求类型**：POST
+- **权限**：无显式权限校验
+- **功能**：取消用户书架中的小说收藏
+- **入参**：`application/json`
+  - user_id：string/number
+  - book_id：string/number
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：any
+
+### 3. 查询我的书架列表
+- **URL**：/api/bookshelf/list
+- **请求类型**：GET
+- **权限**：无显式权限校验
+- **功能**：查询指定用户的书架小说列表
+- **入参**：`query`
+  - user_id：string/number
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：array
+
+### 4. 获取小说试读内容
+- **URL**：/api/bookshelf/reading
+- **请求类型**：GET
+- **权限**：无显式权限校验
+- **功能**：获取指定小说的试读章节内容
+- **入参**：`query`
+  - book_id：string/number
+  - source：string
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：object
+    - book_id：string/number
+    - source：string
+    - is_trial：boolean
+    - total_chapters：number
+    - chapters：array
+
+---
+
+## 三、Echarts数据分析接口（第三个Controller）
+### 通用说明
+- **权限**：analysis:view
+- **请求类型**：GET
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：any（图表渲染数据）
+
+### 1. 分类分析
+| 接口URL | 功能 | 入参 |
+|---------|------|------|
+| /api/echarts/category/zongheng | 获取纵横小说分类统计数据 | 无 |
+| /api/echarts/category/qimao | 获取七猫小说分类统计数据 | 无 |
+| /api/echarts/category/shuqi | 获取书旗小说分类统计数据 | 无 |
+
+### 2. 内容分析
+| 接口URL | 功能 | 入参 |
+|---------|------|------|
+| /api/echarts/content/wordcount | 字数维度统计 | 无 |
+| /api/echarts/content/wordcount/status | 字数+完结状态统计 | 无 |
+| /api/echarts/content/status | 完结状态维度统计 | 无 |
+| /api/echarts/content/gender | 性别频道维度统计 | 无 |
+| /api/echarts/content/gender/wordcount | 性别+字数维度统计 | 无 |
+| /api/echarts/content/chapter/wordcount | 章节+字数维度统计 | 无 |
+| /api/echarts/content/average | 小说平均数据统计 | 无 |
+
+### 3. 热度分析
+| 接口URL | 功能 | 入参 |
+|---------|------|------|
+| /api/echarts/popularity/zongheng/category/weeklysubscribe | 纵横-分类*周订阅统计 | 无 |
+| /api/echarts/popularity/zongheng/category/totalsubscribe | 纵横-分类*总订阅统计 | 无 |
+| /api/echarts/popularity/zongheng/click/subscribe | 纵横-点击*订阅统计 | 无 |
+| /api/echarts/ranking/zongheng/top10/clicksubscribe | 纵横-点击订阅TOP10 | 无 |
+| /api/echarts/popularity/qimao/category/readcount | 七猫-分类*阅读数统计 | 无 |
+| /api/echarts/popularity/qimao/category/score | 七猫-分类*评分统计 | 无 |
+| /api/echarts/popularity/qimao/readcount/score | 七猫-阅读数*评分统计 | 无 |
+| /api/echarts/ranking/qimao/top10/readcountscore | 七猫-阅读数评分TOP10 | 无 |
+| /api/echarts/popularity/shuqi/category/popularityvalue | 书旗-分类*人气值统计 | 无 |
+| /api/echarts/ranking/shuqi/top10/category/popularity | 书旗-分类人气值TOP10 | 无 |
+
+---
+
+## 四、用户管理接口（第四个Controller）
+### 1. 登录
+- **URL**：/api/user/login
+- **请求类型**：POST
+- **权限**：无
+- **功能**：用户登录并生成JWT令牌
+- **入参**：`application/json`
+  - username：string
+  - password：string
+- **出参**：`application/json`
+  - message：string
+  - 响应头Set-Cookie：token（JWT）
+
+### 2. 注册
+- **URL**：/api/user/register
+- **请求类型**：POST
+- **权限**：user:create
+- **功能**：创建新用户并绑定角色
+- **入参**：`application/json`
+  - username：string
+  - password：string
+  - role_name：string
+- **出参**：`application/json`
+  - message：string
+  - data：object
+    - userId：number/string
+    - username：string
+    - role：string
+
+### 3. 删除用户
+- **URL**：/api/user/delete
+- **请求类型**：POST
+- **权限**：user:delete
+- **功能**：删除指定用户名的用户
+- **入参**：`application/json`
+  - username：string
+- **出参**：`application/json`
+  - message：string
+  - username：string
+
+### 4. 获取当前用户信息
+- **URL**：/api/user/current
+- **请求类型**：GET
+- **权限**：无（需登录态）
+- **功能**：获取当前登录用户的信息
+- **入参**：无（从token解析）
+- **出参**：`application/json`
+  - message：string
+  - data：object（用户信息+权限）
+
+### 5. 获取用户列表
+- **URL**：/api/user/list
+- **请求类型**：GET
+- **权限**：user:list
+- **功能**：查询所有用户列表
+- **入参**：无
+- **出参**：`application/json`
+  - message：string
+  - data：array
+
+---
+
+## 五、小说查询/搜索接口（第五个Controller）
+### 1. 获取小说源列表
+- **URL**：/api/novel/source/list
+- **请求类型**：GET
+- **权限**：无
+- **功能**：获取book_source表的全量列表
+- **入参**：无
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：array
+
+### 2. 纵横小说分页查询
+- **URL**：/api/novel/zongheng/list
+- **请求类型**：GET
+- **权限**：无
+- **功能**：分页查询纵横小说（支持多条件筛选）
+- **入参**：`query`
+  - page：number（必填）
+  - size：number（必填）
+  - gender：string（可选，枚举：male/female）
+  - word_count：number（可选）
+  - book_status：string（可选，枚举：连载中/已完结）
+  - chapter_count：number（可选）
+  - category：string（可选）
+  - total_click：number（可选）
+  - total_recommend：number（可选）
+  - weekly_recommend：number（可选）
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：object（分页数据）
+  - paramErrors：array（可选）
+
+### 3. 七猫小说分页查询
+- **URL**：/api/novel/qimao/list
+- **请求类型**：GET
+- **权限**：无
+- **功能**：分页查询七猫小说（支持多条件筛选）
+- **入参**：`query`
+  - page：number（必填）
+  - size：number（必填）
+  - gender：string（可选，枚举：male/female）
+  - word_count：number（可选）
+  - book_status：string（可选，枚举：连载中/完结）
+  - chapter_count：number（可选）
+  - category：string（可选）
+  - score：number（可选）
+  - popularily：bigint（可选）
+  - read_count：bigint（可选）
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：object（分页数据）
+  - paramErrors：array（可选）
+
+### 4. 书旗小说分页查询
+- **URL**：/api/novel/shuqi/list
+- **请求类型**：GET
+- **权限**：无
+- **功能**：分页查询书旗小说（支持多条件筛选）
+- **入参**：`query`
+  - page：number（必填）
+  - size：number（必填）
+  - gender：string（可选，枚举：male/female）
+  - word_count：number（可选）
+  - book_status：string（可选，枚举：连载/完结）
+  - chapter_count：number（可选）
+  - category：string（可选）
+  - popularily：bigint（可选）
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：object（分页数据）
+  - paramErrors：array（可选）
+
+### 5. 小说详情
+- **URL**：/api/novel/detail
+- **请求类型**：GET
+- **权限**：无
+- **功能**：查询指定小说的详情（含收藏状态）
+- **入参**：`query`
+  - book_id：number（必填）
+  - user_id：number（必填）
+  - source：string（必填）
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：object
+
+### 6. 小说搜索
+- **URL**：/api/novel/search
+- **请求类型**：GET
+- **权限**：无
+- **功能**：按关键词搜索所有平台小说
+- **入参**：`query`
+  - keyword：string（必填）
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：array
+
+### 7. 我的书架搜索
+- **URL**：/api/novel/bookshelf/search
+- **请求类型**：GET
+- **权限**：无
+- **功能**：按关键词搜索指定用户书架中的小说
+- **入参**：`query`
+  - user_id：string/number（必填）
+  - keyword：string（必填）
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：array
+
+---
+
+## 六、Prompt配置接口（第六个Controller）
+### 1. 查询最新Prompt配置
+- **URL**：/api/prompt/latest
+- **请求类型**：GET
+- **权限**：prompt:search
+- **功能**：获取最新的SQL/文本生成Prompt配置
+- **入参**：无
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：object
+    - sql_prompt：string
+    - text_prompt：string
+
+### 2. 更新Prompt配置
+- **URL**：/api/prompt/update
+- **请求类型**：POST
+- **权限**：prompt:edit
+- **功能**：新增/更新Prompt配置
+- **入参**：`application/json`
+  - sql_prompt：string（必填）
+  - text_prompt：string（必填）
+- **出参**：`application/json`
+  - code：number
+  - message：string
+  - data：object
+    - affectedRows：number
+    - insertId：number
+
+---
+
+## 七、AI分析接口（第七个Controller）
+### 1. AI生成SQL并分析结果
+- **URL**：/api/qwen/chat/answer
+- **请求类型**：POST
+- **权限**：analysis:view
+- **功能**：接收用户问题，AI生成SQL→执行→AI分析结果并返回最终回答
+- **入参**：`application/json`
+  - messages：array（必填，元素含role/content）
+  - model：string（可选，默认qwen-plus）
+  - temperature：number（可选，默认0.7）
+  - sqlDialect：string（可选，默认mysql）
+- **出参**：`application/json`
+  - code：number
+  - msg：string
+  - data：object
+    - userQuestion：string
+    - sql：string
+    - dbData：object
+    - finalAnswer：string
+
+---
+
+## 八、角色管理接口（第八个Controller）
+### 1. 查看用户角色列表
+- **URL**：/api/role/user/list
+- **请求类型**：GET
+- **权限**：role:assign
+- **功能**：查询所有用户的角色分配列表
+- **入参**：无
+- **出参**：`application/json`
+  - message：string
+  - data：array
+
+### 2. 给用户分配/修改角色
+- **URL**：/api/role/user/change
+- **请求类型**：POST
+- **权限**：role:assign
+- **功能**：修改指定用户的角色
+- **入参**：`application/json`
+  - username：string（必填）
+  - role_name：string（必填，枚举：管理员/登录用户）
+- **出参**：`application/json`
+  - message：string
+  - data：any
+
+---
+
+### 关键点回顾
+1. 所有接口统一返回JSON格式，核心字段为`code/msg/message + data`；
+2. 权限校验集中在：小说管理（novel:*）、分析（analysis:view）、用户/角色（user:/role:）、Prompt（prompt:）四类；
+3. 入参类型区分`query`（GET）和`application/json`（POST），必填参数均做显式校验。
