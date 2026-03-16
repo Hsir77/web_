@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        有一个圆桌，坐着一圈人，用最小的交换次数把男人和女人各自坐到一起。
+        具体来讲：
+        交换 定义为选中一个数组中的两个 互不相同 的位置并交换二者的值。
+        环形 数组是一个数组，可以认为 第一个 元素和 最后一个 元素 相邻 。
+
+        给你一个 二进制环形 数组 nums ，返回在 任意位置 将数组中的所有 1 聚集在一起需要的最少交换次数。
+
+        示例1：
+        输入：nums = [0,1,0,1,1,0,0]
+        输出：1
+        解释：这里列出一些能够将所有 1 聚集在一起的方案：
+        nums[1] <-> nums[2] 变成 [0,0,1,1,1,0,0]，交换 1 次。
+        nums[2] <-> nums[4] 变成 [0,1,1,1,0,0,0]，交换 1 次。
+        nums[0] <-> nums[3]，nums[4] <-> nums[6]，变成 [1,1,0,0,0,0,1]，交换 2 次（利用数组的环形特性）。
+        无法在交换 0 次的情况下将数组中的所有 1 聚集在一起。
+        因此，需要的最少交换次数为 1 。
+
+        示例2：
+        输入：nums = [1,1,0,0,1]
+        输出：0
+        解释：得益于数组的环形特性，所有的 1 已经聚集在一起。
+        因此，需要的最少交换次数为 0 。
+    */
+
+      function findMinSwaps(nums) {
+        // 在这⾥书写你的代码
+        let oneNums = 0;
+        nums.forEach((num) => {
+          if (num == 1) {
+            oneNums++;
+          }
+        });
+        if (oneNums < 0) {
+          return null;
+        }
+        const dNums = [...nums, ...nums];
+
+        let max = 0;
+        for (let i = 0; i < nums.length; i++) {
+          let cur = 0;
+          for (let j = i; j < i + oneNums; j++) {
+            if (dNums[j] == 1) {
+              cur++;
+            }
+          }
+          if (cur > max) {
+            max = cur;
+          }
+        }
+        return oneNums - max;
+      }
+
+      function test() {
+        var example_1 = [0, 1, 1, 1, 0, 0, 1, 1, 0];
+        var ret_1 = findMinSwaps(example_1);
+        console.log(ret_1);
+        if (ret_1 !== 2) {
+          console.log("样例1结果错误！");
+        }
+        var example_2 = [
+          0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1,
+          1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0,
+          1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1,
+          1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1,
+          1, 0, 0, 1, 0,
+        ];
+        var ret_2 = findMinSwaps(example_2);
+        console.log(ret_2);
+        if (ret_2 !== 22) {
+          console.log("样例2结果错误！");
+        }
+        var example_3 = [1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1];
+        var ret_3 = findMinSwaps(example_3);
+        console.log(ret_3);
+        if (ret_3 !== 1) {
+          console.log("样例3结果错误！");
+        }
+        var example_4 = [0, 1, 0, 0, 1, 0, 0, 0, 1];
+        var ret_4 = findMinSwaps(example_4);
+        console.log(ret_4);
+        if (ret_4 !== 1) {
+          console.log("样例4结果错误！");
+        }
+      }
+      test();
+    </script>
+  </body>
+</html>

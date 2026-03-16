@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  height: calc(100vh - 98px);
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.chartCard {
+  height: 220px;
+  width: 100%;
+}
+
+.mainContainer {
+  width: 95%;
+  margin: 0 auto;
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.leftContent {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rightCards {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 160px;
+}
+
+.header {
+  margin: 30px 0 20px 0;
+  padding-left: 8px;
+}
+
+.section {
+  flex: 1;
+  overflow: hidden;
+}
+
+.main {
+  margin-bottom: 8px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.footer {
+  margin-top: 8px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: clamp(24px, 4vw, 35px);
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 15px;
+}
+
+.desc {
+  color: #4b5563;
+  font-size: 14px;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #a457de;
+  margin-bottom: 10px;
+  text-align: center;
+  line-height: 1.2;
+  letter-spacing: 0.02em; 
+}
+
+.cardDesc {
+  color: #4b5563;
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.3;
+  margin-top: 20px;
+}
+
+.chartTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+.footerText {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  height: 100%;
+  align-content: start;
+}
+
+.cardPaddingSm {
+  padding: 10px;
+  height: 100%;
+}
+
+.cardPaddingMd {
+  padding: 13px;
+}

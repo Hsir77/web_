@@ -1,0 +1,178 @@
+/* 整页背景 */
+.readPage {
+  min-height: 100vh;
+  background: #f8f5f0;
+  padding: 0;
+  margin: 0;
+  anchor-name: --read-page-anchor;
+  position: relative;
+}
+
+/* 返回按钮：固定定位 + 自定义锚点 + 按钮样式 */
+.readHeader {
+  position: fixed;
+  position-anchor: --read-page-anchor;
+  top: 30%;
+  right: 150px;
+  padding: 8px 12px;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 999;
+}
+
+.headerBtn {
+  padding: 7px 14px;
+  border: 1px solid #d1c8bc;
+  background: #fdf6e3;
+  width: 70px;
+  height: 70px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #a5a595;
+
+}
+.headerBtn:hover{
+    color: #0b0b0b;
+}
+
+/* 中间书本区域 */
+.bookContainer {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 0px 20px 100px;
+}
+
+/* 黄色阅读区 */
+.contentBody {
+  background: #fdf6e3;
+  padding: 50px 70px;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+/* 提示语 */
+.tipsParagraph {
+  color: #c0392b;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+/* 章节块 */
+.chapterBlock {
+  margin-bottom: 50px;
+}
+
+/* 章节标题 */
+.sectionTitle {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* 分割线 */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #e0d8cc;
+  margin: 0 auto 25px;
+}
+
+/* 段落 */
+.p {
+  margin: 0 0 1.2em;
+  text-indent: 2em;
+  text-align: justify;
+}
+
+.catalogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+.catalogCard {
+  background: #fff;
+  width: 720px;
+  max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.catalogHeader {
+  padding: 15px 20px;
+  background: #fdf6e3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.catalogHeader button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #666;
+}
+
+.catalogList {
+  padding: 10px 20px 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.catalogItem {
+  padding: 11px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.catalogItem:hover {
+  color: #c0392b;
+}
+.volumeBlock {
+  margin-bottom: 10px;
+}
+
+.volumeTitle {
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.volumeArrow {
+  font-size: 12px;
+  color: #888;
+}
+
+.chapterList {
+  padding-left: 10px;
+}
+.emptyBox{
+  text-align:center;
+  font-size:18px;
+  padding:120px 20px;
+  line-height:2;
+  color:#555;
+}

@@ -1,0 +1,154 @@
+.bookshelfPage {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 20px 60px;
+  box-sizing: border-box;
+}
+
+.pageTitle {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 0 auto 30px;
+}
+
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.bookCard {
+  position: relative;
+  display: flex;
+  background: transparent;
+  border-radius: 10px;
+  padding: 16px;
+  gap: 16px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: 0.2s;
+  overflow: hidden;
+}
+
+.bookCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bookCover {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.bookInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.bookTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookAuthor {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.bookTags {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #999;
+  padding-top: 3px;
+}
+
+.bookTags span {
+  background: #f1f1f1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.bookIntro {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.sourceTag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  padding: 3px 10px;
+  font-size: 12px;
+  border-bottom-left-radius: 8px;
+  z-index: 10;
+}
+
+.loading,
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 0;
+  font-size: 16px;
+  color: #666;
+}
+/* 搜索框外层：铺满 */
+.searchBox {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+/* 高级朴实风格：无蓝色、铺满、柔和质感 */
+.bookshelfSearch {
+  width: 100%;
+}
+
+.bookshelfSearch :global(.ant-input) {
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #e0e0e0;
+  padding: 10px 14px;
+  font-size: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.bookshelfSearch :global(.ant-input):focus {
+  border-color: #999;
+  box-shadow: none;
+  outline: none;
+}
+
+.bookshelfSearch :global(.ant-input-search-button) {
+  border-radius: 0 8px 8px 0;
+  background-color: #444;
+  border-color: #444;
+  color: #fff;
+  height: 100%;
+}
+
+.bookshelfSearch :global(.ant-input-search-button:hover) {
+  background-color: #555 !important;
+  border-color: #555 !important;
+}

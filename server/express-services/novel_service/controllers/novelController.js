@@ -99,6 +99,7 @@ exports.getZonghengBookList = async (req, res) => {
         enum: ["连载中", "已完结"],
       },
       chapter_count: { type: "number", min: 0 },
+
       category: { type: "string" },
       total_click: { type: "number", min: 0 },
       total_recommend: { type: "number", min: 0 },
@@ -149,6 +150,7 @@ exports.getQimaoBookList = async (req, res) => {
         enum: ["连载中", "完结"],
       },
       chapter_count: { type: "number", min: 0 },
+      
       category: { type: "string" },
       score: { type: "float", min: 0 },
       popularily: { type: "bigint", min: 0 },

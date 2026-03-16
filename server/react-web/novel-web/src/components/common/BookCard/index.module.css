@@ -1,0 +1,121 @@
+.card{
+  display:flex;
+  padding:20px;
+  margin-bottom:20px;
+  width:98%;
+  border-radius:12px;
+  background:#fff;
+  border:1px solid #f0f0f0;
+  box-shadow:0 3px 12px rgba(0,0,0,0.05);
+  position:relative;
+  transition:all .2s;
+}
+
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* 封面 */
+.cover{
+  width:90px;
+  height:125px;
+  object-fit:cover;
+  margin-right:20px;
+  border-radius:6px;
+}
+
+/* 信息 */
+.info{
+  flex:1;
+}
+
+.title{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.meta{
+  font-size:13px;
+  color:#888;
+  margin-bottom:8px;
+}
+
+/* 简介 */
+.desc{
+  font-size:14px;
+  color:#555;
+  line-height:1.6;
+}
+
+.clampDesc{
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.expandedDesc{
+  display:block;
+}
+
+.showMoreBtn{
+  margin-top:4px;
+  border:none;
+  background:none;
+  color:#1890ff;
+  cursor:pointer;
+  font-size:13px;
+  padding:0;
+}
+
+/* 右侧区域 */
+.right{
+  width:150px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+/* 按钮 */
+.buttons{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.btn2{
+  padding:10px 26px;
+  border-radius:22px;
+  border:none;
+  background:#ffd666;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+  transition:all .2s;
+}
+
+.btn2:hover{
+  background:#faad14;
+}
+
+/* 平台角标（书签效果） */
+.platform{
+  position:absolute;
+  top:0;
+  right:0;
+
+  width:84px;
+  height:44px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+
+  border-bottom-left-radius:10px;
+}

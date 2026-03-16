@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+    很多IP地址，如何最快的找出RTT最短的IP地址假设最大并发数为10
+      -->
+    <script>
+      function chunk(ips, maxnum) {
+        const result = [];
+        for (let i = 0; i < ips.length; i = i + maxnum) {
+          result.push(ips.slice(i, i + maxnum));
+        }
+        return result;
+      }
+
+      function race(task, timeout) {
+        return new Promise((resolve) => {
+          const abortController = new AbortController();
+          let shortestRTT = Infinity;
+          let shortestIP = null;
+          let resolved = false;
+
+          const timeoutTimer = setTimeout(() => {
+            if (!resolved) {
+              abortController.abort();
+              resolve(null);
+              resolved = true;
+            }
+          }, timeout);
+
+          task.forEach((ip) => {
+            const startTime = Date.now();
+            fetch(`http://${ip}`, {
+              signal: abortController.signal,
+              method: "HEAD",
+              timeout: timeout,
+            })
+              .then((response) => {
+                if (response.ok && !resolved) {
+                  const rtt = Date.now() - startTime;
+                  if (rtt < shortestRTT) {
+                    shortestRTT = rtt;
+                    shortestIP = ip;
+                  }
+                  abortController.abort();
+                  clearTimeout(timeoutTimer);
+                  resolve({ rtt: shortestRTT, ip: shortestIP });
+                  resolved = true;
+                }
+              })
+              .catch((err) => {
+                if (err.name !== "AbortError") {
+                  console.log(`IP ${ip} 请求失败:`, err.message);
+                }
+                const allFailed = task.every(
+                  (ipItem) => !ipItem || (ipItem === ip && err),
+                );
+                if (allFailed && !resolved) {
+                  abortController.abort();
+                  clearTimeout(timeoutTimer);
+                  resolve(null);
+                  resolved = true;
+                }
+              });
+          });
+        });
+      }
+
+      async function findMinRtt(ips, maxnum, timeout = 3000) {
+        if (!Array.isArray(ips) || ips.length === 0 || maxnum <= 0) {
+          return null;
+        }
+
+        const tasks = chunk(ips, maxnum);
+        let globalShortest = {
+          rtt: Infinity,
+          ip: null,
+        };
+
+        for (const task of tasks) {
+          const batchResult = await race(task, timeout);
+          if (batchResult && batchResult.rtt < globalShortest.rtt) {
+            globalShortest = batchResult;
+          }
+        }
+
+        return globalShortest.ip ? globalShortest : null;
+      }
+
+      // 测试示例（如需启用请取消注释）
+      // const testIps = ['192.168.1.1', '10.0.0.1', '8.8.8.8', '1.1.1.1', '223.5.5.5'];
+      // findMinRtt(testIps, 2, 3000).then(res => {
+      //   if (res) {
+      //     console.log(`最短RTT的IP：${res.ip}，RTT：${res.rtt}ms`);
+      //   } else {
+      //     console.log('所有IP请求失败');
+      //   }
+      // });
+    </script>
+  </body>
+</html>

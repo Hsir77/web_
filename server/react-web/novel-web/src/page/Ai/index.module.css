@@ -1,0 +1,152 @@
+.container {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f5f7fb;
+  border: 1px solid #e6eaf0;
+}
+
+/* 左侧说明 */
+
+.leftPanel {
+  width: 360px;   /* 原来 260 或 280 */
+  padding: 24px;
+  border-right: 1px solid #e6eaf0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+/* 用户问题 */
+
+.chatBubbleUser {
+  background: #3b82f6;
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* GPT回答 */
+
+.chatBubbleAI {
+  background: #f8fafc;
+  border: 1px solid #e6eaf0;
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #374151;
+
+  max-height: 400px;
+  overflow-y: auto;
+}
+.chatBubbleAI2 {
+  background: #f8fafc;
+  border: 1px solid #e6eaf0;
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #374151;
+}
+
+/* 中间聊天区 */
+
+.chatArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.messageWrapper {
+  flex: 1;
+  padding: 26px;
+  overflow-y: auto;
+}
+
+.tipText {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* 输入框 */
+
+.inputBar {
+  padding: 16px 20px;
+  border-top: 1px solid #e6eaf0;
+  display: flex;
+  gap: 12px;
+  background: #fafbfd;
+}
+
+.inputField {
+  flex: 1;
+  padding: 12px 18px;
+  border-radius: 26px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  transition: all .2s;
+}
+
+.inputField:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+
+.confirmBtn {
+  padding: 0 22px;
+  border-radius: 26px;
+  border: none;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+.confirmBtn:hover {
+  background: #2563eb;
+}
+
+/* 右侧问题示例 */
+
+.rightPanel {
+  width: 280px;
+  padding: 22px;
+  border-left: 1px solid #e6eaf0;
+  background: #ffffff;
+}
+
+.exampleItem {
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e6eaf0;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all .2s;
+}
+
+.exampleItem:hover {
+  background: #eef4ff;
+  border-color: #3b82f6;
+  transform: translateY(-1px);
+}

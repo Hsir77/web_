@@ -1,0 +1,19 @@
+.sliderScroll {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* 默认隐藏滚动条 */
+.sliderScroll::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* hover 时显示 */
+.sliderScroll:hover::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sliderScroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.25);
+  border-radius: 3px;
+}

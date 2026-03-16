@@ -1,0 +1,46 @@
+.toastContainer {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 基础toast */
+.successToast,
+.errorToast {
+  min-width: 200px;
+
+  padding: 14px 24px;
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* 成功 */
+.successToast {
+  background: linear-gradient(135deg,#52c41a,#389e0d);
+}
+
+/* 失败 */
+.errorToast {
+  background: linear-gradient(135deg,#ff4d4f,#cf1322);
+}
+
+/* 动画 */
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}

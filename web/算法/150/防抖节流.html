@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fangdou(fn, delay) {
+        let timer = null;
+        return function (...args) {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn.apply(this, args);
+          }, delay);
+        };
+      }
+
+      function jieliu(fn, delay) {
+        let lastTime = 0;
+        return function (...args) {
+          const nowTime = Date.now();
+          if (nowTime - lastTime >= delay) {
+            fn.apply(this, args);
+            lastTime = nowTime;
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

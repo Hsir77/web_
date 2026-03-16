@@ -13,6 +13,8 @@ exports.getZonghengBookList = async (page = 1, size = 20, filter = {}) => {
   const whereConditions = [];
   const queryParams = [];
 
+  let joinSql = ""; // ✅ 默认空字符串
+
   if (filter.book_status) {
     whereConditions.push("book_status = ?");
     queryParams.push(filter.book_status);
@@ -374,7 +376,18 @@ exports.searchBooks = async (keyword) => {
       qimao: 'novel_data.qimao_book_data',
       shuqi: 'novel_data.shuqi_book_data'
     },
-    returnFields: ['book_id', 'book_name', 'author_name', 'cover_url', 'book_status', 'source']
+    // 1. 字段和书架搜索 100% 对齐
+    returnFields: [
+      'book_id',
+      'book_name',
+      'author_name',
+      'book_status',
+      'category',
+      'word_count',
+      'book_intro',
+      'cover_url',
+      'source'
+    ]
   };
 
   const normalizeStr = (str) => {
@@ -385,8 +398,9 @@ exports.searchBooks = async (keyword) => {
   };
 
   const normalizedKeyword = normalizeStr(keyword);
-  if (normalizedKeyword === 'unknown') {
-    throw new Error('搜索关键词不能为空');
+  // 2. 空关键词不报错，返回空数组
+  if (normalizedKeyword === '') {
+    return [];
   }
   const like = `%${normalizedKeyword}%`; 
 
@@ -400,6 +414,9 @@ exports.searchBooks = async (keyword) => {
           author_name,
           cover_url,
           book_status,
+          category,
+          word_count,
+          book_intro,
           ? AS source
         FROM ${table}
         WHERE book_name LIKE ? OR author_name LIKE ?
@@ -438,7 +455,7 @@ exports.searchBooks = async (keyword) => {
   return finalResult;
 };
 
-// 我的书库查询接口
+/// 我的书库查询接口
 exports.searchMyBookshelf = async (userId, keyword) => {
   const like = `%${keyword}%`;
 
@@ -449,6 +466,9 @@ exports.searchMyBookshelf = async (userId, keyword) => {
       b.author_name,
       b.cover_url,
       b.book_status,
+      b.category,
+      b.word_count,
+      b.book_intro,
       'zongheng' AS source
     FROM novel_data.zongheng_book_data b
     JOIN user_bookshelf s
@@ -465,6 +485,9 @@ exports.searchMyBookshelf = async (userId, keyword) => {
       b.author_name,
       b.cover_url,
       b.book_status,
+      b.category,
+      b.word_count,
+      b.book_intro,
       'qimao' AS source
     FROM novel_data.qimao_book_data b
     JOIN user_bookshelf s
@@ -481,6 +504,9 @@ exports.searchMyBookshelf = async (userId, keyword) => {
       b.author_name,
       b.cover_url,
       b.book_status,
+      b.category,
+      b.word_count,
+      b.book_intro,
       'shuqi' AS source
     FROM novel_data.shuqi_book_data b
     JOIN user_bookshelf s
