@@ -66,7 +66,7 @@ const App: React.FC = () => {
           {/* 底部说明 */}
           <footer className={styles.footer}>
             <p className={styles.footerText}>
-              网络小说数据分析可视化平台 © 20223189 版权所有 | 黑龙江大学韩子岩
+              网络小说数据分析可视化平台 © 20**31** 版权所有 | ***大学***
             </p>
           </footer>
         </div>
